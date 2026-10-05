@@ -1,0 +1,871 @@
+1
+00:00:01,600 --> 00:00:02,731
+You press a key.
+
+2
+00:00:04,233 --> 00:00:05,991
+It feels like nothing at all.
+
+3
+00:00:05,991 --> 00:00:08,052
+A motion of barely one millimeter.
+
+4
+00:00:08,733 --> 00:00:12,955
+But in the few hundredths of a second
+before a letter appears on your screen,
+
+5
+00:00:12,955 --> 00:00:14,984
+that press sets off a chain reaction.
+
+6
+00:00:15,467 --> 00:00:19,051
+Through layers of software,
+written by thousands of engineers.
+
+7
+00:00:19,300 --> 00:00:23,716
+Through billions of transistors,
+switching billions of times every second.
+
+8
+00:00:23,933 --> 00:00:26,365
+All the way down to a flow of electrons.
+
+9
+00:00:27,267 --> 00:00:29,091
+Today, we follow that journey.
+
+10
+00:00:29,091 --> 00:00:30,125
+All the way down.
+
+11
+00:00:39,733 --> 00:00:41,440
+First, let's meet the machine.
+
+12
+00:00:41,933 --> 00:00:46,861
+Open up a modern Mac, and almost everything
+that matters lives on one small chip.
+
+13
+00:00:47,267 --> 00:00:50,940
+Apple silicon is a system
+on a chip: a whole computer,
+
+14
+00:00:50,940 --> 00:00:53,389
+fused onto a single slab of silicon.
+
+15
+00:00:53,833 --> 00:00:56,559
+Performance cores and efficiency cores.
+
+16
+00:00:56,559 --> 00:00:58,026
+A graphics processor.
+
+17
+00:00:58,026 --> 00:00:59,633
+A Neural Engine for AI.
+
+18
+00:00:59,633 --> 00:01:02,988
+Controllers for storage,
+displays, and security.
+
+19
+00:01:02,988 --> 00:01:06,761
+And right beside it, on the
+same package — the memory.
+
+20
+00:01:07,267 --> 00:01:11,213
+A chip like the M4 packs about
+twenty-eight billion transistors.
+
+21
+00:01:11,900 --> 00:01:15,052
+But on its own, all that
+hardware does nothing at all.
+
+22
+00:01:15,052 --> 00:01:16,103
+It needs software.
+
+23
+00:01:17,433 --> 00:01:20,121
+And software, it turns
+out, is built in layers.
+
+24
+00:01:20,567 --> 00:01:25,112
+At the very bottom sits the kernel
+— the core of the operating system.
+
+25
+00:01:25,112 --> 00:01:29,463
+On a Mac it's called XNU, and it
+has total control of the hardware.
+
+26
+00:01:29,867 --> 00:01:33,062
+Above it are system services,
+like the WindowServer,
+
+27
+00:01:33,062 --> 00:01:35,520
+which owns everything you see on screen.
+
+28
+00:01:35,867 --> 00:01:39,237
+Then come frameworks — like
+AppKit, SwiftUI, and Metal —
+
+29
+00:01:39,237 --> 00:01:41,584
+the building blocks apps are made from.
+
+30
+00:01:41,933 --> 00:01:43,555
+And on top: your apps.
+
+31
+00:01:44,167 --> 00:01:48,484
+Each layer talks only to the one
+beneath it, through well-defined doors.
+
+32
+00:01:48,484 --> 00:01:53,340
+That's abstraction — the trick that makes
+something this complex possible at all.
+
+33
+00:01:53,867 --> 00:01:57,259
+And one boundary is enforced
+by the processor itself.
+
+34
+00:01:57,733 --> 00:01:59,199
+Apps run in user mode.
+
+35
+00:01:59,199 --> 00:02:01,264
+The kernel runs in kernel mode.
+
+36
+00:02:01,264 --> 00:02:05,461
+Code on the outside can't touch
+the hardware, or reach across —
+
+37
+00:02:05,461 --> 00:02:08,059
+except through doors the kernel guards.
+
+38
+00:02:11,967 --> 00:02:13,396
+So — back to that key.
+
+39
+00:02:13,833 --> 00:02:17,367
+Under the keyboard is a grid
+of wires — rows and columns —
+
+40
+00:02:17,367 --> 00:02:19,316
+with a switch at every crossing.
+
+41
+00:02:19,667 --> 00:02:23,676
+A small controller scans the grid
+hundreds of times per second,
+
+42
+00:02:23,676 --> 00:02:27,304
+powering one row at a time
+and listening on every column.
+
+43
+00:02:27,700 --> 00:02:30,567
+Press a key, and you
+connect a row to a column.
+
+44
+00:02:30,567 --> 00:02:32,031
+The controller spots it.
+
+45
+00:02:32,400 --> 00:02:35,899
+It waits a few milliseconds for
+the contacts to stop bouncing…
+
+46
+00:02:36,133 --> 00:02:40,382
+…then packs the press into a tiny
+report, just a few bytes long.
+
+47
+00:02:40,382 --> 00:02:45,627
+In HID — the common language of keyboards
+— the letter A is simply number four.
+
+48
+00:02:46,100 --> 00:02:49,279
+Those bytes race to the chip,
+where they trigger an interrupt.
+
+49
+00:02:50,367 --> 00:02:52,969
+An interrupt is exactly
+what it sounds like.
+
+50
+00:02:53,367 --> 00:02:56,234
+A processor core drops
+whatever it was doing.
+
+51
+00:02:56,234 --> 00:03:01,076
+It saves its place, switches into kernel
+mode, and jumps to a fixed address:
+
+52
+00:03:01,076 --> 00:03:02,988
+the kernel's exception vector.
+
+53
+00:03:03,400 --> 00:03:06,323
+Within microseconds, the
+kernel is in control.
+
+54
+00:03:06,700 --> 00:03:11,683
+Its drivers read the report, and turn
+number four into an event: the key for A,
+
+55
+00:03:11,683 --> 00:03:12,503
+pressed down.
+
+56
+00:03:12,900 --> 00:03:15,344
+That event travels up to the WindowServer.
+
+57
+00:03:15,344 --> 00:03:19,940
+It knows which window is in front, so it
+sends the key to the app that owns it.
+
+58
+00:03:21,067 --> 00:03:23,669
+That app has been asleep,
+waiting for a message.
+
+59
+00:03:24,033 --> 00:03:25,346
+The kernel wakes it up.
+
+60
+00:03:25,346 --> 00:03:30,028
+Its run loop picks up the event, and passes
+it to the text field you're typing in.
+
+61
+00:03:30,400 --> 00:03:36,871
+Using your keyboard layout, the key
+becomes a character: a lowercase a.
+
+62
+00:03:36,871 --> 00:03:40,881
+In Unicode, that's
+number 61 in hexadecimal.
+
+63
+00:03:40,881 --> 00:03:42,795
+In binary: 0110 0001.
+
+64
+00:03:43,267 --> 00:03:47,158
+To draw it, the text system pulls
+the letter's shape from a font:
+
+65
+00:03:47,158 --> 00:03:49,133
+a precise outline made of curves.
+
+66
+00:03:49,467 --> 00:03:53,072
+The curves are filled in as
+pixels, and the window is redrawn.
+
+67
+00:03:53,467 --> 00:03:55,314
+Then the GPU takes over.
+
+68
+00:03:55,314 --> 00:04:01,549
+Apple's GPU slices the screen into small
+tiles, and renders each one inside fast,
+
+69
+00:04:01,549 --> 00:04:02,704
+on-chip memory.
+
+70
+00:04:03,133 --> 00:04:07,961
+Finally, the display engine streams
+the finished frame to the screen,
+
+71
+00:04:07,961 --> 00:04:09,710
+up to 120 times a second.
+
+72
+00:04:09,710 --> 00:04:14,888
+There, millions of red, green, and
+blue subpixels turn numbers into light.
+
+73
+00:04:15,467 --> 00:04:16,731
+And the letter appears.
+
+74
+00:04:16,731 --> 00:04:20,907
+Up through the stack, and back down
+again — in a few hundredths of a second.
+
+75
+00:04:25,100 --> 00:04:26,602
+Typing is one journey.
+
+76
+00:04:26,602 --> 00:04:28,172
+Now, let's open an app.
+
+77
+00:04:28,633 --> 00:04:33,367
+Your click asks the system to launch it,
+and the kernel creates a new process:
+
+78
+00:04:33,367 --> 00:04:36,463
+a running program, with a
+private world of its own.
+
+79
+00:04:36,867 --> 00:04:40,232
+Every process gets its
+own virtual address space:
+
+80
+00:04:40,232 --> 00:04:44,696
+a vast map of memory that the
+program believes it owns, entirely.
+
+81
+00:04:45,133 --> 00:04:49,302
+But real, physical memory is
+shared by every app at once.
+
+82
+00:04:49,302 --> 00:04:54,934
+Hardware called the MMU translates every
+virtual address into a physical one,
+
+83
+00:04:54,934 --> 00:04:55,885
+page by page.
+
+84
+00:04:55,885 --> 00:04:59,469
+On Apple silicon, each
+page is sixteen kilobytes.
+
+85
+00:04:59,900 --> 00:05:03,771
+At first, most of the app's
+code isn't even in memory.
+
+86
+00:05:03,771 --> 00:05:07,499
+The moment it's needed, the
+MMU raises a page fault.
+
+87
+00:05:07,499 --> 00:05:12,947
+The kernel quietly loads that page from
+the SSD, and the program carries on,
+
+88
+00:05:12,947 --> 00:05:14,023
+none the wiser.
+
+89
+00:05:14,500 --> 00:05:18,148
+Meanwhile, the scheduler
+decides which threads run where.
+
+90
+00:05:18,148 --> 00:05:22,436
+Urgent work, like responding to
+you, goes to the performance cores.
+
+91
+00:05:22,436 --> 00:05:25,316
+Background chores go to
+the efficiency cores.
+
+92
+00:05:25,700 --> 00:05:28,868
+And it switches between them
+thousands of times a second.
+
+93
+00:05:28,868 --> 00:05:31,759
+That's how hundreds of
+programs seem to run at once.
+
+94
+00:05:35,567 --> 00:05:37,167
+Now, press Command-S.
+
+95
+00:05:37,667 --> 00:05:39,685
+Your app wants to write to storage.
+
+96
+00:05:39,685 --> 00:05:42,050
+But apps aren't allowed to touch storage.
+
+97
+00:05:42,050 --> 00:05:44,472
+So it asks the kernel, with a system call.
+
+98
+00:05:44,867 --> 00:05:48,563
+On Apple silicon, that's one
+special instruction: SVC.
+
+99
+00:05:48,563 --> 00:05:52,396
+The call's number goes in a
+register — four, for write —
+
+100
+00:05:52,396 --> 00:05:56,365
+and the processor leaps across
+the wall, into kernel mode.
+
+101
+00:05:56,833 --> 00:06:00,694
+The kernel checks the request
+and hands it to the file system,
+
+102
+00:06:00,694 --> 00:06:03,246
+which decides where the data should live.
+
+103
+00:06:03,246 --> 00:06:08,289
+Soon after, the storage controller built
+into the chip writes it to flash memory.
+
+104
+00:06:08,733 --> 00:06:12,035
+Flash is made of hundreds
+of billions of tiny cells,
+
+105
+00:06:12,035 --> 00:06:14,067
+stacked in layers hundreds high.
+
+106
+00:06:14,467 --> 00:06:17,345
+Each cell stores data
+as trapped electrons.
+
+107
+00:06:17,345 --> 00:06:21,763
+Force electrons into its insulating
+layer, and its voltage shifts.
+
+108
+00:06:21,763 --> 00:06:26,115
+By telling eight levels apart, a
+single cell can hold three bits.
+
+109
+00:06:26,567 --> 00:06:30,599
+Those electrons can stay trapped
+for years, even with the power off.
+
+110
+00:06:31,100 --> 00:06:35,073
+Then the kernel returns, the
+processor drops back into user mode,
+
+111
+00:06:35,073 --> 00:06:36,540
+and your app carries on.
+
+112
+00:06:40,333 --> 00:06:45,070
+Every step we've seen — in the kernel,
+the WindowServer, your app — is just code.
+
+113
+00:06:45,070 --> 00:06:46,883
+But what is code, to a machine?
+
+114
+00:06:47,367 --> 00:06:50,030
+Developers write in languages like Swift.
+
+115
+00:06:50,030 --> 00:06:53,212
+Here's a tiny function
+that adds one to a number.
+
+116
+00:06:53,633 --> 00:06:59,212
+A compiler translates it, step by step,
+into the processor's native language:
+
+117
+00:06:59,212 --> 00:07:00,588
+ARM64 instructions.
+
+118
+00:07:01,033 --> 00:07:03,801
+This one means: add one to register x0.
+
+119
+00:07:03,801 --> 00:07:08,628
+And to the processor, it's just a
+number: thirty-two ones and zeros.
+
+120
+00:07:09,067 --> 00:07:11,059
+Every group of bits has a job.
+
+121
+00:07:11,059 --> 00:07:13,382
+This one picks sixty-four-bit math.
+
+122
+00:07:13,382 --> 00:07:15,109
+These say: add a constant.
+
+123
+00:07:15,109 --> 00:07:17,632
+These twelve bits hold the number one.
+
+124
+00:07:17,632 --> 00:07:20,885
+And these choose the
+registers to read and write.
+
+125
+00:07:21,333 --> 00:07:23,864
+Stored in memory, it's just four bytes.
+
+126
+00:07:23,864 --> 00:07:29,315
+The core fetches them, and its decoder turns
+those bits into control signals: wires,
+
+127
+00:07:29,315 --> 00:07:30,677
+switching on and off.
+
+128
+00:07:31,900 --> 00:07:34,012
+Let's step inside a performance core.
+
+129
+00:07:34,400 --> 00:07:37,387
+It works like a
+hyper-efficient assembly line.
+
+130
+00:07:37,387 --> 00:07:39,400
+Fetch instructions from memory.
+
+131
+00:07:39,400 --> 00:07:41,803
+Decode them, eight or more at a time.
+
+132
+00:07:42,200 --> 00:07:45,656
+Then, something remarkable:
+it runs them out of order.
+
+133
+00:07:45,656 --> 00:07:48,216
+Hundreds of instructions wait in flight,
+
+134
+00:07:48,216 --> 00:07:51,544
+and each one fires the
+instant its inputs are ready.
+
+135
+00:07:51,967 --> 00:07:56,255
+The results are put back in the original
+order, so the program never knows.
+
+136
+00:07:56,700 --> 00:07:59,380
+Our add lands in an arithmetic logic unit,
+
+137
+00:07:59,380 --> 00:08:03,719
+which adds two sixty-four-bit numbers
+in a single tick of the clock.
+
+138
+00:08:04,900 --> 00:08:09,273
+Inside is an adder: one simple
+circuit, repeated for every bit.
+
+139
+00:08:09,667 --> 00:08:11,275
+Each copy is a full adder.
+
+140
+00:08:11,275 --> 00:08:14,369
+It takes two bits, plus a
+carry from its neighbor.
+
+141
+00:08:14,369 --> 00:08:18,947
+One plus one makes zero — carry the
+one — just like you learned in school.
+
+142
+00:08:19,400 --> 00:08:23,624
+Real chips use clever tricks to
+compute all the carries in parallel.
+
+143
+00:08:23,624 --> 00:08:27,165
+But the building blocks are
+always the same: logic gates.
+
+144
+00:08:27,633 --> 00:08:29,112
+There's the AND gate.
+
+145
+00:08:29,112 --> 00:08:29,957
+The OR gate.
+
+146
+00:08:29,957 --> 00:08:30,872
+Exclusive OR.
+
+147
+00:08:30,872 --> 00:08:33,407
+And the most versatile of all: NAND.
+
+148
+00:08:33,407 --> 00:08:37,703
+Every other logic circuit can
+be built from NAND gates alone.
+
+149
+00:08:38,900 --> 00:08:41,268
+And every gate is built from transistors.
+
+150
+00:08:41,667 --> 00:08:43,711
+This NAND gate takes just four.
+
+151
+00:08:43,711 --> 00:08:45,821
+Two connect the output to power.
+
+152
+00:08:45,821 --> 00:08:47,469
+Two connect it to ground.
+
+153
+00:08:47,867 --> 00:08:53,008
+When both inputs turn on, the path to
+ground opens, and the output falls to zero.
+
+154
+00:08:53,500 --> 00:08:55,059
+So what is a transistor?
+
+155
+00:08:55,059 --> 00:08:57,073
+A switch, with no moving parts.
+
+156
+00:08:57,073 --> 00:09:00,647
+A voltage on its gate decides
+whether current can flow.
+
+157
+00:09:02,067 --> 00:09:05,117
+Here's what one looks like
+inside a three-nanometer chip.
+
+158
+00:09:05,633 --> 00:09:09,100
+A thin fin of silicon links
+the source to the drain.
+
+159
+00:09:09,100 --> 00:09:14,700
+Draped over it is the gate, separated by
+an insulating layer only a few atoms thick.
+
+160
+00:09:15,200 --> 00:09:18,752
+With no voltage on the gate,
+almost no current can flow.
+
+161
+00:09:18,752 --> 00:09:19,893
+The switch is off.
+
+162
+00:09:20,367 --> 00:09:21,773
+Apply less than a volt,
+
+163
+00:09:21,773 --> 00:09:26,724
+and the gate's electric field pulls
+electrons up into the fin, forming a channel.
+
+164
+00:09:27,133 --> 00:09:29,821
+Now electrons stream from source to drain.
+
+165
+00:09:29,821 --> 00:09:30,909
+The switch is on.
+
+166
+00:09:31,500 --> 00:09:34,227
+These fins are just a
+few dozen atoms wide.
+
+167
+00:09:34,227 --> 00:09:39,491
+And about twenty-eight billion of these
+switches fit on a sliver of silicon smaller
+
+168
+00:09:39,491 --> 00:09:40,823
+than a postage stamp.
+
+169
+00:09:42,233 --> 00:09:45,108
+Each switch moves only a
+few thousand electrons,
+
+170
+00:09:45,108 --> 00:09:48,761
+and they cross the channel in
+under a trillionth of a second.
+
+171
+00:09:49,267 --> 00:09:51,282
+And all of it marches to a beat.
+
+172
+00:09:51,282 --> 00:09:54,747
+A quartz crystal vibrates
+millions of times per second.
+
+173
+00:09:54,747 --> 00:09:59,724
+Circuits called phase-locked loops multiply
+that into a clock of more than four
+
+174
+00:09:59,724 --> 00:10:01,299
+billion ticks per second.
+
+175
+00:10:01,733 --> 00:10:06,668
+At that pace, in a single tick, even light
+travels only about seven centimeters —
+
+176
+00:10:06,668 --> 00:10:08,923
+less than the width of a credit card.
+
+177
+00:10:09,533 --> 00:10:10,195
+Every add.
+
+178
+00:10:10,195 --> 00:10:11,254
+Every interrupt.
+
+179
+00:10:11,254 --> 00:10:13,041
+Every pixel of that letter.
+
+180
+00:10:13,041 --> 00:10:16,548
+It all happens in these
+ticks — billions of switches,
+
+181
+00:10:16,548 --> 00:10:18,600
+moving in perfect choreography.
+
+182
+00:10:20,500 --> 00:10:22,100
+So, let's rise back up.
+
+183
+00:10:22,600 --> 00:10:24,852
+Electrons, shaped into switches.
+
+184
+00:10:24,852 --> 00:10:26,330
+Switches, into gates.
+
+185
+00:10:26,330 --> 00:10:28,370
+Gates, into adders and cores.
+
+186
+00:10:28,370 --> 00:10:30,059
+Cores, running a kernel.
+
+187
+00:10:30,059 --> 00:10:32,029
+A kernel, serving your apps.
+
+188
+00:10:32,533 --> 00:10:35,029
+Every layer hides the
+complexity beneath it,
+
+189
+00:10:35,029 --> 00:10:37,525
+so the layer above can
+do something greater.
+
+190
+00:10:38,033 --> 00:10:42,599
+That's how a sliver of purified sand
+becomes a machine that answers your touch.
+
+191
+00:10:43,500 --> 00:10:48,852
+Next time, we'll follow the light — and
+see how the GPU paints millions of pixels,
+
+192
+00:10:48,852 --> 00:10:50,092
+every single frame.

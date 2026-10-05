@@ -1,0 +1,4 @@
+kokoro-onnx==0.6.1
+soundfile>=0.12
+numpy>=1.26
+scipy>=1.11

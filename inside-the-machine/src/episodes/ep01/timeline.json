@@ -1,0 +1,982 @@
+{
+ "episode": "ep01",
+ "fps": 30,
+ "voice": "af_heart",
+ "scenes": [
+  {
+   "id": "coldOpen",
+   "chapter": "prologue",
+   "from": 0,
+   "durationInFrames": 922,
+   "cues": [
+    {
+     "id": "o1",
+     "from": 48,
+     "durationInFrames": 34,
+     "seconds": 1.131,
+     "text": "You press a key.",
+     "say": "You press a key.",
+     "audio": "audio/narration/ep01/o1.wav"
+    },
+    {
+     "id": "o2",
+     "from": 127,
+     "durationInFrames": 115,
+     "seconds": 3.819,
+     "text": "It feels like nothing at all. A motion of barely one millimeter.",
+     "say": "It feels like nothing at all. A motion of barely one millimeter.",
+     "audio": "audio/narration/ep01/o2.wav"
+    },
+    {
+     "id": "o3",
+     "from": 262,
+     "durationInFrames": 188,
+     "seconds": 6.251,
+     "text": "But in the few hundredths of a second before a letter appears on your screen, that press sets off a chain reaction.",
+     "say": "But in the few hundredths of a second before a letter appears on your screen, that press sets off a chain reaction.",
+     "audio": "audio/narration/ep01/o3.wav"
+    },
+    {
+     "id": "o4",
+     "from": 464,
+     "durationInFrames": 108,
+     "seconds": 3.584,
+     "text": "Through layers of software, written by thousands of engineers.",
+     "say": "Through layers of software, written by thousands of engineers.",
+     "audio": "audio/narration/ep01/o4.wav"
+    },
+    {
+     "id": "o5",
+     "from": 579,
+     "durationInFrames": 133,
+     "seconds": 4.416,
+     "text": "Through billions of transistors, switching billions of times every second.",
+     "say": "Through billions of transistors, switching billions of times every second.",
+     "audio": "audio/narration/ep01/o5.wav"
+    },
+    {
+     "id": "o6",
+     "from": 718,
+     "durationInFrames": 73,
+     "seconds": 2.432,
+     "text": "All the way down to a flow of electrons.",
+     "say": "All the way down to a flow of electrons.",
+     "audio": "audio/narration/ep01/o6.wav"
+    },
+    {
+     "id": "o7",
+     "from": 818,
+     "durationInFrames": 86,
+     "seconds": 2.859,
+     "text": "Today, we follow that journey. All the way down.",
+     "say": "Today, we follow that journey. All the way down.",
+     "audio": "audio/narration/ep01/o7.wav"
+    }
+   ]
+  },
+  {
+   "id": "title",
+   "chapter": "prologue",
+   "from": 922,
+   "durationInFrames": 180,
+   "cues": []
+  },
+  {
+   "id": "machine",
+   "chapter": "machine",
+   "from": 1102,
+   "durationInFrames": 1203,
+   "cues": [
+    {
+     "id": "m1",
+     "from": 90,
+     "durationInFrames": 52,
+     "seconds": 1.707,
+     "text": "First, let's meet the machine.",
+     "say": "First, let's meet the machine.",
+     "audio": "audio/narration/ep01/m1.wav"
+    },
+    {
+     "id": "m2",
+     "from": 156,
+     "durationInFrames": 148,
+     "seconds": 4.928,
+     "text": "Open up a modern Mac, and almost everything that matters lives on one small chip.",
+     "say": "Open up a modern Mac, and almost everything that matters lives on one small chip.",
+     "audio": "audio/narration/ep01/m2.wav"
+    },
+    {
+     "id": "m3",
+     "from": 316,
+     "durationInFrames": 184,
+     "seconds": 6.123,
+     "text": "Apple silicon is a system on a chip: a whole computer, fused onto a single slab of silicon.",
+     "say": "Apple silicon is a system on a chip: a whole computer, fused onto a single slab of silicon.",
+     "audio": "audio/narration/ep01/m3.wav"
+    },
+    {
+     "id": "m4",
+     "from": 513,
+     "durationInFrames": 388,
+     "seconds": 12.928,
+     "text": "Performance cores and efficiency cores. A graphics processor. A Neural Engine for AI. Controllers for storage, displays, and security. And right beside it, on the same package \u2014 the memory.",
+     "say": "Performance cores and efficiency cores. A graphics processor. A Neural Engine for AI. Controllers for storage, displays, and security. And right beside it, on the same package, the memory.",
+     "audio": "audio/narration/ep01/m4.wav"
+    },
+    {
+     "id": "m5",
+     "from": 916,
+     "durationInFrames": 119,
+     "seconds": 3.947,
+     "text": "A chip like the M4 packs about twenty-eight billion transistors.",
+     "say": "A chip like the M4 packs about twenty-eight billion transistors.",
+     "audio": "audio/narration/ep01/m5.wav"
+    },
+    {
+     "id": "m6",
+     "from": 1055,
+     "durationInFrames": 127,
+     "seconds": 4.203,
+     "text": "But on its own, all that hardware does nothing at all. It needs software.",
+     "say": "But on its own, all that hardware does nothing at all. It needs software.",
+     "audio": "audio/narration/ep01/m6.wav"
+    }
+   ]
+  },
+  {
+   "id": "stack",
+   "chapter": "machine",
+   "from": 2305,
+   "durationInFrames": 1564,
+   "cues": [
+    {
+     "id": "s1",
+     "from": 18,
+     "durationInFrames": 81,
+     "seconds": 2.688,
+     "text": "And software, it turns out, is built in layers.",
+     "say": "And software, it turns out, is built in layers.",
+     "audio": "audio/narration/ep01/s1.wav"
+    },
+    {
+     "id": "s2",
+     "from": 112,
+     "durationInFrames": 267,
+     "seconds": 8.896,
+     "text": "At the very bottom sits the kernel \u2014 the core of the operating system. On a Mac it's called XNU, and it has total control of the hardware.",
+     "say": "At the very bottom sits the kernel, the core of the operating system. On a Mac it's called X N U, and it has total control of the hardware.",
+     "audio": "audio/narration/ep01/s2.wav"
+    },
+    {
+     "id": "s3",
+     "from": 391,
+     "durationInFrames": 170,
+     "seconds": 5.653,
+     "text": "Above it are system services, like the WindowServer, which owns everything you see on screen.",
+     "say": "Above it are system services, like the Window Server, which owns everything you see on screen.",
+     "audio": "audio/narration/ep01/s3.wav"
+    },
+    {
+     "id": "s4",
+     "from": 571,
+     "durationInFrames": 172,
+     "seconds": 5.717,
+     "text": "Then come frameworks \u2014 like AppKit, SwiftUI, and Metal \u2014 the building blocks apps are made from.",
+     "say": "Then come frameworks, like AppKit, SwiftUI, and Metal, the building blocks apps are made from.",
+     "audio": "audio/narration/ep01/s4.wav"
+    },
+    {
+     "id": "s5",
+     "from": 753,
+     "durationInFrames": 49,
+     "seconds": 1.621,
+     "text": "And on top: your apps.",
+     "say": "And on top: your apps.",
+     "audio": "audio/narration/ep01/s5.wav"
+    },
+    {
+     "id": "s6",
+     "from": 820,
+     "durationInFrames": 276,
+     "seconds": 9.173,
+     "text": "Each layer talks only to the one beneath it, through well-defined doors. That's abstraction \u2014 the trick that makes something this complex possible at all.",
+     "say": "Each layer talks only to the one beneath it, through well-defined doors. That's abstraction, the trick that makes something this complex possible at all.",
+     "audio": "audio/narration/ep01/s6.wav"
+    },
+    {
+     "id": "s7",
+     "from": 1111,
+     "durationInFrames": 102,
+     "seconds": 3.392,
+     "text": "And one boundary is enforced by the processor itself.",
+     "say": "And one boundary is enforced by the processor itself.",
+     "audio": "audio/narration/ep01/s7.wav"
+    },
+    {
+     "id": "s8",
+     "from": 1227,
+     "durationInFrames": 310,
+     "seconds": 10.325,
+     "text": "Apps run in user mode. The kernel runs in kernel mode. Code on the outside can't touch the hardware, or reach across \u2014 except through doors the kernel guards.",
+     "say": "Apps run in user mode. The kernel runs in kernel mode. Code on the outside can't touch the hardware, or reach across, except through doors the kernel guards.",
+     "audio": "audio/narration/ep01/s8.wav"
+    }
+   ]
+  },
+  {
+   "id": "keyMatrix",
+   "chapter": "keystroke",
+   "from": 3869,
+   "durationInFrames": 1227,
+   "cues": [
+    {
+     "id": "k1",
+     "from": 90,
+     "durationInFrames": 43,
+     "seconds": 1.429,
+     "text": "So \u2014 back to that key.",
+     "say": "So, back to that key.",
+     "audio": "audio/narration/ep01/k1.wav"
+    },
+    {
+     "id": "k2",
+     "from": 146,
+     "durationInFrames": 165,
+     "seconds": 5.483,
+     "text": "Under the keyboard is a grid of wires \u2014 rows and columns \u2014 with a switch at every crossing.",
+     "say": "Under the keyboard is a grid of wires, rows and columns, with a switch at every crossing.",
+     "audio": "audio/narration/ep01/k2.wav"
+    },
+    {
+     "id": "k3",
+     "from": 321,
+     "durationInFrames": 230,
+     "seconds": 7.637,
+     "text": "A small controller scans the grid hundreds of times per second, powering one row at a time and listening on every column.",
+     "say": "A small controller scans the grid hundreds of times per second, powering one row at a time and listening on every column.",
+     "audio": "audio/narration/ep01/k3.wav"
+    },
+    {
+     "id": "k4",
+     "from": 562,
+     "durationInFrames": 130,
+     "seconds": 4.331,
+     "text": "Press a key, and you connect a row to a column. The controller spots it.",
+     "say": "Press a key, and you connect a row to a column. The controller spots it.",
+     "audio": "audio/narration/ep01/k4.wav"
+    },
+    {
+     "id": "k5",
+     "from": 703,
+     "durationInFrames": 105,
+     "seconds": 3.499,
+     "text": "It waits a few milliseconds for the contacts to stop bouncing\u2026",
+     "say": "It waits a few milliseconds for the contacts to stop bouncing,",
+     "audio": "audio/narration/ep01/k5.wav"
+    },
+    {
+     "id": "k6",
+     "from": 815,
+     "durationInFrames": 285,
+     "seconds": 9.493,
+     "text": "\u2026then packs the press into a tiny report, just a few bytes long. In HID \u2014 the common language of keyboards \u2014 the letter A is simply number four.",
+     "say": "then packs the press into a tiny report, just a few bytes long. In H I D, the common language of keyboards, the letter A is simply number four.",
+     "audio": "audio/narration/ep01/k6.wav"
+    },
+    {
+     "id": "k7",
+     "from": 1114,
+     "durationInFrames": 96,
+     "seconds": 3.179,
+     "text": "Those bytes race to the chip, where they trigger an interrupt.",
+     "say": "Those bytes race to the chip, where they trigger an interrupt.",
+     "audio": "audio/narration/ep01/k7.wav"
+    }
+   ]
+  },
+  {
+   "id": "interrupt",
+   "chapter": "keystroke",
+   "from": 5096,
+   "durationInFrames": 921,
+   "cues": [
+    {
+     "id": "i1",
+     "from": 15,
+     "durationInFrames": 79,
+     "seconds": 2.603,
+     "text": "An interrupt is exactly what it sounds like.",
+     "say": "An interrupt is exactly what it sounds like.",
+     "audio": "audio/narration/ep01/i1.wav"
+    },
+    {
+     "id": "i2",
+     "from": 105,
+     "durationInFrames": 289,
+     "seconds": 9.621,
+     "text": "A processor core drops whatever it was doing. It saves its place, switches into kernel mode, and jumps to a fixed address: the kernel's exception vector.",
+     "say": "A processor core drops whatever it was doing. It saves its place, switches into kernel mode, and jumps to a fixed address: the kernel's exception vector.",
+     "audio": "audio/narration/ep01/i2.wav"
+    },
+    {
+     "id": "i3",
+     "from": 406,
+     "durationInFrames": 88,
+     "seconds": 2.923,
+     "text": "Within microseconds, the kernel is in control.",
+     "say": "Within microseconds, the kernel is in control.",
+     "audio": "audio/narration/ep01/i3.wav"
+    },
+    {
+     "id": "i4",
+     "from": 505,
+     "durationInFrames": 175,
+     "seconds": 5.803,
+     "text": "Its drivers read the report, and turn number four into an event: the key for A, pressed down.",
+     "say": "Its drivers read the report, and turn number four into an event: the key for A, pressed down.",
+     "audio": "audio/narration/ep01/i4.wav"
+    },
+    {
+     "id": "i5",
+     "from": 691,
+     "durationInFrames": 212,
+     "seconds": 7.04,
+     "text": "That event travels up to the WindowServer. It knows which window is in front, so it sends the key to the app that owns it.",
+     "say": "That event travels up to the Window Server. It knows which window is in front, so it sends the key to the app that owns it.",
+     "audio": "audio/narration/ep01/i5.wav"
+    }
+   ]
+  },
+  {
+   "id": "appDraw",
+   "chapter": "keystroke",
+   "from": 6017,
+   "durationInFrames": 1846,
+   "cues": [
+    {
+     "id": "a1",
+     "from": 15,
+     "durationInFrames": 79,
+     "seconds": 2.603,
+     "text": "That app has been asleep, waiting for a message.",
+     "say": "That app has been asleep, waiting for a message.",
+     "audio": "audio/narration/ep01/a1.wav"
+    },
+    {
+     "id": "a2",
+     "from": 104,
+     "durationInFrames": 180,
+     "seconds": 5.995,
+     "text": "The kernel wakes it up. Its run loop picks up the event, and passes it to the text field you're typing in.",
+     "say": "The kernel wakes it up. Its run loop picks up the event, and passes it to the text field you're typing in.",
+     "audio": "audio/narration/ep01/a2.wav"
+    },
+    {
+     "id": "a3",
+     "from": 295,
+     "durationInFrames": 372,
+     "seconds": 12.395,
+     "text": "Using your keyboard layout, the key becomes a character: a lowercase a. In Unicode, that's number 61 in hexadecimal. In binary: 0110 0001.",
+     "say": "Using your keyboard layout, the key becomes a character: a lowercase a. In Unicode, that's number sixty-one in hexadecimal. In binary: zero one one zero, zero zero zero one.",
+     "audio": "audio/narration/ep01/a3.wav"
+    },
+    {
+     "id": "a4",
+     "from": 681,
+     "durationInFrames": 176,
+     "seconds": 5.867,
+     "text": "To draw it, the text system pulls the letter's shape from a font: a precise outline made of curves.",
+     "say": "To draw it, the text system pulls the letter's shape from a font: a precise outline made of curves.",
+     "audio": "audio/narration/ep01/a4.wav"
+    },
+    {
+     "id": "a5",
+     "from": 867,
+     "durationInFrames": 109,
+     "seconds": 3.605,
+     "text": "The curves are filled in as pixels, and the window is redrawn.",
+     "say": "The curves are filled in as pixels, and the window is redrawn.",
+     "audio": "audio/narration/ep01/a5.wav"
+    },
+    {
+     "id": "a6",
+     "from": 987,
+     "durationInFrames": 278,
+     "seconds": 9.237,
+     "text": "Then the GPU takes over. Apple's GPU slices the screen into small tiles, and renders each one inside fast, on-chip memory.",
+     "say": "Then the GPU takes over. Apple's GPU slices the screen into small tiles, and renders each one inside fast, on-chip memory.",
+     "audio": "audio/narration/ep01/a6.wav"
+    },
+    {
+     "id": "a7",
+     "from": 1277,
+     "durationInFrames": 353,
+     "seconds": 11.755,
+     "text": "Finally, the display engine streams the finished frame to the screen, up to 120 times a second. There, millions of red, green, and blue subpixels turn numbers into light.",
+     "say": "Finally, the display engine streams the finished frame to the screen, up to a hundred and twenty times a second. There, millions of red, green, and blue subpixels turn numbers into light.",
+     "audio": "audio/narration/ep01/a7.wav"
+    },
+    {
+     "id": "a8",
+     "from": 1647,
+     "durationInFrames": 164,
+     "seconds": 5.44,
+     "text": "And the letter appears. Up through the stack, and back down again \u2014 in a few hundredths of a second.",
+     "say": "And the letter appears. Up through the stack, and back down again, in a few hundredths of a second.",
+     "audio": "audio/narration/ep01/a8.wav"
+    }
+   ]
+  },
+  {
+   "id": "launch",
+   "chapter": "launch",
+   "from": 7863,
+   "durationInFrames": 2114,
+   "cues": [
+    {
+     "id": "l1",
+     "from": 90,
+     "durationInFrames": 93,
+     "seconds": 3.072,
+     "text": "Typing is one journey. Now, let's open an app.",
+     "say": "Typing is one journey. Now, let's open an app.",
+     "audio": "audio/narration/ep01/l1.wav"
+    },
+    {
+     "id": "l2",
+     "from": 196,
+     "durationInFrames": 235,
+     "seconds": 7.829,
+     "text": "Your click asks the system to launch it, and the kernel creates a new process: a running program, with a private world of its own.",
+     "say": "Your click asks the system to launch it, and the kernel creates a new process: a running program, with a private world of its own.",
+     "audio": "audio/narration/ep01/l2.wav"
+    },
+    {
+     "id": "l3",
+     "from": 443,
+     "durationInFrames": 235,
+     "seconds": 7.829,
+     "text": "Every process gets its own virtual address space: a vast map of memory that the program believes it owns, entirely.",
+     "say": "Every process gets its own virtual address space: a vast map of memory that the program believes it owns, entirely.",
+     "audio": "audio/narration/ep01/l3.wav"
+    },
+    {
+     "id": "l4",
+     "from": 691,
+     "durationInFrames": 431,
+     "seconds": 14.336,
+     "text": "But real, physical memory is shared by every app at once. Hardware called the MMU translates every virtual address into a physical one, page by page. On Apple silicon, each page is sixteen kilobytes.",
+     "say": "But real, physical memory is shared by every app at once. Hardware called the M M U translates every virtual address into a physical one, page by page. On Apple silicon, each page is sixteen kilobytes.",
+     "audio": "audio/narration/ep01/l4.wav"
+    },
+    {
+     "id": "l5",
+     "from": 1134,
+     "durationInFrames": 424,
+     "seconds": 14.123,
+     "text": "At first, most of the app's code isn't even in memory. The moment it's needed, the MMU raises a page fault. The kernel quietly loads that page from the SSD, and the program carries on, none the wiser.",
+     "say": "At first, most of the app's code isn't even in memory. The moment it's needed, the M M U raises a page fault. The kernel quietly loads that page from the S S D, and the program carries on, none the wiser.",
+     "audio": "audio/narration/ep01/l5.wav"
+    },
+    {
+     "id": "l6",
+     "from": 1572,
+     "durationInFrames": 325,
+     "seconds": 10.816,
+     "text": "Meanwhile, the scheduler decides which threads run where. Urgent work, like responding to you, goes to the performance cores. Background chores go to the efficiency cores.",
+     "say": "Meanwhile, the scheduler decides which threads run where. Urgent work, like responding to you, goes to the performance cores. Background chores go to the efficiency cores.",
+     "audio": "audio/narration/ep01/l6.wav"
+    },
+    {
+     "id": "l7",
+     "from": 1908,
+     "durationInFrames": 182,
+     "seconds": 6.059,
+     "text": "And it switches between them thousands of times a second. That's how hundreds of programs seem to run at once.",
+     "say": "And it switches between them thousands of times a second. That's how hundreds of programs seem to run at once.",
+     "audio": "audio/narration/ep01/l7.wav"
+    }
+   ]
+  },
+  {
+   "id": "save",
+   "chapter": "save",
+   "from": 9977,
+   "durationInFrames": 1943,
+   "cues": [
+    {
+     "id": "v1",
+     "from": 90,
+     "durationInFrames": 48,
+     "seconds": 1.6,
+     "text": "Now, press Command-S.",
+     "say": "Now, press Command S.",
+     "audio": "audio/narration/ep01/v1.wav"
+    },
+    {
+     "id": "v2",
+     "from": 153,
+     "durationInFrames": 205,
+     "seconds": 6.805,
+     "text": "Your app wants to write to storage. But apps aren't allowed to touch storage. So it asks the kernel, with a system call.",
+     "say": "Your app wants to write to storage. But apps aren't allowed to touch storage. So it asks the kernel, with a system call.",
+     "audio": "audio/narration/ep01/v2.wav"
+    },
+    {
+     "id": "v3",
+     "from": 369,
+     "durationInFrames": 345,
+     "seconds": 11.499,
+     "text": "On Apple silicon, that's one special instruction: SVC. The call's number goes in a register \u2014 four, for write \u2014 and the processor leaps across the wall, into kernel mode.",
+     "say": "On Apple silicon, that's one special instruction: S V C. The call's number goes in a register, four, for write, and the processor leaps across the wall, into kernel mode.",
+     "audio": "audio/narration/ep01/v3.wav"
+    },
+    {
+     "id": "v4",
+     "from": 728,
+     "durationInFrames": 344,
+     "seconds": 11.456,
+     "text": "The kernel checks the request and hands it to the file system, which decides where the data should live. Soon after, the storage controller built into the chip writes it to flash memory.",
+     "say": "The kernel checks the request and hands it to the file system, which decides where the data should live. Soon after, the storage controller built into the chip writes it to flash memory.",
+     "audio": "audio/narration/ep01/v4.wav"
+    },
+    {
+     "id": "v5",
+     "from": 1085,
+     "durationInFrames": 160,
+     "seconds": 5.333,
+     "text": "Flash is made of hundreds of billions of tiny cells, stacked in layers hundreds high.",
+     "say": "Flash is made of hundreds of billions of tiny cells, stacked in layers hundreds high.",
+     "audio": "audio/narration/ep01/v5.wav"
+    },
+    {
+     "id": "v6",
+     "from": 1257,
+     "durationInFrames": 350,
+     "seconds": 11.648,
+     "text": "Each cell stores data as trapped electrons. Force electrons into its insulating layer, and its voltage shifts. By telling eight levels apart, a single cell can hold three bits.",
+     "say": "Each cell stores data as trapped electrons. Force electrons into its insulating layer, and its voltage shifts. By telling eight levels apart, a single cell can hold three bits.",
+     "audio": "audio/narration/ep01/v6.wav"
+    },
+    {
+     "id": "v7",
+     "from": 1620,
+     "durationInFrames": 121,
+     "seconds": 4.032,
+     "text": "Those electrons can stay trapped for years, even with the power off.",
+     "say": "Those electrons can stay trapped for years, even with the power off.",
+     "audio": "audio/narration/ep01/v7.wav"
+    },
+    {
+     "id": "v8",
+     "from": 1756,
+     "durationInFrames": 164,
+     "seconds": 5.44,
+     "text": "Then the kernel returns, the processor drops back into user mode, and your app carries on.",
+     "say": "Then the kernel returns, the processor drops back into user mode, and your app carries on.",
+     "audio": "audio/narration/ep01/v8.wav"
+    }
+   ]
+  },
+  {
+   "id": "code",
+   "chapter": "rabbit",
+   "from": 11920,
+   "durationInFrames": 1619,
+   "cues": [
+    {
+     "id": "c1",
+     "from": 90,
+     "durationInFrames": 197,
+     "seconds": 6.549,
+     "text": "Every step we've seen \u2014 in the kernel, the WindowServer, your app \u2014 is just code. But what is code, to a machine?",
+     "say": "Every step we've seen, in the kernel, the Window Server, your app, is just code. But what is code, to a machine?",
+     "audio": "audio/narration/ep01/c1.wav"
+    },
+    {
+     "id": "c2",
+     "from": 301,
+     "durationInFrames": 176,
+     "seconds": 5.845,
+     "text": "Developers write in languages like Swift. Here's a tiny function that adds one to a number.",
+     "say": "Developers write in languages like Swift. Here's a tiny function that adds one to a number.",
+     "audio": "audio/narration/ep01/c2.wav"
+    },
+    {
+     "id": "c3",
+     "from": 489,
+     "durationInFrames": 209,
+     "seconds": 6.955,
+     "text": "A compiler translates it, step by step, into the processor's native language: ARM64 instructions.",
+     "say": "A compiler translates it, step by step, into the processor's native language: Arm sixty-four instructions.",
+     "audio": "audio/narration/ep01/c3.wav"
+    },
+    {
+     "id": "c4",
+     "from": 711,
+     "durationInFrames": 228,
+     "seconds": 7.595,
+     "text": "This one means: add one to register x0. And to the processor, it's just a number: thirty-two ones and zeros.",
+     "say": "This one means: add one to register x0. And to the processor, it's just a number: thirty-two ones and zeros.",
+     "audio": "audio/narration/ep01/c4.wav"
+    },
+    {
+     "id": "c5",
+     "from": 952,
+     "durationInFrames": 355,
+     "seconds": 11.819,
+     "text": "Every group of bits has a job. This one picks sixty-four-bit math. These say: add a constant. These twelve bits hold the number one. And these choose the registers to read and write.",
+     "say": "Every group of bits has a job. This one picks sixty-four-bit math. These say: add a constant. These twelve bits hold the number one. And these choose the registers to read and write.",
+     "audio": "audio/narration/ep01/c5.wav"
+    },
+    {
+     "id": "c6",
+     "from": 1320,
+     "durationInFrames": 281,
+     "seconds": 9.344,
+     "text": "Stored in memory, it's just four bytes. The core fetches them, and its decoder turns those bits into control signals: wires, switching on and off.",
+     "say": "Stored in memory, it's just four bytes. The core fetches them, and its decoder turns those bits into control signals: wires, switching on and off.",
+     "audio": "audio/narration/ep01/c6.wav"
+    }
+   ]
+  },
+  {
+   "id": "core",
+   "chapter": "rabbit",
+   "from": 13539,
+   "durationInFrames": 990,
+   "cues": [
+    {
+     "id": "p1",
+     "from": 18,
+     "durationInFrames": 64,
+     "seconds": 2.112,
+     "text": "Let's step inside a performance core.",
+     "say": "Let's step inside a performance core.",
+     "audio": "audio/narration/ep01/p1.wav"
+    },
+    {
+     "id": "p2",
+     "from": 93,
+     "durationInFrames": 223,
+     "seconds": 7.403,
+     "text": "It works like a hyper-efficient assembly line. Fetch instructions from memory. Decode them, eight or more at a time.",
+     "say": "It works like a hyper-efficient assembly line. Fetch instructions from memory. Decode them, eight or more at a time.",
+     "audio": "audio/narration/ep01/p2.wav"
+    },
+    {
+     "id": "p3",
+     "from": 327,
+     "durationInFrames": 281,
+     "seconds": 9.344,
+     "text": "Then, something remarkable: it runs them out of order. Hundreds of instructions wait in flight, and each one fires the instant its inputs are ready.",
+     "say": "Then, something remarkable: it runs them out of order. Hundreds of instructions wait in flight, and each one fires the instant its inputs are ready.",
+     "audio": "audio/narration/ep01/p3.wav"
+    },
+    {
+     "id": "p4",
+     "from": 620,
+     "durationInFrames": 129,
+     "seconds": 4.288,
+     "text": "The results are put back in the original order, so the program never knows.",
+     "say": "The results are put back in the original order, so the program never knows.",
+     "audio": "audio/narration/ep01/p4.wav"
+    },
+    {
+     "id": "p5",
+     "from": 762,
+     "durationInFrames": 211,
+     "seconds": 7.019,
+     "text": "Our add lands in an arithmetic logic unit, which adds two sixty-four-bit numbers in a single tick of the clock.",
+     "say": "Our add lands in an arithmetic logic unit, which adds two sixty-four-bit numbers in a single tick of the clock.",
+     "audio": "audio/narration/ep01/p5.wav"
+    }
+   ]
+  },
+  {
+   "id": "adder",
+   "chapter": "rabbit",
+   "from": 14529,
+   "durationInFrames": 1020,
+   "cues": [
+    {
+     "id": "d1",
+     "from": 18,
+     "durationInFrames": 132,
+     "seconds": 4.373,
+     "text": "Inside is an adder: one simple circuit, repeated for every bit.",
+     "say": "Inside is an adder: one simple circuit, repeated for every bit.",
+     "audio": "audio/narration/ep01/d1.wav"
+    },
+    {
+     "id": "d2",
+     "from": 161,
+     "durationInFrames": 279,
+     "seconds": 9.28,
+     "text": "Each copy is a full adder. It takes two bits, plus a carry from its neighbor. One plus one makes zero \u2014 carry the one \u2014 just like you learned in school.",
+     "say": "Each copy is a full adder. It takes two bits, plus a carry from its neighbor. One plus one makes zero, carry the one, just like you learned in school.",
+     "audio": "audio/narration/ep01/d2.wav"
+    },
+    {
+     "id": "d3",
+     "from": 453,
+     "durationInFrames": 233,
+     "seconds": 7.765,
+     "text": "Real chips use clever tricks to compute all the carries in parallel. But the building blocks are always the same: logic gates.",
+     "say": "Real chips use clever tricks to compute all the carries in parallel. But the building blocks are always the same: logic gates.",
+     "audio": "audio/narration/ep01/d3.wav"
+    },
+    {
+     "id": "d4",
+     "from": 700,
+     "durationInFrames": 303,
+     "seconds": 10.069,
+     "text": "There's the AND gate. The OR gate. Exclusive OR. And the most versatile of all: NAND. Every other logic circuit can be built from NAND gates alone.",
+     "say": "There's the and gate. The or gate. Exclusive or. And the most versatile of all: nand. Every other logic circuit can be built from nand gates alone.",
+     "audio": "audio/narration/ep01/d4.wav"
+    }
+   ]
+  },
+  {
+   "id": "cmos",
+   "chapter": "rabbit",
+   "from": 15549,
+   "durationInFrames": 689,
+   "cues": [
+    {
+     "id": "g1",
+     "from": 18,
+     "durationInFrames": 72,
+     "seconds": 2.368,
+     "text": "And every gate is built from transistors.",
+     "say": "And every gate is built from transistors.",
+     "audio": "audio/narration/ep01/g1.wav"
+    },
+    {
+     "id": "g2",
+     "from": 101,
+     "durationInFrames": 175,
+     "seconds": 5.803,
+     "text": "This NAND gate takes just four. Two connect the output to power. Two connect it to ground.",
+     "say": "This nand gate takes just four. Two connect the output to power. Two connect it to ground.",
+     "audio": "audio/narration/ep01/g2.wav"
+    },
+    {
+     "id": "g3",
+     "from": 287,
+     "durationInFrames": 155,
+     "seconds": 5.141,
+     "text": "When both inputs turn on, the path to ground opens, and the output falls to zero.",
+     "say": "When both inputs turn on, the path to ground opens, and the output falls to zero.",
+     "audio": "audio/narration/ep01/g3.wav"
+    },
+    {
+     "id": "g4",
+     "from": 456,
+     "durationInFrames": 215,
+     "seconds": 7.147,
+     "text": "So what is a transistor? A switch, with no moving parts. A voltage on its gate decides whether current can flow.",
+     "say": "So what is a transistor? A switch, with no moving parts. A voltage on its gate decides whether current can flow.",
+     "audio": "audio/narration/ep01/g4.wav"
+    }
+   ]
+  },
+  {
+   "id": "finfet",
+   "chapter": "rabbit",
+   "from": 16238,
+   "durationInFrames": 1211,
+   "cues": [
+    {
+     "id": "f1",
+     "from": 24,
+     "durationInFrames": 92,
+     "seconds": 3.051,
+     "text": "Here's what one looks like inside a three-nanometer chip.",
+     "say": "Here's what one looks like inside a three-nanometer chip.",
+     "audio": "audio/narration/ep01/f1.wav"
+    },
+    {
+     "id": "f2",
+     "from": 131,
+     "durationInFrames": 272,
+     "seconds": 9.067,
+     "text": "A thin fin of silicon links the source to the drain. Draped over it is the gate, separated by an insulating layer only a few atoms thick.",
+     "say": "A thin fin of silicon links the source to the drain. Draped over it is the gate, separated by an insulating layer only a few atoms thick.",
+     "audio": "audio/narration/ep01/f2.wav"
+    },
+    {
+     "id": "f3",
+     "from": 418,
+     "durationInFrames": 141,
+     "seconds": 4.693,
+     "text": "With no voltage on the gate, almost no current can flow. The switch is off.",
+     "say": "With no voltage on the gate, almost no current can flow. The switch is off.",
+     "audio": "audio/narration/ep01/f3.wav"
+    },
+    {
+     "id": "f4",
+     "from": 573,
+     "durationInFrames": 191,
+     "seconds": 6.357,
+     "text": "Apply less than a volt, and the gate's electric field pulls electrons up into the fin, forming a channel.",
+     "say": "Apply less than a volt, and the gate's electric field pulls electrons up into the fin, forming a channel.",
+     "audio": "audio/narration/ep01/f4.wav"
+    },
+    {
+     "id": "f5",
+     "from": 776,
+     "durationInFrames": 114,
+     "seconds": 3.776,
+     "text": "Now electrons stream from source to drain. The switch is on.",
+     "say": "Now electrons stream from source to drain. The switch is on.",
+     "audio": "audio/narration/ep01/f5.wav"
+    },
+    {
+     "id": "f6",
+     "from": 907,
+     "durationInFrames": 280,
+     "seconds": 9.323,
+     "text": "These fins are just a few dozen atoms wide. And about twenty-eight billion of these switches fit on a sliver of silicon smaller than a postage stamp.",
+     "say": "These fins are just a few dozen atoms wide. And about twenty-eight billion of these switches fit on a sliver of silicon smaller than a postage stamp.",
+     "audio": "audio/narration/ep01/f6.wav"
+    }
+   ]
+  },
+  {
+   "id": "clock",
+   "chapter": "rabbit",
+   "from": 17449,
+   "durationInFrames": 1136,
+   "cues": [
+    {
+     "id": "t1",
+     "from": 18,
+     "durationInFrames": 196,
+     "seconds": 6.528,
+     "text": "Each switch moves only a few thousand electrons, and they cross the channel in under a trillionth of a second.",
+     "say": "Each switch moves only a few thousand electrons, and they cross the channel in under a trillionth of a second.",
+     "audio": "audio/narration/ep01/t1.wav"
+    },
+    {
+     "id": "t2",
+     "from": 229,
+     "durationInFrames": 361,
+     "seconds": 12.032,
+     "text": "And all of it marches to a beat. A quartz crystal vibrates millions of times per second. Circuits called phase-locked loops multiply that into a clock of more than four billion ticks per second.",
+     "say": "And all of it marches to a beat. A quartz crystal vibrates millions of times per second. Circuits called phase-locked loops multiply that into a clock of more than four billion ticks per second.",
+     "audio": "audio/narration/ep01/t2.wav"
+    },
+    {
+     "id": "t3",
+     "from": 603,
+     "durationInFrames": 216,
+     "seconds": 7.189,
+     "text": "At that pace, in a single tick, even light travels only about seven centimeters \u2014 less than the width of a credit card.",
+     "say": "At that pace, in a single tick, even light travels only about seven centimeters, less than the width of a credit card.",
+     "audio": "audio/narration/ep01/t3.wav"
+    },
+    {
+     "id": "t4",
+     "from": 837,
+     "durationInFrames": 272,
+     "seconds": 9.067,
+     "text": "Every add. Every interrupt. Every pixel of that letter. It all happens in these ticks \u2014 billions of switches, moving in perfect choreography.",
+     "say": "Every add. Every interrupt. Every pixel of that letter. It all happens in these ticks, billions of switches, moving in perfect choreography.",
+     "audio": "audio/narration/ep01/t4.wav"
+    }
+   ]
+  },
+  {
+   "id": "finale",
+   "chapter": "epilogue",
+   "from": 18585,
+   "durationInFrames": 1112,
+   "cues": [
+    {
+     "id": "e1",
+     "from": 30,
+     "durationInFrames": 48,
+     "seconds": 1.6,
+     "text": "So, let's rise back up.",
+     "say": "So, let's rise back up.",
+     "audio": "audio/narration/ep01/e1.wav"
+    },
+    {
+     "id": "e2",
+     "from": 93,
+     "durationInFrames": 283,
+     "seconds": 9.429,
+     "text": "Electrons, shaped into switches. Switches, into gates. Gates, into adders and cores. Cores, running a kernel. A kernel, serving your apps.",
+     "say": "Electrons, shaped into switches. Switches, into gates. Gates, into adders and cores. Cores, running a kernel. A kernel, serving your apps.",
+     "audio": "audio/narration/ep01/e2.wav"
+    },
+    {
+     "id": "e3",
+     "from": 391,
+     "durationInFrames": 150,
+     "seconds": 4.992,
+     "text": "Every layer hides the complexity beneath it, so the layer above can do something greater.",
+     "say": "Every layer hides the complexity beneath it, so the layer above can do something greater.",
+     "audio": "audio/narration/ep01/e3.wav"
+    },
+    {
+     "id": "e4",
+     "from": 556,
+     "durationInFrames": 137,
+     "seconds": 4.565,
+     "text": "That's how a sliver of purified sand becomes a machine that answers your touch.",
+     "say": "That's how a sliver of purified sand becomes a machine that answers your touch.",
+     "audio": "audio/narration/ep01/e4.wav"
+    },
+    {
+     "id": "e5",
+     "from": 720,
+     "durationInFrames": 198,
+     "seconds": 6.592,
+     "text": "Next time, we'll follow the light \u2014 and see how the GPU paints millions of pixels, every single frame.",
+     "say": "Next time, we'll follow the light, and see how the GPU paints millions of pixels, every single frame.",
+     "audio": "audio/narration/ep01/e5.wav"
+    }
+   ]
+  }
+ ],
+ "chapters": [
+  {
+   "id": "prologue",
+   "num": "00",
+   "title": "Prologue"
+  },
+  {
+   "id": "machine",
+   "num": "01",
+   "title": "The Machine"
+  },
+  {
+   "id": "keystroke",
+   "num": "02",
+   "title": "A Single Keystroke"
+  },
+  {
+   "id": "launch",
+   "num": "03",
+   "title": "Opening an App"
+  },
+  {
+   "id": "save",
+   "num": "04",
+   "title": "Saving a File"
+  },
+  {
+   "id": "rabbit",
+   "num": "05",
+   "title": "Down the Rabbit Hole"
+  },
+  {
+   "id": "epilogue",
+   "num": "06",
+   "title": "Rising Back Up"
+  }
+ ],
+ "durationInFrames": 19697
+}

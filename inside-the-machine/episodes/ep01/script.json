@@ -1,0 +1,641 @@
+{
+  "id": "ep01",
+  "series": "INSIDE THE MACHINE",
+  "title": "From Keystroke to Electron",
+  "subtitle": "How a modern Mac really works",
+  "voice": "af_heart",
+  "speed": 0.94,
+  "fps": 30,
+  "defaultGap": 0.32,
+  "chapters": [
+    {
+      "id": "prologue",
+      "num": "00",
+      "title": "Prologue"
+    },
+    {
+      "id": "machine",
+      "num": "01",
+      "title": "The Machine"
+    },
+    {
+      "id": "keystroke",
+      "num": "02",
+      "title": "A Single Keystroke"
+    },
+    {
+      "id": "launch",
+      "num": "03",
+      "title": "Opening an App"
+    },
+    {
+      "id": "save",
+      "num": "04",
+      "title": "Saving a File"
+    },
+    {
+      "id": "rabbit",
+      "num": "05",
+      "title": "Down the Rabbit Hole"
+    },
+    {
+      "id": "epilogue",
+      "num": "06",
+      "title": "Rising Back Up"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "coldOpen",
+      "chapter": "prologue",
+      "lead": 1.6,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "o1",
+          "text": "You press a key.",
+          "gap": 1.5
+        },
+        {
+          "id": "o2",
+          "text": "It feels like nothing at all. A motion of barely one millimeter.",
+          "gap": 0.7
+        },
+        {
+          "id": "o3",
+          "text": "But in the few hundredths of a second before a letter appears on your screen, that press sets off a chain reaction.",
+          "gap": 0.45
+        },
+        {
+          "id": "o4",
+          "text": "Through layers of software, written by thousands of engineers.",
+          "gap": 0.25
+        },
+        {
+          "id": "o5",
+          "text": "Through billions of transistors, switching billions of times every second.",
+          "gap": 0.25
+        },
+        {
+          "id": "o6",
+          "text": "All the way down to a flow of electrons.",
+          "gap": 0.9
+        },
+        {
+          "id": "o7",
+          "text": "Today, we follow that journey. All the way down.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "title",
+      "chapter": "prologue",
+      "lead": 6.0,
+      "tail": 0,
+      "lines": []
+    },
+    {
+      "id": "machine",
+      "chapter": "machine",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "m1",
+          "text": "First, let's meet the machine.",
+          "gap": 0.5
+        },
+        {
+          "id": "m2",
+          "text": "Open up a modern Mac, and almost everything that matters lives on one small chip.",
+          "gap": 0.4
+        },
+        {
+          "id": "m3",
+          "text": "Apple silicon is a system on a chip: a whole computer, fused onto a single slab of silicon.",
+          "gap": 0.45
+        },
+        {
+          "id": "m4",
+          "text": "Performance cores and efficiency cores. A graphics processor. A Neural Engine for AI. Controllers for storage, displays, and security. And right beside it, on the same package — the memory.",
+          "gap": 0.5
+        },
+        {
+          "id": "m5",
+          "text": "A chip like the M4 packs about twenty-eight billion transistors.",
+          "gap": 0.7
+        },
+        {
+          "id": "m6",
+          "text": "But on its own, all that hardware does nothing at all. It needs software.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "stack",
+      "chapter": "machine",
+      "lead": 0.6,
+      "tail": 0.9,
+      "lines": [
+        {
+          "id": "s1",
+          "text": "And software, it turns out, is built in layers.",
+          "gap": 0.45
+        },
+        {
+          "id": "s2",
+          "text": "At the very bottom sits the kernel — the core of the operating system. On a Mac it's called XNU, and it has total control of the hardware.",
+          "say": "At the very bottom sits the kernel — the core of the operating system. On a Mac it's called X N U, and it has total control of the hardware.",
+          "gap": 0.4
+        },
+        {
+          "id": "s3",
+          "text": "Above it are system services, like the WindowServer, which owns everything you see on screen.",
+          "say": "Above it are system services, like the Window Server, which owns everything you see on screen.",
+          "gap": 0.35
+        },
+        {
+          "id": "s4",
+          "text": "Then come frameworks — like AppKit, SwiftUI, and Metal — the building blocks apps are made from.",
+          "gap": 0.35
+        },
+        {
+          "id": "s5",
+          "text": "And on top: your apps.",
+          "gap": 0.6
+        },
+        {
+          "id": "s6",
+          "text": "Each layer talks only to the one beneath it, through well-defined doors. That's abstraction — the trick that makes something this complex possible at all.",
+          "gap": 0.55
+        },
+        {
+          "id": "s7",
+          "text": "And one boundary is enforced by the processor itself.",
+          "gap": 0.45
+        },
+        {
+          "id": "s8",
+          "text": "Apps run in user mode. The kernel runs in kernel mode. Code on the outside can't touch the hardware, or reach across — except through doors the kernel guards.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "keyMatrix",
+      "chapter": "keystroke",
+      "lead": 3.0,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "k1",
+          "text": "So — back to that key.",
+          "gap": 0.45
+        },
+        {
+          "id": "k2",
+          "text": "Under the keyboard is a grid of wires — rows and columns — with a switch at every crossing.",
+          "gap": 0.35
+        },
+        {
+          "id": "k3",
+          "text": "A small controller scans the grid hundreds of times per second, powering one row at a time and listening on every column.",
+          "gap": 0.4
+        },
+        {
+          "id": "k4",
+          "text": "Press a key, and you connect a row to a column. The controller spots it.",
+          "gap": 0.35
+        },
+        {
+          "id": "k5",
+          "text": "It waits a few milliseconds for the contacts to stop bouncing…",
+          "gap": 0.25
+        },
+        {
+          "id": "k6",
+          "text": "…then packs the press into a tiny report, just a few bytes long. In HID — the common language of keyboards — the letter A is simply number four.",
+          "say": "then packs the press into a tiny report, just a few bytes long. In H I D, the common language of keyboards, the letter [A](/ˈeɪ/) is simply number four.",
+          "gap": 0.45
+        },
+        {
+          "id": "k7",
+          "text": "Those bytes race to the chip, where they trigger an interrupt.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "interrupt",
+      "chapter": "keystroke",
+      "lead": 0.5,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "i1",
+          "text": "An interrupt is exactly what it sounds like.",
+          "gap": 0.4
+        },
+        {
+          "id": "i2",
+          "text": "A processor core drops whatever it was doing. It saves its place, switches into kernel mode, and jumps to a fixed address: the kernel's exception vector.",
+          "gap": 0.4
+        },
+        {
+          "id": "i3",
+          "text": "Within microseconds, the kernel is in control.",
+          "gap": 0.4
+        },
+        {
+          "id": "i4",
+          "text": "Its drivers read the report, and turn number four into an event: the key for A, pressed down.",
+          "gap": 0.4,
+          "say": "Its drivers read the report, and turn number four into an event: the key for [A](/ˈeɪ/), pressed down."
+        },
+        {
+          "id": "i5",
+          "text": "That event travels up to the WindowServer. It knows which window is in front, so it sends the key to the app that owns it.",
+          "say": "That event travels up to the Window Server. It knows which window is in front, so it sends the key to the app that owns it.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "appDraw",
+      "chapter": "keystroke",
+      "lead": 0.5,
+      "tail": 1.2,
+      "lines": [
+        {
+          "id": "a1",
+          "text": "That app has been asleep, waiting for a message.",
+          "gap": 0.35
+        },
+        {
+          "id": "a2",
+          "text": "The kernel wakes it up. Its run loop picks up the event, and passes it to the text field you're typing in.",
+          "gap": 0.4
+        },
+        {
+          "id": "a3",
+          "text": "Using your keyboard layout, the key becomes a character: a lowercase a. In Unicode, that's number 61 in hexadecimal. In binary: 0110 0001.",
+          "say": "Using your keyboard layout, the key becomes a character: a lowercase a. In Unicode, that's number sixty-one in hexadecimal. In binary: zero one one zero, zero zero zero one.",
+          "gap": 0.45
+        },
+        {
+          "id": "a4",
+          "text": "To draw it, the text system pulls the letter's shape from a font: a precise outline made of curves.",
+          "gap": 0.35
+        },
+        {
+          "id": "a5",
+          "text": "The curves are filled in as pixels, and the window is redrawn.",
+          "gap": 0.4
+        },
+        {
+          "id": "a6",
+          "text": "Then the GPU takes over. Apple's GPU slices the screen into small tiles, and renders each one inside fast, on-chip memory.",
+          "gap": 0.4
+        },
+        {
+          "id": "a7",
+          "text": "Finally, the display engine streams the finished frame to the screen, up to 120 times a second. There, millions of red, green, and blue subpixels turn numbers into light.",
+          "say": "Finally, the display engine streams the finished frame to the screen, up to a hundred and twenty times a second. There, millions of red, green, and blue subpixels turn numbers into light.",
+          "gap": 0.6
+        },
+        {
+          "id": "a8",
+          "text": "And the letter appears. Up through the stack, and back down again — in a few hundredths of a second.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "launch",
+      "chapter": "launch",
+      "lead": 3.0,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "l1",
+          "text": "Typing is one journey. Now, let's open an app.",
+          "gap": 0.45
+        },
+        {
+          "id": "l2",
+          "text": "Your click asks the system to launch it, and the kernel creates a new process: a running program, with a private world of its own.",
+          "gap": 0.4
+        },
+        {
+          "id": "l3",
+          "text": "Every process gets its own virtual address space: a vast map of memory that the program believes it owns, entirely.",
+          "gap": 0.45
+        },
+        {
+          "id": "l4",
+          "text": "But real, physical memory is shared by every app at once. Hardware called the MMU translates every virtual address into a physical one, page by page. On Apple silicon, each page is sixteen kilobytes.",
+          "say": "But real, physical memory is shared by every app at once. Hardware called the M M U translates every virtual address into a physical one, page by page. On Apple silicon, each page is sixteen kilobytes.",
+          "gap": 0.45
+        },
+        {
+          "id": "l5",
+          "text": "At first, most of the app's code isn't even in memory. The moment it's needed, the MMU raises a page fault. The kernel quietly loads that page from the SSD, and the program carries on, none the wiser.",
+          "say": "At first, most of the app's code isn't even in memory. The moment it's needed, the M M U raises a page fault. The kernel quietly loads that page from the S S D, and the program carries on, none the wiser.",
+          "gap": 0.45
+        },
+        {
+          "id": "l6",
+          "text": "Meanwhile, the scheduler decides which threads run where. Urgent work, like responding to you, goes to the performance cores. Background chores go to the efficiency cores.",
+          "gap": 0.4
+        },
+        {
+          "id": "l7",
+          "text": "And it switches between them thousands of times a second. That's how hundreds of programs seem to run at once.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "save",
+      "chapter": "save",
+      "lead": 3.0,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "v1",
+          "text": "Now, press Command-S.",
+          "say": "Now, press Command S.",
+          "gap": 0.5
+        },
+        {
+          "id": "v2",
+          "text": "Your app wants to write to storage. But apps aren't allowed to touch storage. So it asks the kernel, with a system call.",
+          "gap": 0.4
+        },
+        {
+          "id": "v3",
+          "text": "On Apple silicon, that's one special instruction: SVC. The call's number goes in a register — four, for write — and the processor leaps across the wall, into kernel mode.",
+          "say": "On Apple silicon, that's one special instruction: S V C. The call's number goes in a register — four, for write — and the processor leaps across the wall, into kernel mode.",
+          "gap": 0.45
+        },
+        {
+          "id": "v4",
+          "text": "The kernel checks the request and hands it to the file system, which decides where the data should live. Soon after, the storage controller built into the chip writes it to flash memory.",
+          "gap": 0.45
+        },
+        {
+          "id": "v5",
+          "text": "Flash is made of hundreds of billions of tiny cells, stacked in layers hundreds high.",
+          "gap": 0.4
+        },
+        {
+          "id": "v6",
+          "text": "Each cell stores data as trapped electrons. Force electrons into its insulating layer, and its voltage shifts. By telling eight levels apart, a single cell can hold three bits.",
+          "gap": 0.45
+        },
+        {
+          "id": "v7",
+          "text": "Those electrons can stay trapped for years, even with the power off.",
+          "gap": 0.5
+        },
+        {
+          "id": "v8",
+          "text": "Then the kernel returns, the processor drops back into user mode, and your app carries on.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "code",
+      "chapter": "rabbit",
+      "lead": 3.0,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "c1",
+          "text": "Every step we've seen — in the kernel, the WindowServer, your app — is just code. But what is code, to a machine?",
+          "say": "Every step we've seen — in the kernel, the Window Server, your app — is just code. But what is code, to a machine?",
+          "gap": 0.5
+        },
+        {
+          "id": "c2",
+          "text": "Developers write in languages like Swift. Here's a tiny function that adds one to a number.",
+          "gap": 0.4
+        },
+        {
+          "id": "c3",
+          "text": "A compiler translates it, step by step, into the processor's native language: ARM64 instructions.",
+          "gap": 0.45,
+          "say": "A compiler translates it, step by step, into the processor's native language: Arm sixty-four instructions."
+        },
+        {
+          "id": "c4",
+          "text": "This one means: add one to register x0. And to the processor, it's just a number: thirty-two ones and zeros.",
+          "gap": 0.45
+        },
+        {
+          "id": "c5",
+          "text": "Every group of bits has a job. This one picks sixty-four-bit math. These say: add a constant. These twelve bits hold the number one. And these choose the registers to read and write.",
+          "gap": 0.45
+        },
+        {
+          "id": "c6",
+          "text": "Stored in memory, it's just four bytes. The core fetches them, and its decoder turns those bits into control signals: wires, switching on and off.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "core",
+      "chapter": "rabbit",
+      "lead": 0.6,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "p1",
+          "text": "Let's step inside a performance core.",
+          "gap": 0.4
+        },
+        {
+          "id": "p2",
+          "text": "It works like a hyper-efficient assembly line. Fetch instructions from memory. Decode them, eight or more at a time.",
+          "gap": 0.4
+        },
+        {
+          "id": "p3",
+          "text": "Then, something remarkable: it runs them out of order. Hundreds of instructions wait in flight, and each one fires the instant its inputs are ready.",
+          "gap": 0.4
+        },
+        {
+          "id": "p4",
+          "text": "The results are put back in the original order, so the program never knows.",
+          "gap": 0.45
+        },
+        {
+          "id": "p5",
+          "text": "Our add lands in an arithmetic logic unit, which adds two sixty-four-bit numbers in a single tick of the clock.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "adder",
+      "chapter": "rabbit",
+      "lead": 0.6,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "d1",
+          "text": "Inside is an adder: one simple circuit, repeated for every bit.",
+          "gap": 0.4
+        },
+        {
+          "id": "d2",
+          "text": "Each copy is a full adder. It takes two bits, plus a carry from its neighbor. One plus one makes zero — carry the one — just like you learned in school.",
+          "gap": 0.45
+        },
+        {
+          "id": "d3",
+          "text": "Real chips use clever tricks to compute all the carries in parallel. But the building blocks are always the same: logic gates.",
+          "gap": 0.45
+        },
+        {
+          "id": "d4",
+          "text": "There's the AND gate. The OR gate. Exclusive OR. And the most versatile of all: NAND. Every other logic circuit can be built from NAND gates alone.",
+          "say": "There's the [and](/ˈænd/) gate. The [or](/ˈɔːɹ/) gate. Exclusive [or](/ˈɔːɹ/). And the most versatile of all: nand. Every other logic circuit can be built from nand gates alone.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "cmos",
+      "chapter": "rabbit",
+      "lead": 0.6,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "g1",
+          "text": "And every gate is built from transistors.",
+          "gap": 0.4
+        },
+        {
+          "id": "g2",
+          "text": "This NAND gate takes just four. Two connect the output to power. Two connect it to ground.",
+          "say": "This nand gate takes just four. Two connect the output to power. Two connect it to ground.",
+          "gap": 0.4
+        },
+        {
+          "id": "g3",
+          "text": "When both inputs turn on, the path to ground opens, and the output falls to zero.",
+          "gap": 0.5
+        },
+        {
+          "id": "g4",
+          "text": "So what is a transistor? A switch, with no moving parts. A voltage on its gate decides whether current can flow.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "finfet",
+      "chapter": "rabbit",
+      "lead": 0.8,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "f1",
+          "text": "Here's what one looks like inside a three-nanometer chip.",
+          "gap": 0.5
+        },
+        {
+          "id": "f2",
+          "text": "A thin fin of silicon links the source to the drain. Draped over it is the gate, separated by an insulating layer only a few atoms thick.",
+          "gap": 0.5
+        },
+        {
+          "id": "f3",
+          "text": "With no voltage on the gate, almost no current can flow. The switch is off.",
+          "gap": 0.5
+        },
+        {
+          "id": "f4",
+          "text": "Apply less than a volt, and the gate's electric field pulls electrons up into the fin, forming a channel.",
+          "gap": 0.4
+        },
+        {
+          "id": "f5",
+          "text": "Now electrons stream from source to drain. The switch is on.",
+          "gap": 0.6
+        },
+        {
+          "id": "f6",
+          "text": "These fins are just a few dozen atoms wide. And about twenty-eight billion of these switches fit on a sliver of silicon smaller than a postage stamp.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "clock",
+      "chapter": "rabbit",
+      "lead": 0.6,
+      "tail": 0.9,
+      "lines": [
+        {
+          "id": "t1",
+          "text": "Each switch moves only a few thousand electrons, and they cross the channel in under a trillionth of a second.",
+          "gap": 0.5
+        },
+        {
+          "id": "t2",
+          "text": "And all of it marches to a beat. A quartz crystal vibrates millions of times per second. Circuits called phase-locked loops multiply that into a clock of more than four billion ticks per second.",
+          "gap": 0.45
+        },
+        {
+          "id": "t3",
+          "text": "At that pace, in a single tick, even light travels only about seven centimeters — less than the width of a credit card.",
+          "gap": 0.6
+        },
+        {
+          "id": "t4",
+          "text": "Every add. Every interrupt. Every pixel of that letter. It all happens in these ticks — billions of switches, moving in perfect choreography.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "finale",
+      "chapter": "epilogue",
+      "lead": 1.0,
+      "tail": 6.5,
+      "lines": [
+        {
+          "id": "e1",
+          "text": "So, let's rise back up.",
+          "gap": 0.5
+        },
+        {
+          "id": "e2",
+          "text": "Electrons, shaped into switches. Switches, into gates. Gates, into adders and cores. Cores, running a kernel. A kernel, serving your apps.",
+          "gap": 0.5
+        },
+        {
+          "id": "e3",
+          "text": "Every layer hides the complexity beneath it, so the layer above can do something greater.",
+          "gap": 0.5
+        },
+        {
+          "id": "e4",
+          "text": "That's how a sliver of purified sand becomes a machine that answers your touch.",
+          "gap": 0.9
+        },
+        {
+          "id": "e5",
+          "text": "Next time, we'll follow the light — and see how the GPU paints millions of pixels, every single frame.",
+          "gap": 0.2
+        }
+      ]
+    }
+  ]
+}
