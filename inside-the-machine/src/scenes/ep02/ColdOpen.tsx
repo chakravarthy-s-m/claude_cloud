@@ -81,7 +81,6 @@ const FloatingScreen: React.FC<{ b: B; a: number }> = ({ b, a }) => {
   const rx = mix(9, 3, prog(f, 0, b.moves, EASE.inOut)) * (1 - push);
   const scale = mix(0.82, 0.96, prog(f, 0, b.moves, EASE.inOut)) * mix(1, 1.62, push);
   // refresh: one slow, visible sweep, then faster and faster until it is a shimmer
-  const period = keyframes(f, [[b.isnt, 64], [b.refresh, 44], [b.hz, 14], [b.every, 5]], EASE.inOut);
   // integrate phase so speed changes stay continuous
   let phase = 0;
   for (let t = b.isnt; t < f; t++) phase += 1 / keyframes(t, [[b.isnt, 64], [b.refresh, 44], [b.hz, 14], [b.every, 5]], EASE.inOut);
@@ -89,7 +88,7 @@ const FloatingScreen: React.FC<{ b: B; a: number }> = ({ b, a }) => {
   const scan = phase % 1;
   const hudA = inOut(f, b.isnt + 6, 24, b.brandNew - 20, 14);
   const frameNo = Math.max(0, Math.floor((f - b.isnt) * mix(1, 4, prog(f, b.refresh, b.hz - b.refresh + 20))));
-  const hzVal = Math.round(mix(1 / (period / 30), 120, prog(f, b.hz - 6, 30)));
+  const slowA = 1 - prog(f, b.hz - 6, 20); // the sweep is slowed down until "a hundred and twenty"
   // the moving window (anything moves)
   const winP = prog(f, b.moves - 4, 34, EASE.inOut);
   const winA = inOut(f, b.moves - 14, 10, b.brandNew - 10, 10);
@@ -153,10 +152,13 @@ const FloatingScreen: React.FC<{ b: B; a: number }> = ({ b, a }) => {
         <div style={{ position: "absolute", right: 70, top: 410, textAlign: "right", opacity: hudA, fontFamily: FONT.mono, transform: `translateX(${(1 - hudA) * 40}px)` }}>
           <div style={{ fontFamily: FONT.ui, fontSize: 18, fontWeight: 600, letterSpacing: "0.34em", color: hexA(C.cyan, 0.9) }}>REFRESH</div>
           <div style={{ fontSize: 76, fontWeight: 700, color: C.ink, lineHeight: 1.05, fontVariantNumeric: "tabular-nums", textShadow: `0 0 30px ${hexA(C.cyan, 0.5)}` }}>
-            {Math.min(120, Math.max(1, hzVal))}
+            120
             <span style={{ fontSize: 34, color: C.ink3, marginLeft: 10 }}>Hz</span>
           </div>
-          <div style={{ fontSize: 22, color: C.ink3, marginTop: 6, fontVariantNumeric: "tabular-nums" }}>frame #{String(frameNo).padStart(6, "0")}</div>
+          <div style={{ position: "relative", height: 30, marginTop: 6 }}>
+            <div style={{ position: "absolute", right: 0, top: 0, fontSize: 22, color: C.amber, opacity: slowA, whiteSpace: "nowrap" }}>shown in slow motion</div>
+            <div style={{ position: "absolute", right: 0, top: 0, fontSize: 22, color: C.ink3, opacity: 1 - slowA, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>frame #{String(frameNo).padStart(6, "0")}</div>
+          </div>
         </div>
       )}
     </AbsoluteFill>
