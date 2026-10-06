@@ -129,9 +129,9 @@ const CONE_COL = [RGB.r, RGB.g, RGB.b];
 const Cones: React.FC<{ b: B; a: number }> = ({ b, a }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const inP = spr(f, fps, b.there - 6, { damping: 22, stiffness: 90 });
+  const inP = spr(f, fps, b.there - 18, { damping: 22, stiffness: 90 });
   const show = [prog(f, b.red - 6, 14), prog(f, b.green - 6, 14), prog(f, b.blue - 6, 14)];
-  const chartA = prog(f, b.cones, 18);
+  const chartA = prog(f, b.there - 8, 18);
   // stimulus: the warm sunset pixel → strong L, medium M, weak S
   const resp = [0.95, 0.55, 0.12];
   const compare = prog(f, b.compares - 6, 20);
@@ -268,8 +268,8 @@ const Motion: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const oA = 1 - prog(f, b.there - 12, 14);
-  const cA = inOut(f, b.there - 10, 14, b.next - 10, 12);
+  const oA = 1 - prog(f, b.there - 14, 14, EASE.inOut);
+  const cA = inOut(f, b.there - 14, 14, b.next - 10, 12);
   const mA = prog(f, b.next - 10, 14);
   return (
     <SceneShell dur={s.durationInFrames} enter={0} exit={14}>
