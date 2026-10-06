@@ -116,6 +116,8 @@ const NPAGES = 40;
 const pageCol = (i: number) => [C.pink, C.violet, C.blue, C.cyan, C.teal, C.green, C.amber, C.orange][i % 8];
 const coldPage = (i: number) => rnd(`cold${i}`) > 0.55; // not used lately
 const coldIndex = (i: number) => new Array(i).fill(0).filter((_, k) => coldPage(k)).length;
+const swapsOut = (i: number) => coldPage(i) && rnd(`sw${i}`) > 0.5; // squeezed first, then sent to the SSD
+const swapIndex = (i: number) => new Array(i).fill(0).filter((_, k) => swapsOut(k)).length;
 const Squeeze: React.FC<{ b: B; a: number }> = ({ b, a }) => {
   const f = useCurrentFrame();
   const fill = prog(f, b.short - 4, 30, EASE.inOut);
@@ -132,7 +134,7 @@ const Squeeze: React.FC<{ b: B; a: number }> = ({ b, a }) => {
       </div>
       <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
         {/* memory full of pages */}
-        <rect x={MX - 20} y={MY - 20} width={1040} height={520} rx={22} fill="rgba(6,24,24,0.6)" stroke={hexA(TIER.dram, 0.6)} strokeWidth={2} />
+        <rect x={MX - 20} y={MY - 20} width={1040} height={610} rx={22} fill="rgba(6,24,24,0.6)" stroke={hexA(TIER.dram, 0.6)} strokeWidth={2} />
         <text x={MX} y={MY - 34} fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.25em" fill={TIER.dram}>
           MAIN MEMORY
         </text>
@@ -144,14 +146,15 @@ const Squeeze: React.FC<{ b: B; a: number }> = ({ b, a }) => {
           const appear = clamp(fill * NPAGES * 1.1 - i);
           const cold = coldPage(i);
           const sq = cold ? squeeze : 0;
-          // squeezed pages slide into the compressed area at the bottom right; some then move out to the SSD
-          const goSwap = cold && rnd(`sw${i}`) > 0.5;
+          // idle pages slide down into the compressed strip; some of those then move out to the SSD
+          const goSwap = swapsOut(i);
           const sw = goSwap ? swapP : 0;
           const ci = coldIndex(i);
-          const tx = mix(x, 752 + (ci % 8) * 33, sq);
-          const ty = mix(y, 606 + (Math.floor(ci / 8) % 2) * 40, sq);
-          const fx = mix(tx, 1500 + (i % 5) * 50, sw);
-          const fy = mix(ty, 600 + (i % 3) * 40, sw);
+          const si = swapIndex(i);
+          const tx = mix(x, MX + 14 + ci * 31, sq);
+          const ty = mix(y, MY + 506, sq);
+          const fx = mix(tx, 1490 + (si % 8) * 38, sw);
+          const fy = mix(ty, 626 + Math.floor(si / 8) * 52, sw);
           const w = mix(84, 26, sq);
           const h = mix(100, 34, sq);
           return (
@@ -165,10 +168,10 @@ const Squeeze: React.FC<{ b: B; a: number }> = ({ b, a }) => {
             </g>
           );
         })}
-        {/* compressed region */}
+        {/* compressed strip along the bottom of memory */}
         <g opacity={prog(f, b.squeezes - 4, 16)}>
-          <rect x={740} y={600} width={280} height={90} rx={14} fill="none" stroke={C.cyan} strokeWidth={2} strokeDasharray="8 6" />
-          <text x={750} y={716} fontFamily={FONT.mono} fontSize={17} fill={C.cyan}>
+          <rect x={MX} y={MY + 494} width={1000} height={58} rx={12} fill={hexA(C.cyan, 0.05)} stroke={C.cyan} strokeWidth={2} strokeDasharray="8 6" />
+          <text x={MX + 984} y={MY + 529} textAnchor="end" fontFamily={FONT.mono} fontSize={17} fill={C.cyan}>
             compressed, still in memory
           </text>
         </g>
@@ -191,7 +194,7 @@ const Squeeze: React.FC<{ b: B; a: number }> = ({ b, a }) => {
           </text>
         </g>
       </svg>
-      <div style={{ position: "absolute", left: 200, top: 860, opacity: prog(f, b.compressing - 4, 16), fontFamily: FONT.mono, fontSize: 20, color: C.ink2 }}>
+      <div style={{ position: "absolute", left: 200, top: 896, opacity: prog(f, b.compressing - 4, 16), fontFamily: FONT.mono, fontSize: 20, color: C.ink2 }}>
         idle pages are squeezed first: <span style={{ color: C.cyan }}>fast to unsqueeze</span> · only then: <span style={{ color: TIER.ssd }}>out to the SSD</span>
       </div>
     </AbsoluteFill>

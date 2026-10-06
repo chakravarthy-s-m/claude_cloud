@@ -34,13 +34,13 @@ type B = ReturnType<typeof beats>;
 
 const SX = 760; // shaft center
 const LEVELS = [
-  { key: "core", name: "CORE", y: 170, col: TIER.reg, ns: 0 },
-  { key: "tlb", name: "TLB", y: 270, col: C.pink, ns: 0.3 },
-  { key: "l1", name: "L1 cache", y: 360, col: TIER.l1, ns: 1 },
-  { key: "l2", name: "L2 cache", y: 450, col: TIER.l2, ns: 6 },
-  { key: "slc", name: "system cache", y: 540, col: TIER.slc, ns: 20 },
-  { key: "mc", name: "memory controller", y: 630, col: C.indigo, ns: 30 },
-  { key: "dram", name: "DRAM", y: 760, col: TIER.dram, ns: 95 },
+  { key: "core", name: "CORE", y: 206, col: TIER.reg, ns: 0 },
+  { key: "tlb", name: "TLB", y: 306, col: C.pink, ns: 0.3 },
+  { key: "l1", name: "L1 cache", y: 396, col: TIER.l1, ns: 1 },
+  { key: "l2", name: "L2 cache", y: 486, col: TIER.l2, ns: 6 },
+  { key: "slc", name: "system cache", y: 576, col: TIER.slc, ns: 20 },
+  { key: "mc", name: "memory controller", y: 666, col: C.indigo, ns: 30 },
+  { key: "dram", name: "DRAM", y: 796, col: TIER.dram, ns: 95 },
 ] as const;
 
 // ---------------------------------------------------------------- the round trip
@@ -104,7 +104,7 @@ const Trip: React.FC<{ b: B; a: number }> = ({ b, a }) => {
                     <path key={c} d={`M${SX - 340 + c * 31},${L.y + 66} l11,14 l11,-14 Z`} fill={hexA(C.violet, 0.2 + 0.7 * senseP)} />
                   ))}
                   {senseP > 0.2 && (
-                    <text x={SX + 380} y={L.y + 80} fontFamily={FONT.mono} fontSize={16} fill={C.violet} opacity={senseP}>
+                    <text x={SX + 400} y={L.y + 80} fontFamily={FONT.mono} fontSize={16} fill={C.violet} opacity={senseP}>
                       thousands of cells, sensed at once
                     </text>
                   )}

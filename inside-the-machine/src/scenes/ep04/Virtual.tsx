@@ -130,6 +130,7 @@ const Mapping: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 
 // ---------------------------------------------------------------- act 2: the walk
 const LEVELS = ["top level", "middle level", "last level"];
+const TW = 280;
 const Walk: React.FC<{ b: B; a: number }> = ({ b, a }) => {
   const f = useCurrentFrame();
   const step = (i: number) => prog(f, b.tree - 4 + i * 20, 16, EASE.inOut);
@@ -156,16 +157,16 @@ const Walk: React.FC<{ b: B; a: number }> = ({ b, a }) => {
           const p = step(i);
           return (
             <g key={lv} opacity={0.35 + 0.65 * p}>
-              <rect x={x} y={y} width={240} height={180} rx={14} fill="rgba(24,18,6,0.9)" stroke={hexA(C.amber, 0.4 + 0.6 * p)} strokeWidth={2} />
+              <rect x={x} y={y} width={TW} height={180} rx={14} fill="rgba(24,18,6,0.9)" stroke={hexA(C.amber, 0.4 + 0.6 * p)} strokeWidth={2} />
               <text x={x + 16} y={y + 30} fontFamily={FONT.ui} fontWeight={700} fontSize={15} letterSpacing="0.2em" fill={C.amber}>
                 TABLE · {lv.toUpperCase()}
               </text>
               {new Array(5).fill(0).map((_, k) => (
-                <rect key={k} x={x + 16} y={y + 46 + k * 25} width={208} height={18} rx={4} fill={k === 2 && p > 0.5 ? hexA(C.amber, 0.6) : hexA(C.ink, 0.08)} />
+                <rect key={k} x={x + 16} y={y + 46 + k * 25} width={TW - 32} height={18} rx={4} fill={k === 2 && p > 0.5 ? hexA(C.amber, 0.6) : hexA(C.ink, 0.08)} />
               ))}
               {/* hop to the next level */}
               <path
-                d={i === 0 ? `M420,310 C470,310 470,${y + 108} ${x},${y + 108}` : `M${x - 60},${y - 12} C${x - 30},${y - 12} ${x - 30},${y + 108} ${x},${y + 108}`}
+                d={i === 0 ? `M420,310 C490,310 490,${y + 108} ${x},${y + 108}` : `M${x - 380 + TW},${y - 150 + 105} C${x - 380 + TW + 50},${y - 150 + 105} ${x - 50},${y + 108} ${x},${y + 108}`}
                 fill="none"
                 stroke={C.amber}
                 strokeWidth={2.5}
@@ -177,7 +178,7 @@ const Walk: React.FC<{ b: B; a: number }> = ({ b, a }) => {
         })}
         {/* finally: the frame */}
         <g opacity={prog(f, b.tree + 54, 14)}>
-          <path d={`M${560 + 2 * 380 + 240},${260 + 2 * 150 + 108} C${1680},${568} ${1680},${700} ${1700},${700}`} fill="none" stroke={TIER.dram} strokeWidth={2.5} />
+          <path d={`M${560 + 2 * 380 + TW},${260 + 2 * 150 + 105} C${1655},${665} ${1655},${700} ${1700},${700}`} fill="none" stroke={TIER.dram} strokeWidth={2.5} />
           <rect x={1700} y={640} width={170} height={120} rx={14} fill={hexA(TIER.dram, 0.25)} stroke={TIER.dram} strokeWidth={2.5} />
           <text x={1785} y={708} textAnchor="middle" fontFamily={FONT.mono} fontSize={18} fill={C.ink}>
             the data
@@ -257,13 +258,14 @@ const Tlb: React.FC<{ b: B; a: number }> = ({ b, a }) => {
               ONE TLB ENTRY ON APPLE SILICON
             </text>
             <rect x={1000} y={320} width={360} height={360} rx={16} fill={hexA(C.pink, 0.2)} stroke={C.pink} strokeWidth={3} />
-            <text x={1180} y={510} textAnchor="middle" fontFamily={FONT.display} fontWeight={700} fontSize={56} fill={C.ink}>
-              16 KB
-            </text>
             {/* the 4 KB grid inside, revealed */}
             {[0, 1, 2, 3].map((k) => (
               <rect key={k} x={1000 + (k % 2) * 180} y={320 + Math.floor(k / 2) * 180} width={180} height={180} fill="none" stroke={hexA(C.ink, 0.5)} strokeWidth={2} strokeDasharray="8 8" opacity={quad} />
             ))}
+            <rect x={1068} y={462} width={224} height={68} rx={16} fill="rgba(26,12,24,0.94)" opacity={quad} />
+            <text x={1180} y={516} textAnchor="middle" fontFamily={FONT.display} fontWeight={700} fontSize={56} fill={C.ink}>
+              16 KB
+            </text>
             {/* Intel: one entry → 4 KB */}
             <g opacity={intelA}>
               <text x={1460} y={300} fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.2em" fill={C.blue}>

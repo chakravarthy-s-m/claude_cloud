@@ -78,13 +78,12 @@ for (const [i, s] of timeline.scenes.entries()) {
   console.log(`✓ ${s.id}: ${s.durationInFrames} frames in ${sec.toFixed(0)}s (${(s.durationInFrames / sec).toFixed(2)} fps)`);
 }
 
-// soundtrack (narration + music + sfx), rendered once
+// soundtrack (narration + music + sfx), rendered once; --audio re-renders it (e.g. after sfx timing changes)
 const audio = path.join(OUT, `${EP}-soundtrack.wav`);
-if (ONLY === null || FORCE || !fs.existsSync(audio)) {
-  if (!fs.existsSync(audio) || FORCE || process.argv.includes("--audio")) {
-    console.log("rendering soundtrack…");
-    await renderMedia({ ...common, codec: "wav", outputLocation: audio, inputProps: { audioOnly: true } });
-  }
+if (!fs.existsSync(audio) || FORCE || process.argv.includes("--audio")) {
+  console.log("rendering soundtrack…");
+  await renderMedia({ ...common, codec: "wav", outputLocation: audio + ".tmp.wav", inputProps: { audioOnly: true } });
+  fs.renameSync(audio + ".tmp.wav", audio);
 }
 
 if (parts.every((p) => fs.existsSync(p)) && fs.existsSync(audio)) {
