@@ -6,12 +6,12 @@ import { TIER, TIERS } from "../../scenes/ep04/shared";
 
 /** Poster / YouTube thumbnail for Episode 04: the glowing memory pyramid. */
 export const Ep04Thumbnail: React.FC = () => {
-  const PX = 1340;
+  const PX = 1230;
   const TOP = 200;
   const TH = 104;
   const GAP = 12;
   const W0 = 150;
-  const DW = 150;
+  const DW = 138;
   return (
     <FontGate>
       <AbsoluteFill style={{ background: C.void }}>
@@ -43,7 +43,7 @@ export const Ep04Thumbnail: React.FC = () => {
             );
           })}
         </svg>
-        <AbsoluteFill style={{ background: "linear-gradient(90deg, rgba(2,3,9,0.96) 0%, rgba(2,3,9,0.86) 30%, rgba(2,3,9,0.2) 52%, rgba(2,3,9,0) 66%)" }} />
+        <AbsoluteFill style={{ background: "linear-gradient(90deg, rgba(2,3,9,0.96) 0%, rgba(2,3,9,0.8) 28%, rgba(2,3,9,0.1) 44%, rgba(2,3,9,0) 56%)" }} />
         <div style={{ position: "absolute", left: 110, top: 220 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <span style={{ fontFamily: FONT.mono, fontWeight: 700, fontSize: 30, padding: "6px 16px", borderRadius: 12, color: "#05070d", background: TIER.slc }}>EP 04</span>

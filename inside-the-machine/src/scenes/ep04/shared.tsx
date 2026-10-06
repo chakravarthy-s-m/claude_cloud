@@ -22,7 +22,7 @@ export const TIERS: { key: TierKey; name: string; size: string; lat: string; tic
   { key: "reg", name: "Registers", size: "a few dozen", lat: "instant", ticks: "0" },
   { key: "l1", name: "L1 cache", size: "128 KB per core", lat: "≈ 1 ns", ticks: "3 ticks" },
   { key: "l2", name: "L2 cache", size: "12 MB shared", lat: "≈ 6 ns", ticks: "18 ticks" },
-  { key: "slc", name: "System cache", size: "8 MB, whole chip", lat: "tens of ns", ticks: "" },
+  { key: "slc", name: "System cache", size: "8 MB, whole chip", lat: "≈ 20 ns", ticks: "≈ 60 ticks" },
   { key: "dram", name: "Main memory", size: "8 GB and up", lat: "≈ 100 ns", ticks: "≈ 300 ticks" },
   { key: "ssd", name: "SSD", size: "terabytes", lat: "≈ 60 µs", ticks: "≈ 200,000 ticks" },
 ];

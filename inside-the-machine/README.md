@@ -2,10 +2,15 @@
 
 **A cinematic explainer series about how computers really work — built entirely in code.**
 
-| Episode 01 | Episode 02 | Episode 03 |
-|---|---|---|
-| ![Episode 01 — From Keystroke to Electron](docs/ep01-thumbnail.jpg) | ![Episode 02 — Painting with Light](docs/ep02-thumbnail.jpg) | ![Episode 03 — Power On](docs/ep03-thumbnail.jpg) |
-| **From Keystroke → Electron** — how a modern Mac really works (≈ 11 min) | **Painting with Light** — how your Mac turns numbers into light (≈ 9 min) | **Power On** — from the power button to your desktop (≈ 6.5 min) |
+| Episode 01 | Episode 02 |
+|---|---|
+| ![Episode 01 — From Keystroke to Electron](docs/ep01-thumbnail.jpg) | ![Episode 02 — Painting with Light](docs/ep02-thumbnail.jpg) |
+| **From Keystroke → Electron** — how a modern Mac really works (≈ 11 min) | **Painting with Light** — how your Mac turns numbers into light (≈ 9 min) |
+
+| Episode 03 | Episode 04 |
+|---|---|
+| ![Episode 03 — Power On](docs/ep03-thumbnail.jpg) | ![Episode 04 — Memory](docs/ep04-thumbnail.jpg) |
+| **Power On** — from the power button to your desktop (≈ 6.5 min) | **Memory** — where your data lives, and how the chip gets to it so fast (≈ 7.5 min) |
 
 ### Episode 01 — From Keystroke → Electron (1080p30)
 
@@ -36,6 +41,16 @@ boot policy, iBoot with the device tree and kernel, the Secure Enclave booting b
 volume's hash tree, the kernel's virtual memory, cores, drivers and trust cache, launchd as process 1 and its hundreds
 of children, FileVault unlocking your data, and finally your desktop — every link verified before it runs.
 
+### Episode 04 — Memory (1080p30)
+
+If one clock tick lasted a second, a trip to main memory would take five minutes, and one to the SSD two days. So
+how does a chip that thinks in nanoseconds stay fed? The memory wall; the pyramid of registers, SRAM caches, DRAM and
+flash (with the M1's real sizes and latencies); cache lines, locality and a live hit/miss tally; sets, tags and
+eviction; prefetchers and write‑back; cache coherence between cores; then down into a DRAM die — banks, wordlines,
+bitlines, one‑transistor‑one‑capacitor cells, sense amplifiers and the row buffer, refresh (every row at least every
+32 ms) and Rowhammer; unified memory and bandwidth; virtual memory with 16 KB pages, page‑table walks, the TLB, page
+faults, compression and swap; and finally one load's round trip, all ~100 ns of it.
+
 | | |
 |---|---|
 | **Narration** | Kokoro‑82M neural TTS (voice `af_heart`), fully offline, phoneme‑level pronunciation fixes |
@@ -65,7 +80,7 @@ render each scene as an independent, resumable segment.
 cd inside-the-machine
 npm install
 
-npm run studio                    # live preview: "Ep01", "Ep02", "Ep03" + every scene as its own composition
+npm run studio                    # live preview: "Ep01" … "Ep04" + every scene as its own composition
 node tools/render.mjs             # production render → out/ep01-keystroke-to-electron.mp4
 node tools/render.mjs --ep=ep02   # → out/ep02-painting-with-light.mp4
 ```
@@ -115,7 +130,7 @@ tools/.venv/bin/python tools/music.py ep01           # score (reads the timeline
   reverb. Each scene gets a mood (`mystery → build → hit → wonder → drive → flow → deep → descent → awe → tick →
   finale`, set per scene in `script.json`), sections crossfade, the final chord resolves to major, and the whole score
   is **side‑chain ducked** (~9 dB) wherever the narration is speaking. Each episode has its own key/tempo via
-  `"score": {"transpose", "bpm"}` — Ep01 is D minor at 120 BPM, Ep02 F minor at 116 BPM, Ep03 A minor at 124 BPM.
+  `"score": {"transpose", "bpm"}` — Ep01 is D minor at 120 BPM, Ep02 F minor at 116 BPM, Ep03 A minor at 124 BPM, Ep04 E minor at 112 BPM.
 * **SFX** — `tools/sfx.py` builds every effect from oscillators, filtered noise, FM and synthetic reverb; scenes place
   them on exact frames next to the visuals that cause them.
 
@@ -131,7 +146,7 @@ inside-the-machine/
 ├─ episodes/epNN/script.json      ← the narration script (source of truth for timing, moods, slug)
 ├─ episodes/epNN/captions.srt     ← generated subtitles
 ├─ src/
-│  ├─ Root.tsx                    ← compositions: Ep01, Ep02, Ep03 (+ thumbnails) + one per scene
+│  ├─ Root.tsx                    ← compositions: Ep01–Ep04 (+ thumbnails) + one per scene
 │  ├─ theme.ts                    ← "Obsidian Neon" design tokens
 │  ├─ lib/
 │  │  ├─ anim.ts                  ← easing, springs, keyframes, deterministic random
@@ -143,6 +158,7 @@ inside-the-machine/
 │  ├─ scenes/ep02/                ← 17 scenes + shared.tsx (procedural wallpaper, subpixel microscope) + raster.ts
 │  │                                 (z‑buffered software rasterizer for the teapot)
 │  ├─ scenes/ep03/                ← 12 scenes + shared.tsx (chain links, seals, keys, scope frames, desktop)
+│  ├─ scenes/ep04/                ← 15 scenes + shared.tsx (memory tiers, DRAM/SRAM cells, cache lines, address bits)
 │  └─ episodes/epNN/              ← timeline.json + scene registry + chapter colors + thumbnail
 ├─ public/audio/                  ← narration, sfx, music
 └─ tools/                         ← tts.py, sfx.py, music.py, glyph.py, render.mjs, stills.mjs, preview.sh, cues.py,
@@ -237,6 +253,30 @@ hardware UID inside the Secure Enclave to unwrap the keys that protect the volum
 The SHA‑256 values shown are real (1 flipped bit → 57 of 64 hex digits and 126 of 256 bits change). Rail voltages,
 the power‑sequencing order, the die floorplan, the ROM's location and the eye diagram are illustrative.
 
+## Episode 04 — chapters
+
+![Storyboard: 16 moments from Episode 04](docs/ep04-storyboard.jpg)
+
+| # | Chapter | What you see |
+|---|---|---|
+| 00 | Prologue | numbers flowing between a core and memory, an addition in 0.3 ns, a load that has to wait; time slowed so one tick = one second — L1 3 s, L2 18 s, main memory ≈ 5 min, SSD ≈ 2 days on a zooming log axis; a title that "loads" row by row |
+| 01 | The Memory Wall | processor vs DRAM speed diverging (Wulf & McKee, 1995), a brick wall rising in the gap; ~300 ticks waited on one load; the memory pyramid with M1 sizes and latencies; one SRAM bit (six transistors) vs one DRAM bit |
+| 02 | Caches | a miss that brings back a whole 128‑byte line, then fifteen hits (live tally); locality; tag / set / offset bits, an 8‑set × 4‑way cache, a hit, and LRU eviction; a stride prefetcher fetching ahead; dirty lines and write‑back; coherence — invalidating other cores' copies |
+| 03 | Inside DRAM | memory on the package, millimeters from the SoC; a die zoom from banks to wordlines, bitlines and cells; one transistor + one capacitor; opening a row, charge sharing, the tiny bitline nudge on a scope, sense amplifiers, restore, the row buffer and a burst; leaking cells and refresh sweeps; Rowhammer and its defense |
+| 04 | Unified Memory | a PC copying a texture to its graphics card's memory vs one shared pool for CPU, GPU and Neural Engine; a wide bus and M4 / M4 Pro / M4 Max bandwidth |
+| 05 | Virtual Memory | 16 KB virtual pages mapped through a page table onto scattered physical frames; a page‑table walk; the TLB; 16 KB vs 4 KB reach; a page fault fixed by the kernel; memory pressure, compression and swap |
+| 06 | The Round Trip | one load all the way down (TLB → L1 → L2 → system cache → controller → a DRAM row) and back in ≈ 100 ns — and the usual L1 hit; next time: *Storage* |
+
+### Fact notes (Ep04)
+
+M1 performance cores: 192 KB L1 instruction + 128 KB L1 data cache per core, 12 MB shared L2, 8 MB system level cache;
+measured latencies ≈ 3 cycles (L1), 18 cycles (L2), ≈ 18 cycles + 10–15 ns (SLC) and ≈ 91 ns + 18 cycles (DRAM) at
+3.2 GHz (7‑cpu.com / AnandTech). macOS reports `hw.cachelinesize` = 128. An M1 Mac mini's SSD manages ~16,000
+random 4 KB reads per second at queue depth 1 (≈ 60 µs each). The "memory wall": Wulf & McKee, *Hitting the Memory
+Wall: Implications of the Obvious* (1995). LPDDR5 refreshes every row within 32 ms. Apple silicon uses 16 KB pages
+(Intel Macs: 4 KB). Peak bandwidth per Apple: M4 120 GB/s, M4 Pro 273 GB/s, M4 Max 546 GB/s. The CPU‑vs‑DRAM chart,
+the cache geometry, the page‑table depth, the rowhammer counts and the eye/scope traces are illustrative.
+
 ---
 
 ## Series roadmap
@@ -246,7 +286,7 @@ the power‑sequencing order, the die floorplan, the ROM's location and the eye 
 | 01 | From Keystroke → Electron | the whole stack, one keypress at a time ✅ |
 | 02 | Painting with Light | Metal, tile‑based deferred rendering, display engines, mini‑LED backlights, subpixels → photons ✅ |
 | 03 | Power On | power sequencing, Boot ROM, signatures, LLB, iBoot, the sealed system volume, XNU, launchd, FileVault ✅ |
-| 04 | Memory | caches, coherency, unified memory, DRAM cells & refresh, page tables in depth |
+| 04 | Memory | caches, coherence, DRAM cells & refresh, Rowhammer, unified memory, page tables & the TLB ✅ |
 | 05 | Storage | APFS internals, NVMe queues, wear leveling, ECC, how flash cells wear out |
 | 06 | The Neural Engine | matrix math on silicon, int8/fp16, how a prompt becomes multiply‑accumulates |
 | 07 | Packets | Wi‑Fi radios, OFDM, TCP/IP in the kernel, TLS — a web page arrives |

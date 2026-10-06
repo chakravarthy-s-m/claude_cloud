@@ -18,5 +18,9 @@ crystals and polarizers, mini-LED backlights and the physics of LEDs — into th
 Boot ROM and the chain of trust (hashes, signatures, restore mode), the bootloaders (SRAM, DRAM training, boot policy,
 iBoot, the Secure Enclave), the sealed system volume, the kernel's first moves, launchd, FileVault — and your desktop.
 
+**Episode 04 — Memory: Where your data lives, and how the chip gets to it so fast** (≈ 7.5 min, 1080p): the memory
+wall, the cache pyramid, cache lines, sets and coherence, the inside of a DRAM chip (cells, sense amplifiers, refresh,
+Rowhammer), unified memory, virtual memory and the TLB — and one load's 100-nanosecond round trip.
+
 Built with Remotion (React → video), a custom SVG 3D engine, three.js, offline neural narration (Kokoro‑82M) and a
 procedurally synthesized score + sound design. See [`inside-the-machine/README.md`](inside-the-machine/README.md).

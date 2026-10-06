@@ -129,12 +129,12 @@ const Mapping: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 };
 
 // ---------------------------------------------------------------- act 2: the walk
-const LEVELS = ["level 0", "level 1", "level 2", "level 3"];
+const LEVELS = ["top level", "middle level", "last level"];
 const Walk: React.FC<{ b: B; a: number }> = ({ b, a }) => {
   const f = useCurrentFrame();
-  const step = (i: number) => prog(f, b.tree - 4 + i * 16, 14, EASE.inOut);
+  const step = (i: number) => prog(f, b.tree - 4 + i * 20, 16, EASE.inOut);
   const tripsA = prog(f, b.trips - 6, 14);
-  const n = [0, 1, 2, 3].filter((i) => step(i) > 0.5).length;
+  const n = [0, 1, 2].filter((i) => step(i) > 0.5).length;
   return (
     <AbsoluteFill style={{ opacity: a }}>
       <div style={{ position: "absolute", left: 120, top: 110 }}>
@@ -151,8 +151,8 @@ const Walk: React.FC<{ b: B; a: number }> = ({ b, a }) => {
           </text>
         </g>
         {LEVELS.map((lv, i) => {
-          const x = 520 + i * 300;
-          const y = 260 + i * 120;
+          const x = 560 + i * 380;
+          const y = 260 + i * 150;
           const p = step(i);
           return (
             <g key={lv} opacity={0.35 + 0.65 * p}>
@@ -176,17 +176,24 @@ const Walk: React.FC<{ b: B; a: number }> = ({ b, a }) => {
           );
         })}
         {/* finally: the frame */}
-        <g opacity={prog(f, b.tree + 70, 14)}>
-          <rect x={1720} y={620} width={150} height={120} rx={14} fill={hexA(TIER.dram, 0.25)} stroke={TIER.dram} strokeWidth={2.5} />
-          <text x={1795} y={688} textAnchor="middle" fontFamily={FONT.mono} fontSize={18} fill={C.ink}>
+        <g opacity={prog(f, b.tree + 54, 14)}>
+          <path d={`M${560 + 2 * 380 + 240},${260 + 2 * 150 + 108} C${1680},${568} ${1680},${700} ${1700},${700}`} fill="none" stroke={TIER.dram} strokeWidth={2.5} />
+          <rect x={1700} y={640} width={170} height={120} rx={14} fill={hexA(TIER.dram, 0.25)} stroke={TIER.dram} strokeWidth={2.5} />
+          <text x={1785} y={708} textAnchor="middle" fontFamily={FONT.mono} fontSize={18} fill={C.ink}>
             the data
           </text>
         </g>
       </svg>
-      <div style={{ position: "absolute", left: 160, top: 700, opacity: tripsA }}>
-        <div style={{ fontFamily: FONT.mono, fontWeight: 700, fontSize: 64, color: BAD, fontVariantNumeric: "tabular-nums" }}>+{n}</div>
-        <div style={{ fontFamily: FONT.ui, fontWeight: 700, fontSize: 16, letterSpacing: "0.3em", color: hexA(C.ink, 0.6) }}>EXTRA TRIPS TO MEMORY</div>
-        <div style={{ fontFamily: FONT.mono, fontSize: 18, color: C.ink3, marginTop: 6 }}>…for every single access</div>
+      <div style={{ position: "absolute", left: 160, top: 720, opacity: tripsA }}>
+        <div style={{ display: "flex", gap: 14 }}>
+          {[0, 1, 2].map((i) => (
+            <div key={i} style={{ width: 54, height: 54, borderRadius: 27, border: `3px solid ${BAD}`, background: i < n ? hexA(BAD, 0.35) : "transparent", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FONT.mono, fontWeight: 700, fontSize: 22, color: C.ink }}>
+              {i < n ? "+1" : ""}
+            </div>
+          ))}
+        </div>
+        <div style={{ fontFamily: FONT.ui, fontWeight: 700, fontSize: 16, letterSpacing: "0.3em", color: hexA(C.ink, 0.6), marginTop: 12 }}>EXTRA TRIPS TO MEMORY</div>
+        <div style={{ fontFamily: FONT.mono, fontSize: 18, color: C.ink3, marginTop: 6 }}>…for every single access · illustrative</div>
       </div>
     </AbsoluteFill>
   );

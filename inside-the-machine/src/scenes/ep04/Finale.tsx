@@ -38,8 +38,8 @@ const LEVELS = [
   { key: "tlb", name: "TLB", y: 270, col: C.pink, ns: 0.3 },
   { key: "l1", name: "L1 cache", y: 360, col: TIER.l1, ns: 1 },
   { key: "l2", name: "L2 cache", y: 450, col: TIER.l2, ns: 6 },
-  { key: "slc", name: "system cache", y: 540, col: TIER.slc, ns: 12 },
-  { key: "mc", name: "memory controller", y: 630, col: C.indigo, ns: 20 },
+  { key: "slc", name: "system cache", y: 540, col: TIER.slc, ns: 20 },
+  { key: "mc", name: "memory controller", y: 630, col: C.indigo, ns: 30 },
   { key: "dram", name: "DRAM", y: 760, col: TIER.dram, ns: 95 },
 ] as const;
 
@@ -72,9 +72,9 @@ const Trip: React.FC<{ b: B; a: number }> = ({ b, a }) => {
       <div style={{ position: "absolute", left: 120, top: 110 }}>
         <Kicker color={C.cyan}>{showQuick ? "but usually…" : "one load, all the way down"}</Kicker>
       </div>
-      <Glow x={SX} y={reqY} size={600} color={C.amber} a={0.14} />
+      <Glow x={SX + 170} y={reqY} size={600} color={C.amber} a={0.14} />
       <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
-        <line x1={SX} y1={LEVELS[0].y} x2={SX} y2={LEVELS[6].y} stroke={hexA(C.ink, 0.15)} strokeWidth={4} />
+        <line x1={SX + 170} y1={LEVELS[0].y} x2={SX + 170} y2={LEVELS[6].y} stroke={hexA(C.ink, 0.15)} strokeWidth={4} />
         {LEVELS.map((L, i) => {
           const reached = i === 0 || f >= arrive[i] - 2;
           const missed = !showQuick && reached && i > 1 && i < 6 && (back > 0 || depth > i + 0.2);
@@ -115,7 +115,7 @@ const Trip: React.FC<{ b: B; a: number }> = ({ b, a }) => {
         })}
         {/* the request / the returning burst */}
         {!showQuick && f > b.once + 4 && (
-          <g transform={`translate(${SX} ${reqY})`}>
+          <g transform={`translate(${SX + 170} ${reqY})`}>
             <rect x={-60} y={-18} width={120} height={36} rx={18} fill={hexA(back > 0 ? C.cyan : C.amber, 0.35)} stroke={back > 0 ? C.cyan : C.amber} strokeWidth={2.5} style={{ filter: `drop-shadow(0 0 12px ${back > 0 ? C.cyan : C.amber})` }} />
             <text y={6} textAnchor="middle" fontFamily={FONT.mono} fontWeight={700} fontSize={16} fill={C.ink}>
               {back > 0 ? "DATA" : "LOAD"}
@@ -126,7 +126,7 @@ const Trip: React.FC<{ b: B; a: number }> = ({ b, a }) => {
         {showQuick && (
           <g>
             {quick > 0 && quickBack < 1 && (
-              <g transform={`translate(${SX} ${quickBack > 0 ? mix(LEVELS[2].y, LEVELS[0].y, quickBack) : mix(LEVELS[0].y, LEVELS[2].y, quick)})`}>
+              <g transform={`translate(${SX + 170} ${quickBack > 0 ? mix(LEVELS[2].y, LEVELS[0].y, quickBack) : mix(LEVELS[0].y, LEVELS[2].y, quick)})`}>
                 <rect x={-60} y={-18} width={120} height={36} rx={18} fill={hexA(OK, 0.35)} stroke={OK} strokeWidth={2.5} />
                 <text y={6} textAnchor="middle" fontFamily={FONT.mono} fontWeight={700} fontSize={16} fill={C.ink}>
                   LOAD
