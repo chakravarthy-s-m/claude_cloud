@@ -267,8 +267,8 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const chipA = 1 - prog(f, b.engine - 10, 14);
   const streamA = inOut(f, b.engine - 8, 14, b.ctrl - 10, 14);
   const matA = prog(f, b.ctrl - 12, 14);
-  const side = prog(f, b.keyboard - 16, 24, EASE.inOut) * (1 - prog(f, b.top + 10, 30, EASE.inOut));
-  const kmA = inOut(f, b.keyboard - 10, 14, b.top + 10, 16);
+  const side = prog(f, b.familiar - 6, 24, EASE.inOut) * (1 - prog(f, b.again - 14, 26, EASE.inOut));
+  const kmA = inOut(f, b.familiar + 4, 16, b.again - 12, 16);
   const mScale = mix(1, 0.72, side);
   const mx = mix(960 - (GX * CELL + 120) / 2, 90, side);
   return (
@@ -303,8 +303,9 @@ const sfx = (s: SceneData): SfxEvent[] => {
     { at: b.oneRow - 6, name: "scan", vol: 0.35 },
     { at: b.columns - 6, name: "zap", vol: 0.25 },
     { at: b.voltage - 4, name: "hum", vol: 0.25 },
-    { at: b.keyboard - 10, name: "key_click", vol: 0.4 },
-    { at: b.keyboard - 4, name: "key_click", vol: 0.35 },
+    { at: b.familiar + 4, name: "whoosh_soft", vol: 0.3 },
+    { at: b.keyboard - 6, name: "key_click", vol: 0.4 },
+    { at: b.keyboard, name: "key_click", vol: 0.35 },
     { at: b.top - 4, name: "sweep_down", vol: 0.25 },
     { at: b.again - 6, name: "riser", vol: 0.3 },
   ];
