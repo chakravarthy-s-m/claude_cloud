@@ -2,10 +2,10 @@
 
 **A cinematic explainer series about how computers really work — built entirely in code.**
 
-| Episode 01 | Episode 02 |
-|---|---|
-| ![Episode 01 — From Keystroke to Electron](docs/ep01-thumbnail.jpg) | ![Episode 02 — Painting with Light](docs/ep02-thumbnail.jpg) |
-| **From Keystroke → Electron** — how a modern Mac really works (≈ 11 min) | **Painting with Light** — how your Mac turns numbers into light (≈ 9 min) |
+| Episode 01 | Episode 02 | Episode 03 |
+|---|---|---|
+| ![Episode 01 — From Keystroke to Electron](docs/ep01-thumbnail.jpg) | ![Episode 02 — Painting with Light](docs/ep02-thumbnail.jpg) | ![Episode 03 — Power On](docs/ep03-thumbnail.jpg) |
+| **From Keystroke → Electron** — how a modern Mac really works (≈ 11 min) | **Painting with Light** — how your Mac turns numbers into light (≈ 9 min) | **Power On** — from the power button to your desktop (≈ 6.5 min) |
 
 ### Episode 01 — From Keystroke → Electron (1080p30)
 
@@ -24,6 +24,17 @@ and fragment shading (with a real software rasterizer), Apple's tile‑based def
 compositing, double buffering, tearing and ProMotion; scan‑out to the timing controller and the active matrix; an
 exploded LCD; liquid crystals twisting polarized light; mini‑LED local dimming, the p–n junction and the band gap;
 and finally the cone cells in your eye.
+
+### Episode 03 — Power On (1080p30)
+
+You press the power button. An always‑on power‑management chip wakes, brings up the voltage rails one at a time
+(and we see what happens when the order is wrong), the 24 MHz crystal starts to ring and the clocks lock, reset is
+released and a single core goes looking for its first instruction. From there it's a **chain of trust**: the Boot ROM
+etched into the chip (with Apple's public key built in), SHA‑256 fingerprints and signatures (a real one‑bit avalanche),
+the Low‑Level Bootloader in on‑chip SRAM training the DRAM (a live eye diagram) and reading the Secure‑Enclave‑signed
+boot policy, iBoot with the device tree and kernel, the Secure Enclave booting behind its own wall, the sealed system
+volume's hash tree, the kernel's virtual memory, cores, drivers and trust cache, launchd as process 1 and its hundreds
+of children, FileVault unlocking your data, and finally your desktop — every link verified before it runs.
 
 | | |
 |---|---|
@@ -54,7 +65,7 @@ render each scene as an independent, resumable segment.
 cd inside-the-machine
 npm install
 
-npm run studio                    # live preview: "Ep01", "Ep02" + every scene as its own composition
+npm run studio                    # live preview: "Ep01", "Ep02", "Ep03" + every scene as its own composition
 node tools/render.mjs             # production render → out/ep01-keystroke-to-electron.mp4
 node tools/render.mjs --ep=ep02   # → out/ep02-painting-with-light.mp4
 ```
@@ -104,7 +115,7 @@ tools/.venv/bin/python tools/music.py ep01           # score (reads the timeline
   reverb. Each scene gets a mood (`mystery → build → hit → wonder → drive → flow → deep → descent → awe → tick →
   finale`, set per scene in `script.json`), sections crossfade, the final chord resolves to major, and the whole score
   is **side‑chain ducked** (~9 dB) wherever the narration is speaking. Each episode has its own key/tempo via
-  `"score": {"transpose", "bpm"}` — Ep01 is D minor at 120 BPM, Ep02 F minor at 116 BPM.
+  `"score": {"transpose", "bpm"}` — Ep01 is D minor at 120 BPM, Ep02 F minor at 116 BPM, Ep03 A minor at 124 BPM.
 * **SFX** — `tools/sfx.py` builds every effect from oscillators, filtered noise, FM and synthetic reverb; scenes place
   them on exact frames next to the visuals that cause them.
 
@@ -120,7 +131,7 @@ inside-the-machine/
 ├─ episodes/epNN/script.json      ← the narration script (source of truth for timing, moods, slug)
 ├─ episodes/epNN/captions.srt     ← generated subtitles
 ├─ src/
-│  ├─ Root.tsx                    ← compositions: Ep01, Ep02 (+ thumbnails) + one per scene
+│  ├─ Root.tsx                    ← compositions: Ep01, Ep02, Ep03 (+ thumbnails) + one per scene
 │  ├─ theme.ts                    ← "Obsidian Neon" design tokens
 │  ├─ lib/
 │  │  ├─ anim.ts                  ← easing, springs, keyframes, deterministic random
@@ -131,6 +142,7 @@ inside-the-machine/
 │  ├─ scenes/ep01/                ← 16 scenes (ColdOpen … Finale); each exports Visual + sfx() + backdrop
 │  ├─ scenes/ep02/                ← 17 scenes + shared.tsx (procedural wallpaper, subpixel microscope) + raster.ts
 │  │                                 (z‑buffered software rasterizer for the teapot)
+│  ├─ scenes/ep03/                ← 12 scenes + shared.tsx (chain links, seals, keys, scope frames, desktop)
 │  └─ episodes/epNN/              ← timeline.json + scene registry + chapter colors + thumbnail
 ├─ public/audio/                  ← narration, sfx, music
 └─ tools/                         ← tts.py, sfx.py, music.py, glyph.py, render.mjs, stills.mjs, preview.sh, cues.py,
@@ -196,6 +208,35 @@ GPUs are tile‑based deferred renderers (tile sizes such as 32 × 32). Liquid R
 1,600 nits peak HDR. Blue GaN LEDs: Nobel Prize in Physics 2014 (Akasaki, Amano, Nakamura). Cone curves, panel
 layers and the LC "twist" are simplified illustrations; the tile‑saving bars are illustrative.
 
+## Episode 03 — chapters
+
+![Storyboard: 16 moments from Episode 03](docs/ep03-storyboard.jpg)
+
+| # | Chapter | What you see |
+|---|---|---|
+| 00 | Prologue | a dark keyboard, an x‑ray of the always‑on power circuit listening to the power key, the press, a cold slab of silicon lighting up, firmware → bootloaders → kernel → hundreds of processes, each one checked; whoever controls the first link controls the rest; a neon power‑on title |
+| 01 | Waking Up | the switch closing, the power‑management chip waking, five rails ramping one at a time on a scope (and the wrong order cracking the chip), the quartz crystal ringing up to 24 MHz and PLLs locking, a POWER/CLOCK/RESET timing diagram, one core waking with only the reset vector |
+| 02 | The Root of Trust | the Boot ROM's bits patterned into silicon, a write that bounces off, why a ROM flaw can't be patched (only new silicon), the public key rising out of the ROM; SHA‑256 with a real one‑bit avalanche, sign in the vault / verify in the Mac, restore mode when the check fails, the chain of trust |
+| 03 | The Bootloaders | LLB in on‑chip SRAM, helper firmware verified (storage, display, power, Thunderbolt), DRAM training as an eye diagram opening, the Secure‑Enclave‑signed boot policy, Full/Reduced/Permissive security unlocked with your password; iBoot paired with its macOS, the device tree, kernel, trust cache, the walled‑off Secure Enclave, the seal check and the jump |
+| 04 | The Kernel | the signed system volume's hash tree (one byte breaks the seal), checks on every read, malware with admin rights refused; virtual memory, cores waking and the scheduler, drivers matched to the device tree, the trust cache, PID 1 |
+| 05 | Hello, You | launchd and its descendants (logd, configd, bluetoothd, mds… some on demand), hundreds of processes before login, WindowServer and loginwindow; the password + the chip's fused secret inside the Secure Enclave unlocking the data keys, decryption on the fly, the menu bar, the Dock, the Finder, your desktop |
+| 06 | The Chain | the whole boot as thirteen links, every link verified, forged into a power button; next time: *Memory* |
+
+### Fact notes (Ep03)
+
+Based on Apple's Platform Security Guide and the Asahi Linux documentation. On Apple‑silicon Macs the Boot ROM is
+immutable, holds the Apple Root CA public key and verifies the Low‑Level Bootloader (LLB, a.k.a. iBoot1, in NOR flash);
+if a check fails the Mac waits in DFU mode to be restored by another Mac. LLB runs from on‑chip SRAM until DRAM is
+trained, loads verified firmware for on‑chip helpers, and reads the LocalPolicy (signed by the Secure Enclave), which
+records the per‑install security mode (Full / Reduced / Permissive; lowering it requires recoveryOS and an
+administrator's credentials). iBoot (stage 2) lives on the Preboot volume, paired with its macOS, loads the device
+tree, the static trust cache and the kernel collection, and verifies the Signed System Volume's seal before jumping
+into XNU; the SSV is a SHA‑256 hash tree whose root is the seal, and data is verified as it is read. The Secure
+Enclave boots sepOS from its own Boot ROM. launchd is PID 1. With FileVault, the user's password is combined with the
+hardware UID inside the Secure Enclave to unwrap the keys that protect the volume (the password itself isn't stored).
+The SHA‑256 values shown are real (1 flipped bit → 57 of 64 hex digits and 126 of 256 bits change). Rail voltages,
+the power‑sequencing order, the die floorplan, the ROM's location and the eye diagram are illustrative.
+
 ---
 
 ## Series roadmap
@@ -204,7 +245,7 @@ layers and the LC "twist" are simplified illustrations; the tile‑saving bars a
 |---|---|---|
 | 01 | From Keystroke → Electron | the whole stack, one keypress at a time ✅ |
 | 02 | Painting with Light | Metal, tile‑based deferred rendering, display engines, mini‑LED backlights, subpixels → photons ✅ |
-| 03 | Power On | Boot ROM → iBoot → Secure Enclave → XNU → launchd → login window |
+| 03 | Power On | power sequencing, Boot ROM, signatures, LLB, iBoot, the sealed system volume, XNU, launchd, FileVault ✅ |
 | 04 | Memory | caches, coherency, unified memory, DRAM cells & refresh, page tables in depth |
 | 05 | Storage | APFS internals, NVMe queues, wear leveling, ECC, how flash cells wear out |
 | 06 | The Neural Engine | matrix math on silicon, int8/fp16, how a prompt becomes multiply‑accumulates |

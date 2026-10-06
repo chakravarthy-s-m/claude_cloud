@@ -14,5 +14,9 @@ pixels and the frame buffer, through the GPU (SIMD groups, Metal, the Utah teapo
 tile-based deferred rendering), WindowServer compositing and VSync/ProMotion, scan-out and the active matrix, liquid
 crystals and polarizers, mini-LED backlights and the physics of LEDs — into the cone cells of your eye.
 
+**Episode 03 — Power On: From the power button to your desktop** (≈ 6.5 min, 1080p): power sequencing and clocks, the
+Boot ROM and the chain of trust (hashes, signatures, restore mode), the bootloaders (SRAM, DRAM training, boot policy,
+iBoot, the Secure Enclave), the sealed system volume, the kernel's first moves, launchd, FileVault — and your desktop.
+
 Built with Remotion (React → video), a custom SVG 3D engine, three.js, offline neural narration (Kokoro‑82M) and a
 procedurally synthesized score + sound design. See [`inside-the-machine/README.md`](inside-the-machine/README.md).

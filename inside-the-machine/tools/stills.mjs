@@ -29,4 +29,6 @@ for (const job of jobs) {
   }
 }
 await browser.close({ silent: true });
+// each bundle is ~400 MB in the temp dir; don't let them pile up
+if (serveUrl.includes("remotion-webpack-bundle-")) fs.rmSync(serveUrl, { recursive: true, force: true });
 console.log(`done in ${((Date.now() - t0) / 1000).toFixed(1)}s`);

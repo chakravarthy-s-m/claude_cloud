@@ -100,4 +100,6 @@ if (parts.every((p) => fs.existsSync(p)) && fs.existsSync(audio)) {
   );
   console.log(`\nFINAL → ${final}`);
 }
+// the webpack bundle (~400 MB in the temp dir) is no longer needed
+if (serveUrl.includes("remotion-webpack-bundle-")) fs.rmSync(serveUrl, { recursive: true, force: true });
 console.log(`total ${((Date.now() - t0) / 60000).toFixed(1)} min`);
