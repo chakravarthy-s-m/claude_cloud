@@ -14,9 +14,11 @@ export const SceneShell: React.FC<{
   zoomIn?: number;
   zoomOut?: number;
   blur?: boolean;
-}> = ({ dur, children, enter = 14, exit = 12, zoomIn = 1.035, zoomOut = 1.06, blur = true }) => {
+  /** hold the scene back this many frames (e.g. under a chapter card) */
+  delay?: number;
+}> = ({ dur, children, enter = 14, exit = 12, zoomIn = 1.035, zoomOut = 1.06, blur = true, delay = 0 }) => {
   const f = useCurrentFrame();
-  const a = enter > 0 ? prog(f, 0, enter, EASE.out) : 1;
+  const a = enter > 0 ? prog(f, delay, enter, EASE.out) : 1;
   const b = exit > 0 ? prog(f, dur - exit, exit, EASE.in) : 0;
   const scale = mix(zoomIn, 1, a) * mix(1, zoomOut, b);
   const bl = blur && !perf().noBlur ? (1 - a) * 10 + b * 14 : 0;

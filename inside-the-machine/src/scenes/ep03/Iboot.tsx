@@ -335,10 +335,10 @@ const Jump: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const a1 = 1 - prog(f, b.map - 8, 14, EASE.in);
-  const a2 = inOut(f, b.map - 8, 14, b.sep - 8, 12);
-  const a3 = inOut(f, b.sep - 8, 12, b.seal - 8, 12);
-  const a4 = prog(f, b.seal - 8, 12);
+  const a1 = 1 - prog(f, b.map - 16, 10, EASE.in);
+  const a2 = inOut(f, b.map - 6, 12, b.sep - 16, 10);
+  const a3 = inOut(f, b.sep - 6, 12, b.seal - 16, 10);
+  const a4 = prog(f, b.seal - 6, 12);
   return (
     <SceneShell dur={s.durationInFrames} enter={10} exit={0}>
       {a1 > 0.01 && <Handover b={b} a={a1} />}

@@ -90,7 +90,7 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const nodeHex = (lv: number, i: number) => (tamper > 0 && onPath(lv, i) && redLv(lv) > 0.5 ? hx(`bad${lv}-${i}`) : hx(`n${lv}-${i}`));
 
   return (
-    <SceneShell dur={s.durationInFrames} enter={0} exit={14}>
+    <SceneShell dur={s.durationInFrames} enter={22} exit={14} delay={66}>
       <div style={{ position: "absolute", left: 120, top: 110 }}>
         <Kicker color={C.violet}>{f < b.once - 6 ? "the signed system volume" : f < b.malware - 6 ? "checked on every read" : "even with admin rights"}</Kicker>
       </div>

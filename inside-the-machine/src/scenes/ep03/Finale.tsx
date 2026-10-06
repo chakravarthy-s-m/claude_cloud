@@ -246,8 +246,8 @@ const EndCard: React.FC<{ a: number }> = ({ a }) => (
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const chainA = inOut(f, 0, 12, b.next - 8, 16);
-  const nextA = inOut(f, b.next - 8, 16, b.x4end + 20, 16);
+  const chainA = inOut(f, 0, 12, b.next - 16, 12);
+  const nextA = inOut(f, b.next - 4, 14, b.x4end + 20, 16);
   const endA = prog(f, b.x4end + 20, 20);
   return (
     <SceneShell dur={s.durationInFrames} enter={10} exit={24}>

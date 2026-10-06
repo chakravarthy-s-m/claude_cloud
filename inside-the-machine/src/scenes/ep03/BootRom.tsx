@@ -226,12 +226,12 @@ const TwoSides: React.FC<{ b: B; a: number }> = ({ b, a }) => {
         <div style={{ position: "absolute", left: 1020, top: 150, width: 780, opacity: rightA }}>
           <Kicker color={BAD}>weakness</Kicker>
           <div style={{ fontFamily: FONT.display, fontWeight: 700, fontSize: 48, color: C.ink, marginTop: 10 }}>Nothing can fix it</div>
-          <div style={{ marginTop: 70, transform: `perspective(1200px) rotateX(40deg) scale(0.74) translateY(${clamp(newChip) * 500}px)`, transformOrigin: "0 0", opacity: 1 - clamp(newChip * 1.4) }}>
+          <div style={{ marginTop: 70, transform: `perspective(1200px) rotateX(40deg) scale(0.74) translateY(${clamp(newChip) * 160}px)`, transformOrigin: "0 0", opacity: 1 - clamp(newChip * 1.8) }}>
             <RomArray etch={1} glow={0.8} hit={upHit} w={820} h={460} flawAt={flawA} />
           </div>
           {/* a brand-new chip slides in */}
           {newChip > 0.01 && (
-            <div style={{ position: "absolute", left: 0, top: 184, transform: `perspective(1200px) rotateX(40deg) scale(0.74) translateY(${(1 - newChip) * -500}px)`, transformOrigin: "0 0", opacity: clamp(newChip * 1.5) }}>
+            <div style={{ position: "absolute", left: 0, top: 184, transform: `perspective(1200px) rotateX(40deg) scale(0.74) translateX(${(1 - newChip) * 500}px)`, transformOrigin: "0 0", opacity: clamp(newChip * 1.5) }}>
               <RomArray etch={1} glow={1} hit={0} w={820} h={460} tint={C.green} />
             </div>
           )}
@@ -482,12 +482,13 @@ const LoadNext: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const a1 = 1 - prog(f, b.strength - 8, 14, EASE.in);
-  const a2 = inOut(f, b.strength - 8, 14, b.key - 8, 14);
-  const a3 = inOut(f, b.key - 8, 14, b.job - 8, 14);
-  const a4 = prog(f, b.job - 8, 14);
+  // acts hand over sequentially (out, then in) so busy layouts never double-expose
+  const a1 = 1 - prog(f, b.strength - 18, 10, EASE.in);
+  const a2 = inOut(f, b.strength - 7, 12, b.key - 16, 10);
+  const a3 = inOut(f, b.key - 5, 12, b.job - 16, 10);
+  const a4 = prog(f, b.job - 5, 12);
   return (
-    <SceneShell dur={s.durationInFrames} enter={0} exit={12}>
+    <SceneShell dur={s.durationInFrames} enter={22} exit={12} delay={66}>
       {a1 > 0.01 && <Etched b={b} a={a1} />}
       {a2 > 0.01 && <TwoSides b={b} a={a2} />}
       {a3 > 0.01 && <TheKey b={b} a={a3} />}

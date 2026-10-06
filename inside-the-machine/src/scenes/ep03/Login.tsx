@@ -233,8 +233,8 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
   const a1 = 1 - prog(f, b.fv - 4, 14, EASE.in);
-  const a2 = inOut(f, b.fv - 8, 12, b.files - 6, 12);
-  const a3 = inOut(f, b.files - 6, 12, b.session - 8, 12);
+  const a2 = inOut(f, b.fv - 8, 12, b.files - 16, 10);
+  const a3 = inOut(f, b.files - 6, 12, b.session - 18, 10);
   const a4 = prog(f, b.session - 8, 12);
   return (
     <SceneShell dur={s.durationInFrames} enter={10} exit={14}>

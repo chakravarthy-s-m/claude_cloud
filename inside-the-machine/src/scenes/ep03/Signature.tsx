@@ -460,10 +460,10 @@ const Passes: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const a1 = 1 - prog(f, b.signs - 10, 14, EASE.in);
-  const a2 = inOut(f, b.signs - 10, 14, b.fails - 8, 12);
-  const a3 = inOut(f, b.fails - 8, 12, b.passes - 8, 12);
-  const a4 = prog(f, b.passes - 8, 12);
+  const a1 = 1 - prog(f, b.signs - 16, 10, EASE.in);
+  const a2 = inOut(f, b.signs - 6, 12, b.fails - 16, 10);
+  const a3 = inOut(f, b.fails - 6, 12, b.passes - 16, 10);
+  const a4 = prog(f, b.passes - 6, 12);
   return (
     <SceneShell dur={s.durationInFrames} enter={10} exit={14}>
       {a1 > 0.01 && <Hashing b={b} a={a1} />}

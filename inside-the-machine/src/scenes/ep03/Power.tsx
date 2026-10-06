@@ -545,11 +545,11 @@ const ResetCore: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const schA = 1 - prog(f, b.quartz - 10, 16, EASE.in);
-  const cryA = inOut(f, b.quartz - 8, 16, b.reset - 8, 14);
-  const resA = prog(f, b.reset - 8, 14);
+  const schA = 1 - prog(f, b.quartz - 18, 10, EASE.in);
+  const cryA = inOut(f, b.quartz - 6, 12, b.reset - 18, 12);
+  const resA = prog(f, b.reset - 5, 12);
   return (
-    <SceneShell dur={s.durationInFrames} enter={0} exit={14}>
+    <SceneShell dur={s.durationInFrames} enter={22} exit={14} delay={66}>
       {schA > 0.01 && <Schematic b={b} a={schA} />}
       {cryA > 0.01 && <Crystal b={b} a={cryA} />}
       {resA > 0.01 && <ResetCore b={b} a={resA} />}

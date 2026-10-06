@@ -364,11 +364,11 @@ const First: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const a1 = 1 - prog(f, b.cores - 8, 12, EASE.in);
-  const a2 = inOut(f, b.cores - 8, 12, b.walks - 8, 12);
-  const a3 = inOut(f, b.walks - 8, 12, b.every - 8, 12);
-  const a4 = inOut(f, b.every - 8, 12, b.first - 6, 10);
-  const a5 = prog(f, b.first - 6, 10);
+  const a1 = 1 - prog(f, b.cores - 14, 8, EASE.in);
+  const a2 = inOut(f, b.cores - 6, 10, b.walks - 14, 8);
+  const a3 = inOut(f, b.walks - 6, 10, b.every - 14, 8);
+  const a4 = inOut(f, b.every - 6, 10, b.first - 12, 8);
+  const a5 = prog(f, b.first - 4, 10);
   return (
     <SceneShell dur={s.durationInFrames} enter={10} exit={10}>
       {a1 > 0.01 && <Vm b={b} a={a1} />}

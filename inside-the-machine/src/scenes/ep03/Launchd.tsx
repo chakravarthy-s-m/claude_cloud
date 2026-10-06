@@ -125,7 +125,7 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const zoomOut = prog(f, b.within - 10, 30, EASE.inOut) * (1 - prog(f, b.ws - 10, 30, EASE.inOut) * 0.5);
   const sc = mix(1, 0.86, zoomOut);
   return (
-    <SceneShell dur={s.durationInFrames} enter={0} exit={14}>
+    <SceneShell dur={s.durationInFrames} enter={22} exit={14} delay={66}>
       <div style={{ position: "absolute", left: 120, top: 110 }}>
         <Kicker color={C.green}>{f < b.ws - 6 ? "process number one" : "two very important children"}</Kicker>
       </div>

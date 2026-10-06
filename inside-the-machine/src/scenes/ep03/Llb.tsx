@@ -347,11 +347,11 @@ const Policy: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const a1 = 1 - prog(f, b.train - 10, 14, EASE.in);
-  const a2 = inOut(f, b.train - 10, 14, b.policy - 8, 12);
-  const a3 = prog(f, b.policy - 8, 12);
+  const a1 = 1 - prog(f, b.train - 16, 10, EASE.in);
+  const a2 = inOut(f, b.train - 6, 12, b.policy - 16, 10);
+  const a3 = prog(f, b.policy - 6, 12);
   return (
-    <SceneShell dur={s.durationInFrames} enter={0} exit={14}>
+    <SceneShell dur={s.durationInFrames} enter={22} exit={14} delay={66}>
       {a1 > 0.01 && <OnChip b={b} a={a1} />}
       {a2 > 0.01 && <Training b={b} a={a2} />}
       {a3 > 0.01 && <Policy b={b} a={a3} />}
