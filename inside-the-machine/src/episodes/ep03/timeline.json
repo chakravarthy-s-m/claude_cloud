@@ -1,0 +1,617 @@
+{
+ "episode": "ep03",
+ "fps": 30,
+ "voice": "af_heart",
+ "scenes": [
+  {
+   "id": "coldOpen",
+   "chapter": "prologue",
+   "from": 0,
+   "durationInFrames": 1110,
+   "cues": [
+    {
+     "id": "o1",
+     "from": 54,
+     "durationInFrames": 33,
+     "seconds": 1.088,
+     "text": "Your Mac is off.",
+     "say": "Your Mac is off.",
+     "audio": "audio/narration/ep03/o1.wav"
+    },
+    {
+     "id": "o2",
+     "from": 126,
+     "durationInFrames": 175,
+     "seconds": 5.803,
+     "text": "Almost. Somewhere inside, a few tiny circuits are still awake \u2014 waiting for a single press.",
+     "say": "Almost. Somewhere inside, a few tiny circuits are still awake, waiting for a single press.",
+     "audio": "audio/narration/ep03/o2.wav"
+    },
+    {
+     "id": "o3",
+     "from": 330,
+     "durationInFrames": 184,
+     "seconds": 6.123,
+     "text": "And when it comes, a cold slab of silicon turns itself into a working computer, in a matter of seconds.",
+     "say": "And when it comes, a cold slab of silicon turns itself into a working computer, in a matter of seconds.",
+     "audio": "audio/narration/ep03/o3.wav"
+    },
+    {
+     "id": "o4",
+     "from": 528,
+     "durationInFrames": 162,
+     "seconds": 5.397,
+     "text": "Firmware. Bootloaders. A kernel. Hundreds of programs, each one starting the next.",
+     "say": "Firmware. Bootloaders. A kernel. Hundreds of programs, each one starting the next.",
+     "audio": "audio/narration/ep03/o4.wav"
+    },
+    {
+     "id": "o5",
+     "from": 704,
+     "durationInFrames": 91,
+     "seconds": 3.008,
+     "text": "And not one of them is trusted until it's been checked.",
+     "say": "And not one of them is trusted until it's been checked.",
+     "audio": "audio/narration/ep03/o5.wav"
+    },
+    {
+     "id": "o6",
+     "from": 812,
+     "durationInFrames": 164,
+     "seconds": 5.44,
+     "text": "Because whoever controls the very first instruction\u2026 controls everything that comes after it.",
+     "say": "Because whoever controls the very first instruction, controls everything that comes after it.",
+     "audio": "audio/narration/ep03/o6.wav"
+    },
+    {
+     "id": "o7",
+     "from": 1002,
+     "durationInFrames": 90,
+     "seconds": 2.987,
+     "text": "Today: what really happens when you press the power button.",
+     "say": "Today: what really happens when you press the power button.",
+     "audio": "audio/narration/ep03/o7.wav"
+    }
+   ]
+  },
+  {
+   "id": "title",
+   "chapter": "prologue",
+   "from": 1110,
+   "durationInFrames": 180,
+   "cues": []
+  },
+  {
+   "id": "power",
+   "chapter": "waking",
+   "from": 1290,
+   "durationInFrames": 1150,
+   "cues": [
+    {
+     "id": "w1",
+     "from": 90,
+     "durationInFrames": 162,
+     "seconds": 5.376,
+     "text": "The press closes a tiny switch, and wakes a power-management chip that never fully sleeps.",
+     "say": "The press closes a tiny switch, and wakes a power-management chip that never fully sleeps.",
+     "audio": "audio/narration/ep03/w1.wav"
+    },
+    {
+     "id": "w2",
+     "from": 265,
+     "durationInFrames": 252,
+     "seconds": 8.384,
+     "text": "It switches on the processor's power supplies one at a time, in a strict order \u2014 waiting for each voltage to settle before starting the next.",
+     "say": "It switches on the processor's power supplies one at a time, in a strict order, waiting for each voltage to settle before starting the next.",
+     "audio": "audio/narration/ep03/w2.wav"
+    },
+    {
+     "id": "w2b",
+     "from": 530,
+     "durationInFrames": 119,
+     "seconds": 3.947,
+     "text": "Get the order wrong, and the chip could misbehave \u2014 or even be damaged.",
+     "say": "Get the order wrong, and the chip could misbehave, or even be damaged.",
+     "audio": "audio/narration/ep03/w2b.wav"
+    },
+    {
+     "id": "w3",
+     "from": 663,
+     "durationInFrames": 207,
+     "seconds": 6.869,
+     "text": "A quartz crystal starts to vibrate \u2014 the 24 MHz heartbeat from Episode One \u2014 and the clocks lock on.",
+     "say": "A quartz crystal starts to vibrate, the twenty-four megahertz heartbeat from Episode One, and the clocks lock on.",
+     "audio": "audio/narration/ep03/w3.wav"
+    },
+    {
+     "id": "w4",
+     "from": 884,
+     "durationInFrames": 246,
+     "seconds": 8.171,
+     "text": "Then the reset signal is released. A single processor core wakes up, knowing exactly one thing: where to find its first instruction.",
+     "say": "Then the reset signal is released. A single processor core wakes up, knowing exactly one thing: where to find its first instruction.",
+     "audio": "audio/narration/ep03/w4.wav"
+    }
+   ]
+  },
+  {
+   "id": "bootrom",
+   "chapter": "trust",
+   "from": 2440,
+   "durationInFrames": 1230,
+   "cues": [
+    {
+     "id": "r1",
+     "from": 90,
+     "durationInFrames": 233,
+     "seconds": 7.744,
+     "text": "That instruction lives in the Boot ROM: a small program etched into the chip itself, when it was made. It can never be changed.",
+     "say": "That instruction lives in the Boot ROM: a small program etched into the chip itself, when it was made. It can never be changed.",
+     "audio": "audio/narration/ep03/r1.wav"
+    },
+    {
+     "id": "r1b",
+     "from": 336,
+     "durationInFrames": 326,
+     "seconds": 10.837,
+     "text": "That's its strength, and its weakness: if a flaw were ever found in a Boot ROM, no software update could fix it \u2014 only a new chip. So it's kept as small and simple as possible.",
+     "say": "That's its strength, and its weakness: if a flaw were ever found in a Boot ROM, no software update could fix it, only a new chip. So it's kept as small and simple as possible.",
+     "audio": "audio/narration/ep03/r1b.wav"
+    },
+    {
+     "id": "r2",
+     "from": 676,
+     "durationInFrames": 158,
+     "seconds": 5.248,
+     "text": "Built into it is a key \u2014 Apple's public key. Everything that follows is anchored to it.",
+     "say": "Built into it is a key, Apple's public key. Everything that follows is anchored to it.",
+     "audio": "audio/narration/ep03/r2.wav"
+    },
+    {
+     "id": "r3",
+     "from": 847,
+     "durationInFrames": 213,
+     "seconds": 7.083,
+     "text": "The Boot ROM's job is to load the next stage, the Low-Level Bootloader, from a small flash chip on the logic board.",
+     "say": "The Boot ROM's job is to load the next stage, the Low-Level Bootloader, from a small flash chip on the logic board.",
+     "audio": "audio/narration/ep03/r3.wav"
+    },
+    {
+     "id": "r4",
+     "from": 1071,
+     "durationInFrames": 138,
+     "seconds": 4.587,
+     "text": "But before it runs a single instruction of it, the Boot ROM checks its signature.",
+     "say": "But before it runs a single instruction of it, the Boot ROM checks its signature.",
+     "audio": "audio/narration/ep03/r4.wav"
+    }
+   ]
+  },
+  {
+   "id": "signature",
+   "chapter": "trust",
+   "from": 3670,
+   "durationInFrames": 1087,
+   "cues": [
+    {
+     "id": "g1",
+     "from": 18,
+     "durationInFrames": 168,
+     "seconds": 5.589,
+     "text": "Here's how. The code is run through a hash function, which boils it down to a short fingerprint.",
+     "say": "Here's how. The code is run through a hash function, which boils it down to a short fingerprint.",
+     "audio": "audio/narration/ep03/g1.wav"
+    },
+    {
+     "id": "g2",
+     "from": 196,
+     "durationInFrames": 116,
+     "seconds": 3.84,
+     "text": "Change even a single bit, and the fingerprint changes completely.",
+     "say": "Change even a single bit, and the fingerprint changes completely.",
+     "audio": "audio/narration/ep03/g2.wav"
+    },
+    {
+     "id": "g3",
+     "from": 326,
+     "durationInFrames": 265,
+     "seconds": 8.832,
+     "text": "Apple signs that fingerprint with a private key that never leaves Apple. The public key in the Boot ROM can check the signature \u2014 but it can't forge one.",
+     "say": "Apple signs that fingerprint with a private key that never leaves Apple. The public key in the Boot ROM can check the signature, but it can't forge one.",
+     "audio": "audio/narration/ep03/g3.wav"
+    },
+    {
+     "id": "g4",
+     "from": 606,
+     "durationInFrames": 166,
+     "seconds": 5.504,
+     "text": "If the check fails, the Mac refuses to start, and waits for another computer to restore it.",
+     "say": "If the check fails, the Mac refuses to start, and waits for another computer to restore it.",
+     "audio": "audio/narration/ep03/g4.wav"
+    },
+    {
+     "id": "g5",
+     "from": 785,
+     "durationInFrames": 279,
+     "seconds": 9.28,
+     "text": "If it passes, control moves on. And from here on, every stage checks the next one before handing over. A chain of trust, anchored in silicon.",
+     "say": "If it passes, control moves on. And from here on, every stage checks the next one before handing over. A chain of trust, anchored in silicon.",
+     "audio": "audio/narration/ep03/g5.wav"
+    }
+   ]
+  },
+  {
+   "id": "llb",
+   "chapter": "loaders",
+   "from": 4757,
+   "durationInFrames": 1370,
+   "cues": [
+    {
+     "id": "l1",
+     "from": 90,
+     "durationInFrames": 224,
+     "seconds": 7.445,
+     "text": "The Low-Level Bootloader starts out in a tiny scratchpad of memory inside the chip \u2014 because the main memory isn't ready yet.",
+     "say": "The Low-Level Bootloader starts out in a tiny scratchpad of memory inside the chip, because the main memory isn't ready yet.",
+     "audio": "audio/narration/ep03/l1.wav"
+    },
+    {
+     "id": "l2",
+     "from": 325,
+     "durationInFrames": 216,
+     "seconds": 7.189,
+     "text": "It verifies and loads firmware for the chip's helper processors: storage, display, power management, Thunderbolt.",
+     "say": "It verifies and loads firmware for the chip's helper processors: storage, display, power management, Thunderbolt.",
+     "audio": "audio/narration/ep03/l2.wav"
+    },
+    {
+     "id": "l3",
+     "from": 555,
+     "durationInFrames": 228,
+     "seconds": 7.573,
+     "text": "It trains the DRAM \u2014 sending test patterns back and forth, fine-tuning the timing until every bit arrives cleanly.",
+     "say": "It trains the D RAM, sending test patterns back and forth, fine-tuning the timing until every bit arrives cleanly.",
+     "audio": "audio/narration/ep03/l3.wav"
+    },
+    {
+     "id": "l4",
+     "from": 795,
+     "durationInFrames": 226,
+     "seconds": 7.531,
+     "text": "And it reads the boot policy: a small file, signed by the Secure Enclave, that records the security settings you chose.",
+     "say": "And it reads the boot policy: a small file, signed by the Secure Enclave, that records the security settings you chose.",
+     "audio": "audio/narration/ep03/l4.wav"
+    },
+    {
+     "id": "l5",
+     "from": 1035,
+     "durationInFrames": 315,
+     "seconds": 10.475,
+     "text": "That policy is also the only way to start something other than macOS, like Linux: you have to lower the security setting yourself, from recovery, with your password.",
+     "say": "That policy is also the only way to start something other than macOS, like Linux: you have to lower the security setting yourself, from recovery, with your password.",
+     "audio": "audio/narration/ep03/l5.wav"
+    }
+   ]
+  },
+  {
+   "id": "iboot",
+   "chapter": "loaders",
+   "from": 6127,
+   "durationInFrames": 852,
+   "cues": [
+    {
+     "id": "i1",
+     "from": 18,
+     "durationInFrames": 188,
+     "seconds": 6.251,
+     "text": "Then it hands over to iBoot \u2014 the main bootloader, which belongs to the version of macOS you're starting.",
+     "say": "Then it hands over to iBoot, the main bootloader, which belongs to the version of macOS you're starting.",
+     "audio": "audio/narration/ep03/i1.wav"
+    },
+    {
+     "id": "i2",
+     "from": 218,
+     "durationInFrames": 224,
+     "seconds": 7.445,
+     "text": "iBoot loads a map of all the hardware, called the device tree, and the kernel itself \u2014 checking every signature along the way.",
+     "say": "iBoot loads a map of all the hardware, called the device tree, and the kernel itself, checking every signature along the way.",
+     "audio": "audio/narration/ep03/i2.wav"
+    },
+    {
+     "id": "i3",
+     "from": 454,
+     "durationInFrames": 219,
+     "seconds": 7.296,
+     "text": "Meanwhile, the Secure Enclave boots its own operating system, from its own Boot ROM, walled off from everything else.",
+     "say": "Meanwhile, the Secure Enclave boots its own operating system, from its own Boot ROM, walled off from everything else.",
+     "audio": "audio/narration/ep03/i3.wav"
+    },
+    {
+     "id": "i4",
+     "from": 687,
+     "durationInFrames": 141,
+     "seconds": 4.693,
+     "text": "Finally, iBoot checks the seal on the system volume\u2026 and jumps into the kernel.",
+     "say": "Finally, iBoot checks the seal on the system volume, and jumps into the kernel.",
+     "audio": "audio/narration/ep03/i4.wav"
+    }
+   ]
+  },
+  {
+   "id": "seal",
+   "chapter": "kernel",
+   "from": 6979,
+   "durationInFrames": 1103,
+   "cues": [
+    {
+     "id": "s1",
+     "from": 90,
+     "durationInFrames": 251,
+     "seconds": 8.341,
+     "text": "That seal protects macOS itself. The operating system lives on a read-only volume, where every file has its own hash.",
+     "say": "That seal protects macOS itself. The operating system lives on a read-only volume, where every file has its own hash.",
+     "audio": "audio/narration/ep03/s1.wav"
+    },
+    {
+     "id": "s2",
+     "from": 352,
+     "durationInFrames": 177,
+     "seconds": 5.888,
+     "text": "Those hashes are hashed again, and again, all the way up a tree, into a single value: the seal.",
+     "say": "Those hashes are hashed again, and again, all the way up a tree, into a single value: the seal.",
+     "audio": "audio/narration/ep03/s2.wav"
+    },
+    {
+     "id": "s3",
+     "from": 542,
+     "durationInFrames": 109,
+     "seconds": 3.605,
+     "text": "Change one byte, in one file, anywhere \u2014 and the seal breaks.",
+     "say": "Change one byte, in one file, anywhere, and the seal breaks.",
+     "audio": "audio/narration/ep03/s3.wav"
+    },
+    {
+     "id": "s4",
+     "from": 664,
+     "durationInFrames": 224,
+     "seconds": 7.445,
+     "text": "And it isn't checked just once. Every time the kernel reads from the system volume, it hashes the data again and compares.",
+     "say": "And it isn't checked just once. Every time the kernel reads from the system volume, it hashes the data again and compares.",
+     "audio": "audio/narration/ep03/s4.wav"
+    },
+    {
+     "id": "s5",
+     "from": 902,
+     "durationInFrames": 180,
+     "seconds": 5.995,
+     "text": "That's why even malware with administrator rights can't quietly rewrite the system. It would break the seal.",
+     "say": "That's why even malware with administrator rights can't quietly rewrite the system. It would break the seal.",
+     "audio": "audio/narration/ep03/s5.wav"
+    }
+   ]
+  },
+  {
+   "id": "kernel",
+   "chapter": "kernel",
+   "from": 8082,
+   "durationInFrames": 890,
+   "cues": [
+    {
+     "id": "k1",
+     "from": 18,
+     "durationInFrames": 265,
+     "seconds": 8.811,
+     "text": "Now the kernel is in charge. First, it switches on virtual memory, giving itself \u2014 and every future program \u2014 its own map of addresses.",
+     "say": "Now the kernel is in charge. First, it switches on virtual memory, giving itself, and every future program, its own map of addresses.",
+     "audio": "audio/narration/ep03/k1.wav"
+    },
+    {
+     "id": "k2",
+     "from": 294,
+     "durationInFrames": 128,
+     "seconds": 4.245,
+     "text": "It wakes the other processor cores, one by one, and starts the scheduler.",
+     "say": "It wakes the other processor cores, one by one, and starts the scheduler.",
+     "audio": "audio/narration/ep03/k2.wav"
+    },
+    {
+     "id": "k3",
+     "from": 434,
+     "durationInFrames": 127,
+     "seconds": 4.224,
+     "text": "It walks the device tree and matches each piece of hardware with a driver.",
+     "say": "It walks the device tree and matches each piece of hardware with a driver.",
+     "audio": "audio/narration/ep03/k3.wav"
+    },
+    {
+     "id": "k3b",
+     "from": 574,
+     "durationInFrames": 213,
+     "seconds": 7.083,
+     "text": "Every system program it starts must match a list of approved fingerprints \u2014 the trust cache that iBoot loaded and checked.",
+     "say": "Every system program it starts must match a list of approved fingerprints, the trust cache that iBoot loaded and checked.",
+     "audio": "audio/narration/ep03/k3b.wav"
+    },
+    {
+     "id": "k4",
+     "from": 800,
+     "durationInFrames": 66,
+     "seconds": 2.197,
+     "text": "Then it creates the very first program.",
+     "say": "Then it creates the very first program.",
+     "audio": "audio/narration/ep03/k4.wav"
+    }
+   ]
+  },
+  {
+   "id": "launchd",
+   "chapter": "hello",
+   "from": 8972,
+   "durationInFrames": 939,
+   "cues": [
+    {
+     "id": "d1",
+     "from": 90,
+     "durationInFrames": 160,
+     "seconds": 5.333,
+     "text": "Process number one: launchd. Every other program on your Mac will be its descendant.",
+     "say": "Process number one: launchd. Every other program on your Mac will be its descendant.",
+     "audio": "audio/narration/ep03/d1.wav"
+    },
+    {
+     "id": "d2",
+     "from": 264,
+     "durationInFrames": 321,
+     "seconds": 10.688,
+     "text": "It reads hundreds of small configuration files, and starts the system's background services \u2014 logging, networking, Bluetooth, search \u2014 many of them only when they're needed.",
+     "say": "It reads hundreds of small configuration files, and starts the system's background services, logging, networking, Bluetooth, search, many of them only when they're needed.",
+     "audio": "audio/narration/ep03/d2.wav"
+    },
+    {
+     "id": "d2b",
+     "from": 598,
+     "durationInFrames": 143,
+     "seconds": 4.736,
+     "text": "Within seconds, hundreds of processes are running \u2014 before you've even logged in.",
+     "say": "Within seconds, hundreds of processes are running, before you've even logged in.",
+     "audio": "audio/narration/ep03/d2b.wav"
+    },
+    {
+     "id": "d3",
+     "from": 753,
+     "durationInFrames": 166,
+     "seconds": 5.504,
+     "text": "One of them is the WindowServer, which takes over the display. Another is the login window.",
+     "say": "One of them is the Window Server, which takes over the display. Another is the login window.",
+     "audio": "audio/narration/ep03/d3.wav"
+    }
+   ]
+  },
+  {
+   "id": "login",
+   "chapter": "hello",
+   "from": 9911,
+   "durationInFrames": 710,
+   "cues": [
+    {
+     "id": "n1",
+     "from": 18,
+     "durationInFrames": 110,
+     "seconds": 3.648,
+     "text": "You type your password. Your Mac never stores the password itself.",
+     "say": "You type your password. Your Mac never stores the password itself.",
+     "audio": "audio/narration/ep03/n1.wav"
+    },
+    {
+     "id": "n2",
+     "from": 139,
+     "durationInFrames": 258,
+     "seconds": 8.576,
+     "text": "With FileVault on, the Secure Enclave combines it with a secret key fused into this one chip, to unlock the keys that protect your data.",
+     "say": "With FileVault on, the Secure Enclave combines it with a secret key fused into this one chip, to unlock the keys that protect your data.",
+     "audio": "audio/narration/ep03/n2.wav"
+    },
+    {
+     "id": "n3",
+     "from": 410,
+     "durationInFrames": 109,
+     "seconds": 3.627,
+     "text": "Your files were encrypted the whole time. Now they can be read.",
+     "say": "Your files were encrypted the whole time. Now they can be read.",
+     "audio": "audio/narration/ep03/n3.wav"
+    },
+    {
+     "id": "n4",
+     "from": 534,
+     "durationInFrames": 153,
+     "seconds": 5.077,
+     "text": "launchd starts your session: the menu bar, the Dock, the Finder\u2026 and your desktop.",
+     "say": "launchd starts your session: the menu bar, the Dock, the Finder, and your desktop.",
+     "audio": "audio/narration/ep03/n4.wav"
+    }
+   ]
+  },
+  {
+   "id": "finale",
+   "chapter": "epilogue",
+   "from": 10621,
+   "durationInFrames": 1189,
+   "cues": [
+    {
+     "id": "x1",
+     "from": 30,
+     "durationInFrames": 37,
+     "seconds": 1.216,
+     "text": "So, from the top.",
+     "say": "So, from the top.",
+     "audio": "audio/narration/ep03/x1.wav"
+    },
+    {
+     "id": "x2",
+     "from": 81,
+     "durationInFrames": 477,
+     "seconds": 15.893,
+     "text": "A press. Power, in sequence. A crystal, a clock, a single core. The Boot ROM checks the bootloader. The bootloader checks iBoot. iBoot checks the kernel. The kernel checks every system file it reads. launchd. The login window. You.",
+     "say": "A press. Power, in sequence. A crystal, a clock, a single core. The Boot ROM checks the bootloader. The bootloader checks iBoot. iBoot checks the kernel. The kernel checks every system file it reads. launchd. The login window. You.",
+     "audio": "audio/narration/ep03/x2.wav"
+    },
+    {
+     "id": "x3",
+     "from": 576,
+     "durationInFrames": 207,
+     "seconds": 6.891,
+     "text": "Every link verified before it runs. A chain of trust, forged from scratch, every time you press that button.",
+     "say": "Every link verified before it runs. A chain of trust, forged from scratch, every time you press that button.",
+     "audio": "audio/narration/ep03/x3.wav"
+    },
+    {
+     "id": "x4",
+     "from": 810,
+     "durationInFrames": 184,
+     "seconds": 6.123,
+     "text": "Next time: memory. Where does all this data actually live \u2014 and how does the chip get to it so fast?",
+     "say": "Next time: memory. Where does all this data actually live, and how does the chip get to it so fast?",
+     "audio": "audio/narration/ep03/x4.wav"
+    }
+   ]
+  }
+ ],
+ "chapters": [
+  {
+   "id": "prologue",
+   "num": "00",
+   "title": "Prologue"
+  },
+  {
+   "id": "waking",
+   "num": "01",
+   "title": "Waking Up"
+  },
+  {
+   "id": "trust",
+   "num": "02",
+   "title": "The Root of Trust"
+  },
+  {
+   "id": "loaders",
+   "num": "03",
+   "title": "The Bootloaders"
+  },
+  {
+   "id": "kernel",
+   "num": "04",
+   "title": "The Kernel"
+  },
+  {
+   "id": "hello",
+   "num": "05",
+   "title": "Hello, You"
+  },
+  {
+   "id": "epilogue",
+   "num": "06",
+   "title": "The Chain"
+  }
+ ],
+ "durationInFrames": 11810
+}

@@ -51,6 +51,8 @@ export type KeyboardProps = {
   deck?: boolean;
   /** world-space translation of the whole keyboard */
   offset?: V3;
+  /** underglow color for `glow` (default cyan) */
+  glowColor?: string;
 };
 
 const TRAVEL = 9;
@@ -70,7 +72,9 @@ export const Keyboard3D: React.FC<KeyboardProps> = ({
   focusRadius = 900,
   deck = true,
   offset = [0, 0, 0],
+  glowColor = C.cyan,
 }) => {
+  const ug = `kb-under-${glowColor.replace("#", "")}`;
   const keys = KEYS.filter((k) => (filter ? filter(k) : true));
   const kc = (k: KeyDef): V3 => {
     const c = keyCenter(k);
@@ -97,10 +101,10 @@ export const Keyboard3D: React.FC<KeyboardProps> = ({
         <path key={`d${i}`} d={f.d} fill={f.fill} stroke={i === deckFaces.length - 1 ? "rgba(190,205,255,0.10)" : "rgba(190,205,255,0.05)"} strokeWidth={1} />
       ))}
       <defs>
-        <radialGradient id="kb-under">
-          <stop offset="0%" stopColor={C.cyan} stopOpacity={0.9} />
-          <stop offset="45%" stopColor={C.cyan} stopOpacity={0.25} />
-          <stop offset="100%" stopColor={C.cyan} stopOpacity={0} />
+        <radialGradient id={ug}>
+          <stop offset="0%" stopColor={glowColor} stopOpacity={0.9} />
+          <stop offset="45%" stopColor={glowColor} stopOpacity={0.25} />
+          <stop offset="100%" stopColor={glowColor} stopOpacity={0} />
         </radialGradient>
         <radialGradient id="kb-back">
           <stop offset="0%" stopColor="#9fb4ff" stopOpacity={0.35} />
@@ -115,7 +119,7 @@ export const Keyboard3D: React.FC<KeyboardProps> = ({
         return (
           <g key={`g${k.id}`} transform={m}>
             {backlight > 0 && <ellipse cx={0} cy={0} rx={k.w * PITCH * 0.62} ry={k.h * PITCH * 0.62} fill="url(#kb-back)" opacity={backlight} />}
-            {g > 0 && <ellipse cx={0} cy={0} rx={k.w * PITCH * 1.6} ry={k.h * PITCH * 1.6} fill="url(#kb-under)" opacity={g} />}
+            {g > 0 && <ellipse cx={0} cy={0} rx={k.w * PITCH * 1.6} ry={k.h * PITCH * 1.6} fill={`url(#${ug})`} opacity={g} />}
           </g>
         );
       })}

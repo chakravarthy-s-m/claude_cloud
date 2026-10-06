@@ -1,0 +1,509 @@
+1
+00:00:01,800 --> 00:00:02,888
+Your Mac is off.
+
+2
+00:00:04,200 --> 00:00:04,651
+Almost.
+
+3
+00:00:04,651 --> 00:00:10,003
+Somewhere inside, a few tiny circuits are
+still awake — waiting for a single press.
+
+4
+00:00:11,000 --> 00:00:15,742
+And when it comes, a cold slab of silicon
+turns itself into a working computer,
+
+5
+00:00:15,742 --> 00:00:17,123
+in a matter of seconds.
+
+6
+00:00:17,600 --> 00:00:18,215
+Firmware.
+
+7
+00:00:18,215 --> 00:00:19,035
+Bootloaders.
+
+8
+00:00:19,035 --> 00:00:19,650
+A kernel.
+
+9
+00:00:19,650 --> 00:00:22,997
+Hundreds of programs, each
+one starting the next.
+
+10
+00:00:23,467 --> 00:00:26,475
+And not one of them is trusted
+until it's been checked.
+
+11
+00:00:27,067 --> 00:00:30,141
+Because whoever controls
+the very first instruction…
+
+12
+00:00:30,141 --> 00:00:32,507
+controls everything that comes after it.
+
+13
+00:00:33,400 --> 00:00:36,387
+Today: what really happens when
+you press the power button.
+
+14
+00:00:46,000 --> 00:00:47,873
+The press closes a tiny switch,
+
+15
+00:00:47,873 --> 00:00:51,376
+and wakes a power-management
+chip that never fully sleeps.
+
+16
+00:00:51,833 --> 00:00:56,624
+It switches on the processor's power
+supplies one at a time, in a strict order —
+
+17
+00:00:56,624 --> 00:01:00,217
+waiting for each voltage to
+settle before starting the next.
+
+18
+00:01:00,667 --> 00:01:04,613
+Get the order wrong, and the chip
+could misbehave — or even be damaged.
+
+19
+00:01:05,100 --> 00:01:10,373
+A quartz crystal starts to vibrate —
+the 24 MHz heartbeat from Episode One —
+
+20
+00:01:10,373 --> 00:01:11,969
+and the clocks lock on.
+
+21
+00:01:12,467 --> 00:01:14,604
+Then the reset signal is released.
+
+22
+00:01:14,604 --> 00:01:18,375
+A single processor core wakes
+up, knowing exactly one thing:
+
+23
+00:01:18,375 --> 00:01:20,637
+where to find its first instruction.
+
+24
+00:01:24,333 --> 00:01:29,537
+That instruction lives in the Boot ROM: a
+small program etched into the chip itself,
+
+25
+00:01:29,537 --> 00:01:30,590
+when it was made.
+
+26
+00:01:30,590 --> 00:01:32,077
+It can never be changed.
+
+27
+00:01:32,533 --> 00:01:37,454
+That's its strength, and its weakness:
+if a flaw were ever found in a Boot ROM,
+
+28
+00:01:37,454 --> 00:01:40,568
+no software update could
+fix it — only a new chip.
+
+29
+00:01:40,568 --> 00:01:43,371
+So it's kept as small
+and simple as possible.
+
+30
+00:01:43,867 --> 00:01:46,552
+Built into it is a key
+— Apple's public key.
+
+31
+00:01:46,552 --> 00:01:49,115
+Everything that follows is anchored to it.
+
+32
+00:01:49,567 --> 00:01:53,978
+The Boot ROM's job is to load the
+next stage, the Low-Level Bootloader,
+
+33
+00:01:53,978 --> 00:01:56,649
+from a small flash chip
+on the logic board.
+
+34
+00:01:57,033 --> 00:02:01,620
+But before it runs a single instruction
+of it, the Boot ROM checks its signature.
+
+35
+00:02:02,933 --> 00:02:03,581
+Here's how.
+
+36
+00:02:03,581 --> 00:02:08,523
+The code is run through a hash function,
+which boils it down to a short fingerprint.
+
+37
+00:02:08,867 --> 00:02:12,707
+Change even a single bit, and the
+fingerprint changes completely.
+
+38
+00:02:13,200 --> 00:02:17,384
+Apple signs that fingerprint with a
+private key that never leaves Apple.
+
+39
+00:02:17,384 --> 00:02:22,032
+The public key in the Boot ROM can check
+the signature — but it can't forge one.
+
+40
+00:02:22,533 --> 00:02:25,285
+If the check fails, the
+Mac refuses to start,
+
+41
+00:02:25,285 --> 00:02:28,037
+and waits for another
+computer to restore it.
+
+42
+00:02:28,500 --> 00:02:30,570
+If it passes, control moves on.
+
+43
+00:02:30,570 --> 00:02:35,243
+And from here on, every stage checks
+the next one before handing over.
+
+44
+00:02:35,243 --> 00:02:37,780
+A chain of trust, anchored in silicon.
+
+45
+00:02:41,567 --> 00:02:46,610
+The Low-Level Bootloader starts out in a
+tiny scratchpad of memory inside the chip —
+
+46
+00:02:46,610 --> 00:02:49,012
+because the main memory isn't ready yet.
+
+47
+00:02:49,400 --> 00:02:54,664
+It verifies and loads firmware for the
+chip's helper processors: storage, display,
+
+48
+00:02:54,664 --> 00:02:56,589
+power management, Thunderbolt.
+
+49
+00:02:57,067 --> 00:03:00,954
+It trains the DRAM — sending
+test patterns back and forth,
+
+50
+00:03:00,954 --> 00:03:04,640
+fine-tuning the timing until
+every bit arrives cleanly.
+
+51
+00:03:05,067 --> 00:03:09,725
+And it reads the boot policy: a small
+file, signed by the Secure Enclave,
+
+52
+00:03:09,725 --> 00:03:12,597
+that records the security
+settings you chose.
+
+53
+00:03:13,067 --> 00:03:18,240
+That policy is also the only way to start
+something other than macOS, like Linux:
+
+54
+00:03:18,240 --> 00:03:23,541
+you have to lower the security setting
+yourself, from recovery, with your password.
+
+55
+00:03:24,833 --> 00:03:27,838
+Then it hands over to iBoot
+— the main bootloader,
+
+56
+00:03:27,838 --> 00:03:31,084
+which belongs to the version
+of macOS you're starting.
+
+57
+00:03:31,500 --> 00:03:35,193
+iBoot loads a map of all the
+hardware, called the device tree,
+
+58
+00:03:35,193 --> 00:03:38,945
+and the kernel itself — checking
+every signature along the way.
+
+59
+00:03:39,367 --> 00:03:44,650
+Meanwhile, the Secure Enclave boots its own
+operating system, from its own Boot ROM,
+
+60
+00:03:44,650 --> 00:03:46,663
+walled off from everything else.
+
+61
+00:03:47,133 --> 00:03:50,262
+Finally, iBoot checks the
+seal on the system volume…
+
+62
+00:03:50,262 --> 00:03:51,827
+and jumps into the kernel.
+
+63
+00:03:55,633 --> 00:03:57,934
+That seal protects macOS itself.
+
+64
+00:03:57,934 --> 00:04:03,975
+The operating system lives on a read-only
+volume, where every file has its own hash.
+
+65
+00:04:04,367 --> 00:04:08,376
+Those hashes are hashed again,
+and again, all the way up a tree,
+
+66
+00:04:08,376 --> 00:04:10,255
+into a single value: the seal.
+
+67
+00:04:10,700 --> 00:04:14,305
+Change one byte, in one file,
+anywhere — and the seal breaks.
+
+68
+00:04:14,767 --> 00:04:16,690
+And it isn't checked just once.
+
+69
+00:04:16,690 --> 00:04:19,854
+Every time the kernel reads
+from the system volume,
+
+70
+00:04:19,854 --> 00:04:22,212
+it hashes the data again and compares.
+
+71
+00:04:22,700 --> 00:04:27,350
+That's why even malware with administrator
+rights can't quietly rewrite the system.
+
+72
+00:04:27,350 --> 00:04:28,695
+It would break the seal.
+
+73
+00:04:30,000 --> 00:04:31,855
+Now the kernel is in charge.
+
+74
+00:04:31,855 --> 00:04:37,155
+First, it switches on virtual memory,
+giving itself — and every future program —
+
+75
+00:04:37,155 --> 00:04:38,811
+its own map of addresses.
+
+76
+00:04:39,200 --> 00:04:43,445
+It wakes the other processor cores,
+one by one, and starts the scheduler.
+
+77
+00:04:43,867 --> 00:04:48,091
+It walks the device tree and matches
+each piece of hardware with a driver.
+
+78
+00:04:48,533 --> 00:04:52,923
+Every system program it starts must
+match a list of approved fingerprints —
+
+79
+00:04:52,923 --> 00:04:55,616
+the trust cache that
+iBoot loaded and checked.
+
+80
+00:04:56,067 --> 00:04:58,264
+Then it creates the very first program.
+
+81
+00:05:02,067 --> 00:05:03,866
+Process number one: launchd.
+
+82
+00:05:03,866 --> 00:05:07,400
+Every other program on your
+Mac will be its descendant.
+
+83
+00:05:07,867 --> 00:05:10,804
+It reads hundreds of
+small configuration files,
+
+84
+00:05:10,804 --> 00:05:15,617
+and starts the system's background
+services — logging, networking, Bluetooth,
+
+85
+00:05:15,617 --> 00:05:18,555
+search — many of them
+only when they're needed.
+
+86
+00:05:19,000 --> 00:05:23,736
+Within seconds, hundreds of processes are
+running — before you've even logged in.
+
+87
+00:05:24,167 --> 00:05:27,958
+One of them is the WindowServer,
+which takes over the display.
+
+88
+00:05:27,958 --> 00:05:29,671
+Another is the login window.
+
+89
+00:05:30,967 --> 00:05:32,257
+You type your password.
+
+90
+00:05:32,257 --> 00:05:34,615
+Your Mac never stores the password itself.
+
+91
+00:05:35,000 --> 00:05:36,152
+With FileVault on,
+
+92
+00:05:36,152 --> 00:05:40,888
+the Secure Enclave combines it with a
+secret key fused into this one chip,
+
+93
+00:05:40,888 --> 00:05:43,576
+to unlock the keys that protect your data.
+
+94
+00:05:44,033 --> 00:05:46,432
+Your files were encrypted the whole time.
+
+95
+00:05:46,432 --> 00:05:47,660
+Now they can be read.
+
+96
+00:05:48,167 --> 00:05:52,178
+launchd starts your session: the
+menu bar, the Dock, the Finder…
+
+97
+00:05:52,178 --> 00:05:53,244
+and your desktop.
+
+98
+00:05:55,033 --> 00:05:56,249
+So, from the top.
+
+99
+00:05:56,733 --> 00:05:57,306
+A press.
+
+100
+00:05:57,306 --> 00:05:58,666
+Power, in sequence.
+
+101
+00:05:58,666 --> 00:06:01,100
+A crystal, a clock, a single core.
+
+102
+00:06:01,100 --> 00:06:03,606
+The Boot ROM checks the bootloader.
+
+103
+00:06:03,606 --> 00:06:05,611
+The bootloader checks iBoot.
+
+104
+00:06:05,611 --> 00:06:07,329
+iBoot checks the kernel.
+
+105
+00:06:07,329 --> 00:06:10,551
+The kernel checks every
+system file it reads.
+
+106
+00:06:10,551 --> 00:06:11,123
+launchd.
+
+107
+00:06:11,123 --> 00:06:12,340
+The login window.
+
+108
+00:06:12,340 --> 00:06:12,627
+You.
+
+109
+00:06:13,233 --> 00:06:15,487
+Every link verified before it runs.
+
+110
+00:06:15,487 --> 00:06:20,124
+A chain of trust, forged from scratch,
+every time you press that button.
+
+111
+00:06:21,033 --> 00:06:22,147
+Next time: memory.
+
+112
+00:06:22,147 --> 00:06:27,156
+Where does all this data actually live —
+and how does the chip get to it so fast?

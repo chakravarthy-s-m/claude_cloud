@@ -1,0 +1,438 @@
+{
+  "id": "ep03",
+  "slug": "power-on",
+  "series": "INSIDE THE MACHINE",
+  "title": "Power On",
+  "subtitle": "From the power button to your desktop",
+  "voice": "af_heart",
+  "speed": 0.94,
+  "fps": 30,
+  "defaultGap": 0.32,
+  "score": {
+    "transpose": -5,
+    "bpm": 124
+  },
+  "chapters": [
+    {
+      "id": "prologue",
+      "num": "00",
+      "title": "Prologue"
+    },
+    {
+      "id": "waking",
+      "num": "01",
+      "title": "Waking Up"
+    },
+    {
+      "id": "trust",
+      "num": "02",
+      "title": "The Root of Trust"
+    },
+    {
+      "id": "loaders",
+      "num": "03",
+      "title": "The Bootloaders"
+    },
+    {
+      "id": "kernel",
+      "num": "04",
+      "title": "The Kernel"
+    },
+    {
+      "id": "hello",
+      "num": "05",
+      "title": "Hello, You"
+    },
+    {
+      "id": "epilogue",
+      "num": "06",
+      "title": "The Chain"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "coldOpen",
+      "chapter": "prologue",
+      "mood": "mystery",
+      "lead": 1.8,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "o1",
+          "text": "Your Mac is off.",
+          "gap": 1.3
+        },
+        {
+          "id": "o2",
+          "text": "Almost. Somewhere inside, a few tiny circuits are still awake — waiting for a single press.",
+          "gap": 1.0
+        },
+        {
+          "id": "o3",
+          "text": "And when it comes, a cold slab of silicon turns itself into a working computer, in a matter of seconds.",
+          "gap": 0.5
+        },
+        {
+          "id": "o4",
+          "text": "Firmware. Bootloaders. A kernel. Hundreds of programs, each one starting the next.",
+          "gap": 0.45
+        },
+        {
+          "id": "o5",
+          "text": "And not one of them is trusted until it's been checked.",
+          "gap": 0.6
+        },
+        {
+          "id": "o6",
+          "text": "Because whoever controls the very first instruction… controls everything that comes after it.",
+          "gap": 0.9
+        },
+        {
+          "id": "o7",
+          "text": "Today: what really happens when you press the power button.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "title",
+      "chapter": "prologue",
+      "mood": "hit",
+      "lead": 6.0,
+      "tail": 0,
+      "lines": []
+    },
+    {
+      "id": "power",
+      "chapter": "waking",
+      "mood": "build",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "w1",
+          "text": "The press closes a tiny switch, and wakes a power-management chip that never fully sleeps.",
+          "gap": 0.45
+        },
+        {
+          "id": "w2",
+          "text": "It switches on the processor's power supplies one at a time, in a strict order — waiting for each voltage to settle before starting the next.",
+          "gap": 0.45
+        },
+        {
+          "id": "w2b",
+          "text": "Get the order wrong, and the chip could misbehave — or even be damaged.",
+          "gap": 0.5
+        },
+        {
+          "id": "w3",
+          "text": "A quartz crystal starts to vibrate — the 24 MHz heartbeat from Episode One — and the clocks lock on.",
+          "say": "A quartz crystal starts to vibrate — the twenty-four megahertz heartbeat from Episode One — and the clocks lock on.",
+          "gap": 0.5
+        },
+        {
+          "id": "w4",
+          "text": "Then the reset signal is released. A single processor core wakes up, knowing exactly one thing: where to find its first instruction.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "bootrom",
+      "chapter": "trust",
+      "mood": "deep",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "r1",
+          "text": "That instruction lives in the Boot ROM: a small program etched into the chip itself, when it was made. It can never be changed.",
+          "gap": 0.45,
+          "say": "That instruction lives in the Boot [ROM](/ɹˈɑːm/): a small program etched into the chip itself, when it was made. It can never be changed."
+        },
+        {
+          "id": "r1b",
+          "text": "That's its strength, and its weakness: if a flaw were ever found in a Boot ROM, no software update could fix it — only a new chip. So it's kept as small and simple as possible.",
+          "gap": 0.5,
+          "say": "That's its strength, and its weakness: if a flaw were ever found in a Boot [ROM](/ɹˈɑːm/), no software update could fix it — only a new chip. So it's kept as small and simple as possible."
+        },
+        {
+          "id": "r2",
+          "text": "Built into it is a key — Apple's public key. Everything that follows is anchored to it.",
+          "gap": 0.45
+        },
+        {
+          "id": "r3",
+          "text": "The Boot ROM's job is to load the next stage, the Low-Level Bootloader, from a small flash chip on the logic board.",
+          "gap": 0.4,
+          "say": "The Boot [ROM's](/ɹˈɑːmz/) job is to load the next stage, the Low-Level Bootloader, from a small flash chip on the logic board."
+        },
+        {
+          "id": "r4",
+          "text": "But before it runs a single instruction of it, the Boot ROM checks its signature.",
+          "gap": 0.2,
+          "say": "But before it runs a single instruction of it, the Boot [ROM](/ɹˈɑːm/) checks its signature."
+        }
+      ]
+    },
+    {
+      "id": "signature",
+      "chapter": "trust",
+      "mood": "tick",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "g1",
+          "text": "Here's how. The code is run through a hash function, which boils it down to a short fingerprint.",
+          "gap": 0.35
+        },
+        {
+          "id": "g2",
+          "text": "Change even a single bit, and the fingerprint changes completely.",
+          "gap": 0.5
+        },
+        {
+          "id": "g3",
+          "text": "Apple signs that fingerprint with a private key that never leaves Apple. The public key in the Boot ROM can check the signature — but it can't forge one.",
+          "gap": 0.5,
+          "say": "Apple signs that fingerprint with a private key that never leaves Apple. The public key in the Boot [ROM](/ɹˈɑːm/) can check the signature — but it can't forge one."
+        },
+        {
+          "id": "g4",
+          "text": "If the check fails, the Mac refuses to start, and waits for another computer to restore it.",
+          "gap": 0.45
+        },
+        {
+          "id": "g5",
+          "text": "If it passes, control moves on. And from here on, every stage checks the next one before handing over. A chain of trust, anchored in silicon.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "llb",
+      "chapter": "loaders",
+      "mood": "drive",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "l1",
+          "text": "The Low-Level Bootloader starts out in a tiny scratchpad of memory inside the chip — because the main memory isn't ready yet.",
+          "gap": 0.4
+        },
+        {
+          "id": "l2",
+          "text": "It verifies and loads firmware for the chip's helper processors: storage, display, power management, Thunderbolt.",
+          "gap": 0.45
+        },
+        {
+          "id": "l3",
+          "text": "It trains the DRAM — sending test patterns back and forth, fine-tuning the timing until every bit arrives cleanly.",
+          "say": "It trains the D RAM — sending test patterns back and forth, fine-tuning the timing until every bit arrives cleanly.",
+          "gap": 0.45
+        },
+        {
+          "id": "l4",
+          "text": "And it reads the boot policy: a small file, signed by the Secure Enclave, that records the security settings you chose.",
+          "gap": 0.45
+        },
+        {
+          "id": "l5",
+          "text": "That policy is also the only way to start something other than macOS, like Linux: you have to lower the security setting yourself, from recovery, with your password.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "iboot",
+      "chapter": "loaders",
+      "mood": "drive",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "i1",
+          "text": "Then it hands over to iBoot — the main bootloader, which belongs to the version of macOS you're starting.",
+          "gap": 0.4
+        },
+        {
+          "id": "i2",
+          "text": "iBoot loads a map of all the hardware, called the device tree, and the kernel itself — checking every signature along the way.",
+          "gap": 0.45
+        },
+        {
+          "id": "i3",
+          "text": "Meanwhile, the Secure Enclave boots its own operating system, from its own Boot ROM, walled off from everything else.",
+          "gap": 0.45,
+          "say": "Meanwhile, the Secure Enclave boots its own operating system, from its own Boot [ROM](/ɹˈɑːm/), walled off from everything else."
+        },
+        {
+          "id": "i4",
+          "text": "Finally, iBoot checks the seal on the system volume… and jumps into the kernel.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "seal",
+      "chapter": "kernel",
+      "mood": "deep",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "s1",
+          "text": "That seal protects macOS itself. The operating system lives on a read-only volume, where every file has its own hash.",
+          "gap": 0.4
+        },
+        {
+          "id": "s2",
+          "text": "Those hashes are hashed again, and again, all the way up a tree, into a single value: the seal.",
+          "gap": 0.45
+        },
+        {
+          "id": "s3",
+          "text": "Change one byte, in one file, anywhere — and the seal breaks.",
+          "gap": 0.45
+        },
+        {
+          "id": "s4",
+          "text": "And it isn't checked just once. Every time the kernel reads from the system volume, it hashes the data again and compares.",
+          "gap": 0.5
+        },
+        {
+          "id": "s5",
+          "text": "That's why even malware with administrator rights can't quietly rewrite the system. It would break the seal.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "kernel",
+      "chapter": "kernel",
+      "mood": "flow",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "k1",
+          "text": "Now the kernel is in charge. First, it switches on virtual memory, giving itself — and every future program — its own map of addresses.",
+          "gap": 0.4
+        },
+        {
+          "id": "k2",
+          "text": "It wakes the other processor cores, one by one, and starts the scheduler.",
+          "gap": 0.4
+        },
+        {
+          "id": "k3",
+          "text": "It walks the device tree and matches each piece of hardware with a driver.",
+          "gap": 0.45
+        },
+        {
+          "id": "k3b",
+          "text": "Every system program it starts must match a list of approved fingerprints — the trust cache that iBoot loaded and checked.",
+          "gap": 0.45
+        },
+        {
+          "id": "k4",
+          "text": "Then it creates the very first program.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "launchd",
+      "chapter": "hello",
+      "mood": "wonder",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "d1",
+          "text": "Process number one: launchd. Every other program on your Mac will be its descendant.",
+          "say": "Process number one: [launchd](/lˈɑːntʃ dˈiː/). Every other program on your Mac will be its descendant.",
+          "gap": 0.45
+        },
+        {
+          "id": "d2",
+          "text": "It reads hundreds of small configuration files, and starts the system's background services — logging, networking, Bluetooth, search — many of them only when they're needed.",
+          "gap": 0.45
+        },
+        {
+          "id": "d2b",
+          "text": "Within seconds, hundreds of processes are running — before you've even logged in.",
+          "gap": 0.45
+        },
+        {
+          "id": "d3",
+          "text": "One of them is the WindowServer, which takes over the display. Another is the login window.",
+          "say": "One of them is the Window Server, which takes over the display. Another is the login window.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "login",
+      "chapter": "hello",
+      "mood": "awe",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "n1",
+          "text": "You type your password. Your Mac never stores the password itself.",
+          "gap": 0.4
+        },
+        {
+          "id": "n2",
+          "text": "With FileVault on, the Secure Enclave combines it with a secret key fused into this one chip, to unlock the keys that protect your data.",
+          "gap": 0.45
+        },
+        {
+          "id": "n3",
+          "text": "Your files were encrypted the whole time. Now they can be read.",
+          "gap": 0.5
+        },
+        {
+          "id": "n4",
+          "text": "launchd starts your session: the menu bar, the Dock, the Finder… and your desktop.",
+          "say": "[launchd](/lˈɑːntʃ dˈiː/) starts your session: the menu bar, the Dock, the Finder… and your desktop.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "finale",
+      "chapter": "epilogue",
+      "mood": "finale",
+      "lead": 1.0,
+      "tail": 6.5,
+      "lines": [
+        {
+          "id": "x1",
+          "text": "So, from the top.",
+          "gap": 0.5
+        },
+        {
+          "id": "x2",
+          "text": "A press. Power, in sequence. A crystal, a clock, a single core. The Boot ROM checks the bootloader. The bootloader checks iBoot. iBoot checks the kernel. The kernel checks every system file it reads. launchd. The login window. You.",
+          "say": "A press. Power, in sequence. A crystal, a clock, a single core. The Boot [ROM](/ɹˈɑːm/) checks the bootloader. The bootloader checks iBoot. iBoot checks the kernel. The kernel checks every system file it reads. [launchd](/lˈɑːntʃ dˈiː/). The login window. You.",
+          "gap": 0.6
+        },
+        {
+          "id": "x3",
+          "text": "Every link verified before it runs. A chain of trust, forged from scratch, every time you press that button.",
+          "gap": 0.9
+        },
+        {
+          "id": "x4",
+          "text": "Next time: memory. Where does all this data actually live — and how does the chip get to it so fast?",
+          "gap": 0.2
+        }
+      ]
+    }
+  ]
+}
