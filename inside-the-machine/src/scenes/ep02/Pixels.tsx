@@ -187,8 +187,8 @@ const SpecPanel: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 type RGBv = [number, number, number];
 const SEQ = (b: B): [number, RGBv][] => [
   [b.allUp - 30, pixelAt(PX, PY) as RGBv],
-  [b.allUp + 4, [255, 255, 255]],
-  [b.off, [0, 0, 0]],
+  [b.white - 2, [255, 255, 255]],
+  [b.off + 4, [0, 0, 0]],
   [b.every + 6, [255, 146, 60]],
   [b.every + 34, [40, 214, 196]],
   [b.every + 58, [150, 92, 255]],
@@ -198,7 +198,15 @@ const SEQ = (b: B): [number, RGBv][] => [
 ];
 const levels = (f: number, b: B): RGBv => {
   const seq = SEQ(b);
-  const ch = (k: number) => keyframes(f, seq.map(([t, v]) => [t, v[k]] as [number, number]), EASE.inOut);
+  // each color arrives over ~8 frames, then holds until the next one starts
+  const keys: [number, RGBv][] = [];
+  seq.forEach(([t, v], i) => {
+    const arrive = i === 0 ? t : Math.max(t, seq[i - 1][0] + 2);
+    keys.push([arrive, v]);
+    const next = seq[i + 1]?.[0];
+    if (next !== undefined && next - 8 > arrive) keys.push([next - 8, v]);
+  });
+  const ch = (k: number) => keyframes(f, keys.map(([t, v]) => [t, v[k]] as [number, number]), EASE.inOut);
   return [ch(0), ch(1), ch(2)];
 };
 
