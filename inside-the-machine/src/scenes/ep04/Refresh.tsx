@@ -79,10 +79,10 @@ const Leak: React.FC<{ b: B; a: number }> = ({ b, a }) => {
           }),
         )}
         {/* threshold reminder */}
-        <text x={GX + COLS * CW + 10} y={GY + 20} fontFamily={FONT.mono} fontSize={16} fill={C.ink3}>
+        <text x={GX + COLS * CW - 10} y={GY + ROWS * RH + 52} textAnchor="end" fontFamily={FONT.mono} fontSize={17} fill={C.ink3}>
           ▮ full = 1
         </text>
-        <text x={GX + COLS * CW + 10} y={GY + 46} fontFamily={FONT.mono} fontSize={16} fill={BAD}>
+        <text x={GX + COLS * CW - 10} y={GY + ROWS * RH + 80} textAnchor="end" fontFamily={FONT.mono} fontSize={17} fill={BAD}>
           ▮ below half → read as 0
         </text>
         {/* the refresh sweep */}
@@ -180,6 +180,9 @@ const Hammer: React.FC<{ b: B; a: number }> = ({ b, a }) => {
         </div>
         {flipped && guard < 0.5 && <div style={{ fontFamily: FONT.display, fontWeight: 700, fontSize: 44, color: BAD }}>a bit flipped, in a row nobody touched</div>}
         {guard > 0.5 && <div style={{ fontFamily: FONT.mono, fontSize: 22, color: OK }}>defense: spot hammered rows, refresh their neighbors early</div>}
+      </div>
+      <div style={{ position: "absolute", right: 120, bottom: 70, fontFamily: FONT.mono, fontSize: 16, color: C.ink3, opacity: prog(f, b.over, 16) }}>
+        illustrative: the real count varies from chip to chip
       </div>
     </AbsoluteFill>
   );

@@ -43,16 +43,16 @@ const Stream: React.FC<{ b: B; a: number }> = ({ b, a }) => {
         <Kicker color={TIER.l1}>the prefetcher</Kicker>
       </div>
       <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
-        <text x={X0 - 40} y={LANE_Y + 8} textAnchor="end" fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.2em" fill={TIER.reg}>
+        <text x={X0 - 100} y={LANE_Y + 8} textAnchor="end" fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.2em" fill={TIER.reg}>
           CORE ASKS
         </text>
-        <text x={X0 - 40} y={(LANE_Y + MEM_Y) / 2 + 8} textAnchor="end" fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.2em" fill={TIER.l1}>
+        <text x={X0 - 100} y={(LANE_Y + MEM_Y) / 2 + 8} textAnchor="end" fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.2em" fill={TIER.l1}>
           L1 CACHE
         </text>
-        <text x={X0 - 40} y={MEM_Y + 8} textAnchor="end" fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.2em" fill={TIER.dram}>
+        <text x={X0 - 100} y={MEM_Y + 8} textAnchor="end" fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.2em" fill={TIER.dram}>
           MEMORY
         </text>
-        <line x1={X0 - 20} y1={(LANE_Y + MEM_Y) / 2} x2={1800} y2={(LANE_Y + MEM_Y) / 2} stroke={hexA(TIER.l1, 0.25)} strokeWidth={2} strokeDasharray="8 8" />
+        <line x1={X0 - 84} y1={(LANE_Y + MEM_Y) / 2} x2={1800} y2={(LANE_Y + MEM_Y) / 2} stroke={hexA(TIER.l1, 0.25)} strokeWidth={2} strokeDasharray="8 8" />
         {new Array(N).fill(0).map((_, i) => {
           const x = X0 + i * DX;
           const addr = (0x1000 + i * 0x80).toString(16);
@@ -159,8 +159,8 @@ const WriteBack: React.FC<{ b: B; a: number }> = ({ b, a }) => {
           x = {memVal}
         </text>
         {evictP <= 0.9 && writes > 0 && (
-          <text x={1520} y={880} fontFamily={FONT.mono} fontSize={18} fill={C.ink3}>
-            (old: and that's fine)
+          <text x={1324} y={796} fontFamily={FONT.mono} fontSize={19} fill={C.ink3}>
+            (old, and that's fine)
           </text>
         )}
         <line x1={560} y1={490} x2={760} y2={490} stroke={hexA(TIER.reg, 0.5)} strokeWidth={3} strokeDasharray="8 6" />

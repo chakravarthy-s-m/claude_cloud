@@ -61,8 +61,8 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const tagHi = second ? prog(f, b.full + 16, 12) : prog(f, b.tag - 4, 14);
   const cmp = second ? prog(f, b.full + 24, 10) : prog(f, b.once - 2, 12);
   const hitA = prog(f, b.hit - 4, 10, EASE.outBack);
-  const evict = prog(f, b.thrown - 8, 22, EASE.in);
-  const insert = spr(f, fps, b.thrown + 10, { damping: 16, stiffness: 140 });
+  const evict = prog(f, b.thrown - 20, 18, EASE.in);
+  const insert = spr(f, fps, b.thrown, { damping: 16, stiffness: 140 });
   const ageA = prog(f, b.longest - 10, 14);
   const addrA = prog(f, b.picks - 10, 14) * (second ? prog(f, b.full - 6, 10) : 1 - prog(f, b.full - 14, 8));
   const aw = addressWidth(FIELDS, 30, split);
@@ -81,17 +81,27 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
           </text>
           <AddressBits x={ax} y={220} value={addr} fields={FIELDS} cell={30} split={split} />
         </g>
-        {/* set field → selects a row */}
-        {setHi > 0.01 && (
-          <path
-            d={`M${ax + 14 * 30 + 12 * split + 45},${310} C${ax + 14 * 30 + 45},${400} ${GX - 120},${GY + selSet * (SH + 10) - 40} ${GX - 70},${GY + selSet * (SH + 10) + SH / 2}`}
-            fill="none"
-            stroke={C.amber}
-            strokeWidth={3}
-            strokeDasharray={`${setHi * 900} 900`}
-            opacity={0.85}
-          />
-        )}
+        {/* set field → selects a row (routed around the grid, never across it) */}
+        {setHi > 0.01 && (() => {
+          const sx = ax + 14 * 30 + 12 * split + 45;
+          const ry = GY + selSet * (SH + 10) + SH / 2;
+          const lx = GX - 150;
+          const ty = 372;
+          const r = 24;
+          return (
+            <g opacity={0.85}>
+              <path
+                d={`M${sx},300 L${sx},${ty - r} Q${sx},${ty} ${sx - r},${ty} L${lx + r},${ty} Q${lx},${ty} ${lx},${ty + r} L${lx},${ry - r} Q${lx},${ry} ${lx + r},${ry} L${GX - 120},${ry}`}
+                fill="none"
+                stroke={C.amber}
+                strokeWidth={3}
+                pathLength={1}
+                strokeDasharray={`${setHi} 1`}
+              />
+              <path d={`M${GX - 128},${ry - 7} L${GX - 117},${ry} L${GX - 128},${ry + 7}`} fill="none" stroke={C.amber} strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" opacity={clamp((setHi - 0.9) * 10)} />
+            </g>
+          );
+        })()}
         {/* the cache: 8 sets × 4 ways */}
         <g opacity={gridA}>
           {new Array(SETS).fill(0).map((_, si) => {
@@ -107,13 +117,11 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
                   const x = GX + wi * (SW + 12);
                   const isEvict = second && si === A2set && wi === LRU_WAY;
                   const isHit = !second && si === A1.set && wi === A1.way && hitA > 0.5;
-                  const t = isEvict && insert > 0.05 ? NEW_TAG : tagOf(si, wi);
-                  const ex = isEvict ? evict : 0;
                   const comparing = si === selSet && cmp > 0 && cmp < 1;
                   const age = Math.floor(rnd(`age${si}-${wi}`) * 40 + 5) + (wi === LRU_WAY ? 60 : 0);
-                  return (
-                    <g key={wi} transform={`translate(${x + ex * (1920 - x)} ${y - ex * 40})`} opacity={isEvict ? (insert > 0.05 ? clamp(insert) : 1 - ex) : 1}>
-                      <rect width={SW} height={SH} rx={10} fill={isHit ? hexA(OK, 0.25) : hexA(TIER.l1, 0.12)} stroke={isHit ? OK : isEvict && ex > 0 ? BAD : hexA(TIER.l1, 0.6)} strokeWidth={isHit ? 3 : 1.5} />
+                  const card = (t: number, stroke: string, sw: number, fill: string, aged: boolean) => (
+                    <>
+                      <rect width={SW} height={SH} rx={10} fill={fill} stroke={stroke} strokeWidth={sw} />
                       <text x={16} y={SH / 2 + 7} fontFamily={FONT.mono} fontSize={19} fill={si === selSet && tagHi > 0.5 ? C.pink : C.ink2}>
                         tag {hex(t)}
                       </text>
@@ -122,17 +130,53 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
                       ))}
                       {comparing && <rect width={SW} height={SH} rx={10} fill="none" stroke={C.pink} strokeWidth={3} opacity={Math.sin(cmp * Math.PI)} />}
                       {/* age (time since last use) */}
-                      {second && si === A2set && ageA > 0.01 && !(isEvict && insert > 0.05) && (
+                      {aged && (
                         <g opacity={ageA}>
                           <rect x={0} y={SH + 4} width={Math.min(SW, age * 2.4)} height={5} rx={2} fill={wi === LRU_WAY ? BAD : hexA(C.ink, 0.4)} />
                         </g>
                       )}
+                    </>
+                  );
+                  const aged = second && si === A2set && ageA > 0.01;
+                  if (isEvict) {
+                    // the oldest line is thrown out to the right; the new one drops into its slot
+                    return (
+                      <g key={wi}>
+                        {evict === 0 && <g transform={`translate(${x} ${y})`}>{card(tagOf(si, wi), hexA(TIER.l1, 0.6), 1.5, hexA(TIER.l1, 0.12), aged)}</g>}
+                        {insert > 0.01 && (
+                          <g transform={`translate(${x} ${y - (1 - insert) * 60})`} opacity={clamp(insert)}>
+                            {card(NEW_TAG, OK, 3, hexA(OK, 0.18), false)}
+                          </g>
+                        )}
+                      </g>
+                    );
+                  }
+                  return (
+                    <g key={wi} transform={`translate(${x} ${y})`}>
+                      {card(tagOf(si, wi), isHit ? OK : hexA(TIER.l1, 0.6), isHit ? 3 : 1.5, isHit ? hexA(OK, 0.25) : hexA(TIER.l1, 0.12), aged)}
                     </g>
                   );
                 })}
               </g>
             );
           })}
+          {/* the evicted line flies out over the grid */}
+          {second && evict > 0 && evict < 1 && (
+            <g
+              transform={`translate(${GX + LRU_WAY * (SW + 12) + evict * (1990 - GX - LRU_WAY * (SW + 12))} ${GY + A2set * (SH + 10) - evict * 40})`}
+              opacity={1 - evict * 0.3}
+              style={{ filter: "drop-shadow(0 12px 18px rgba(0,0,0,0.65))" }}
+            >
+              <rect width={SW} height={SH} rx={10} fill="#160d1f" />
+              <rect width={SW} height={SH} rx={10} fill={hexA(BAD, 0.14)} stroke={BAD} strokeWidth={2.5} />
+              <text x={16} y={SH / 2 + 7} fontFamily={FONT.mono} fontSize={19} fill={C.pink}>
+                tag {hex(tagOf(A2set, LRU_WAY))}
+              </text>
+              {new Array(8).fill(0).map((_, k) => (
+                <rect key={k} x={130 + k * 11} y={SH / 2 - 9} width={8} height={18} rx={2} fill={hexA(TIER.l1, 0.4)} />
+              ))}
+            </g>
+          )}
           <text x={GX} y={GY - 22} fontFamily={FONT.ui} fontWeight={700} fontSize={16} letterSpacing="0.25em" fill={hexA(C.ink, 0.6)}>
             {"WAY 0".padEnd(12)}
           </text>
@@ -150,7 +194,7 @@ const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
           </text>
         )}
         {second && ageA > 0.01 && (
-          <text x={GX + WAYS * (SW + 12) + 30} y={GY + A2set * (SH + 10) + SH / 2 + 10} fontFamily={FONT.mono} fontSize={20} fill={BAD} opacity={ageA * (1 - evict)}>
+          <text x={GX + WAYS * (SW + 12) + 30} y={GY + A2set * (SH + 10) + SH / 2 + 10} fontFamily={FONT.mono} fontSize={20} fill={BAD} opacity={ageA * (1 - clamp(evict * 3))}>
             ← least recently used
           </text>
         )}
@@ -172,8 +216,8 @@ const sfx = (s: SceneData): SfxEvent[] => {
     { at: b.full + 4, name: "blip", vol: 0.3 },
     { at: b.full + 24, name: "scan", vol: 0.25 },
     { at: b.longest - 10, name: "tick", vol: 0.25 },
-    { at: b.thrown - 8, name: "whoosh", vol: 0.35 },
-    { at: b.thrown + 10, name: "pop", vol: 0.35 },
+    { at: b.thrown - 20, name: "whoosh", vol: 0.35 },
+    { at: b.thrown, name: "pop", vol: 0.35 },
   ];
 };
 
