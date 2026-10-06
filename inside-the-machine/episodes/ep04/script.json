@@ -1,0 +1,459 @@
+{
+  "id": "ep04",
+  "slug": "memory",
+  "series": "INSIDE THE MACHINE",
+  "title": "Memory",
+  "subtitle": "Where your data lives, and how the chip gets to it so fast",
+  "voice": "af_heart",
+  "speed": 0.94,
+  "fps": 30,
+  "defaultGap": 0.32,
+  "score": {
+    "transpose": 2,
+    "bpm": 112
+  },
+  "chapters": [
+    {
+      "id": "prologue",
+      "num": "00",
+      "title": "Prologue"
+    },
+    {
+      "id": "wall",
+      "num": "01",
+      "title": "The Memory Wall"
+    },
+    {
+      "id": "caches",
+      "num": "02",
+      "title": "Caches"
+    },
+    {
+      "id": "dram",
+      "num": "03",
+      "title": "Inside DRAM"
+    },
+    {
+      "id": "unified",
+      "num": "04",
+      "title": "Unified Memory"
+    },
+    {
+      "id": "virtual",
+      "num": "05",
+      "title": "Virtual Memory"
+    },
+    {
+      "id": "epilogue",
+      "num": "06",
+      "title": "The Round Trip"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "coldOpen",
+      "chapter": "prologue",
+      "mood": "mystery",
+      "lead": 1.8,
+      "tail": 0.6,
+      "lines": [
+        {
+          "id": "o1",
+          "text": "Every program you run is just numbers, flowing in and out of memory.",
+          "gap": 0.8
+        },
+        {
+          "id": "o2",
+          "text": "Your Mac's processor can add two of them in a fraction of a nanosecond.",
+          "gap": 0.6
+        },
+        {
+          "id": "o3",
+          "text": "But first, it has to fetch them. And that's where the trouble starts.",
+          "gap": 0.9
+        },
+        {
+          "id": "o4",
+          "text": "Slow time down, so that one tick of the processor's clock lasts one second.",
+          "gap": 0.6
+        },
+        {
+          "id": "o5",
+          "text": "Grabbing a number from right beside the core takes about three seconds.",
+          "gap": 0.5
+        },
+        {
+          "id": "o6",
+          "text": "Fetching it from main memory? About five minutes.",
+          "gap": 0.6
+        },
+        {
+          "id": "o7",
+          "text": "And from the SSD — about two days.",
+          "gap": 1.0
+        },
+        {
+          "id": "o8",
+          "text": "So how does a chip that thinks in nanoseconds keep itself fed? Today: memory."
+        }
+      ]
+    },
+    {
+      "id": "title",
+      "chapter": "prologue",
+      "mood": "hit",
+      "lead": 6.0,
+      "tail": 0,
+      "lines": []
+    },
+    {
+      "id": "wall",
+      "chapter": "wall",
+      "mood": "build",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "w1",
+          "text": "For decades, processors got faster much more quickly than memory did."
+        },
+        {
+          "id": "w2",
+          "text": "In 1995, two computer scientists gave the growing gap a name: the memory wall.",
+          "say": "In nineteen ninety-five, two computer scientists gave the growing gap a name: the memory wall."
+        },
+        {
+          "id": "w3",
+          "text": "Today, a single core can get through hundreds of instructions in the time it takes to fetch one number from main memory."
+        },
+        {
+          "id": "w4",
+          "text": "If it had to wait every time, it would spend almost its whole life waiting."
+        }
+      ]
+    },
+    {
+      "id": "hierarchy",
+      "chapter": "wall",
+      "mood": "deep",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "h1",
+          "text": "So computers build memory like a pyramid."
+        },
+        {
+          "id": "h2",
+          "text": "At the top, a few dozen registers, inside the core itself."
+        },
+        {
+          "id": "h3",
+          "text": "Below them, small, fast caches, made of SRAM: six transistors for every single bit.",
+          "say": "Below them, small, fast caches, made of S RAM: six transistors for every single bit."
+        },
+        {
+          "id": "h4",
+          "text": "On the M1, each performance core has 128 kilobytes of data cache. The cores share 12 megabytes more, and the whole chip shares another 8.",
+          "say": "On the M1, each performance core has a hundred and twenty-eight kilobytes of data cache. The cores share twelve megabytes more, and the whole chip shares another eight."
+        },
+        {
+          "id": "h5",
+          "text": "Then main memory: gigabytes of DRAM. Dense, cheap, and slow.",
+          "say": "Then main memory: gigabytes of D RAM. Dense, cheap, and slow."
+        },
+        {
+          "id": "h6",
+          "text": "And then the SSD: enormous, permanent, and slower still."
+        },
+        {
+          "id": "h7",
+          "text": "Every step down is bigger, and further away."
+        }
+      ]
+    },
+    {
+      "id": "cacheLine",
+      "chapter": "caches",
+      "mood": "tick",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "c1",
+          "text": "When the core needs a number, it checks its own cache first."
+        },
+        {
+          "id": "c2",
+          "text": "If it isn't there, that's a miss. The request travels down, and comes back with the number's whole neighborhood: a cache line."
+        },
+        {
+          "id": "c2b",
+          "text": "On Apple silicon, macOS reports cache lines of 128 bytes: room for sixteen numbers at once.",
+          "say": "On Apple silicon, macOS reports cache lines of a hundred and twenty-eight bytes: room for sixteen numbers at once."
+        },
+        {
+          "id": "c3",
+          "text": "Because programs are predictable. Use a number, and you'll probably use its neighbor next. Use it once, and you'll probably use it again."
+        },
+        {
+          "id": "c4",
+          "text": "So one slow trip pays for a whole run of fast ones. Caches bet on this, and they win almost every time."
+        }
+      ]
+    },
+    {
+      "id": "sets",
+      "chapter": "caches",
+      "mood": "drive",
+      "lead": 0.6,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "s1",
+          "text": "But a cache is small. So where does each line go?"
+        },
+        {
+          "id": "s2",
+          "text": "Part of the address picks a set: a short row of slots. Another part, the tag, records which line is sitting in each slot."
+        },
+        {
+          "id": "s3",
+          "text": "The cache checks every slot in the set at once. A match is a hit."
+        },
+        {
+          "id": "s4",
+          "text": "And when a set is full, the line that hasn't been used for the longest is usually the one thrown out."
+        }
+      ]
+    },
+    {
+      "id": "prefetch",
+      "chapter": "caches",
+      "mood": "flow",
+      "lead": 0.6,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "p1",
+          "text": "The best caches don't even wait to be asked. A prefetcher watches the stream of requests, spots the pattern, and fetches lines before the program needs them."
+        },
+        {
+          "id": "p2",
+          "text": "Writes are lazy, too. A change stays in the cache, marked dirty, and only travels down to memory when that line is finally evicted."
+        }
+      ]
+    },
+    {
+      "id": "coherence",
+      "chapter": "caches",
+      "mood": "tick",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "k1",
+          "text": "But with many cores, many caches can hold copies of the same line."
+        },
+        {
+          "id": "k2",
+          "text": "So when one core writes, every other copy is invalidated, and no core ever reads a stale value."
+        },
+        {
+          "id": "k3",
+          "text": "The caches keep each other honest, constantly, in hardware. It's called coherence."
+        }
+      ]
+    },
+    {
+      "id": "dramZoom",
+      "chapter": "dram",
+      "mood": "wonder",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "d1",
+          "text": "Now, down into main memory itself."
+        },
+        {
+          "id": "d2",
+          "text": "On an Apple silicon Mac, the memory chips sit right on the processor's package, just millimeters away.",
+          "say": "On an Apple silicon Mac, the memory chips sit right on the processor's package, just millimeters away."
+        },
+        {
+          "id": "d3",
+          "text": "Inside each one: billions of cells, laid out in grids called banks."
+        },
+        {
+          "id": "d4",
+          "text": "And each cell is just one transistor and one tiny capacitor: a bucket that's either holding charge, a one, or empty, a zero."
+        }
+      ]
+    },
+    {
+      "id": "senseAmp",
+      "chapter": "dram",
+      "mood": "tick",
+      "lead": 0.6,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "a1",
+          "text": "To read, the memory opens an entire row at once. Every capacitor in that row spills its charge onto a long wire, called a bitline."
+        },
+        {
+          "id": "a2",
+          "text": "The signal is incredibly faint. A sense amplifier catches the tiny nudge, and pushes it all the way to a clean one or zero."
+        },
+        {
+          "id": "a3",
+          "text": "Reading drains the buckets, so the amplifiers immediately write every value back."
+        },
+        {
+          "id": "a4",
+          "text": "The open row waits in a row buffer, and the requested bytes stream out in one quick burst."
+        }
+      ]
+    },
+    {
+      "id": "refresh",
+      "chapter": "dram",
+      "mood": "mystery",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "f1",
+          "text": "And there's a catch. Those capacitors leak."
+        },
+        {
+          "id": "f2",
+          "text": "Left alone, the charge slowly drains away, and the ones fade into zeros."
+        },
+        {
+          "id": "f3",
+          "text": "So the memory constantly reads and rewrites itself: every row, at least thirty times a second."
+        },
+        {
+          "id": "f4",
+          "text": "Your Mac's memory is forgetting everything, all the time, and being reminded."
+        },
+        {
+          "id": "f5",
+          "text": "Pack the cells this tightly, and something stranger happens. Open one row over and over, and bits in the rows beside it can flip. It's called Rowhammer, and today's memory watches out for it.",
+          "say": "Pack the cells this tightly, and something stranger happens. Open one row over and over, and bits in the rows beside it can flip. It's called Row Hammer, and today's memory watches out for it."
+        }
+      ]
+    },
+    {
+      "id": "unified",
+      "chapter": "unified",
+      "mood": "awe",
+      "lead": 3.0,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "u1",
+          "text": "On many PCs, the graphics card has its own separate memory. Data has to be copied across before the GPU can use it."
+        },
+        {
+          "id": "u2",
+          "text": "Apple silicon works differently. The CPU, the GPU, and the Neural Engine all share one pool of memory."
+        },
+        {
+          "id": "u3",
+          "text": "No copies. The GPU can work on the very same bytes the CPU just wrote."
+        },
+        {
+          "id": "u4",
+          "text": "And with the memory this close, the connection can be wide: an M4 moves 120 gigabytes every second. An M4 Max, more than half a terabyte.",
+          "say": "And with the memory this close, the connection can be wide: an M4 moves a hundred and twenty gigabytes every second. An M4 Max, more than half a terabyte."
+        }
+      ]
+    },
+    {
+      "id": "virtual",
+      "chapter": "virtual",
+      "mood": "flow",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "v1",
+          "text": "One last trick. No program ever sees a real memory address."
+        },
+        {
+          "id": "v2",
+          "text": "Every address it uses is virtual. Memory is split into pages, sixteen kilobytes each on Apple silicon, and a page table maps every virtual page to a real one."
+        },
+        {
+          "id": "v3",
+          "text": "Looking an address up means walking down a tree of tables: several more trips to memory, for every single access."
+        },
+        {
+          "id": "v4",
+          "text": "So the chip keeps yet another cache, just for translations. It's called the translation lookaside buffer, or TLB.",
+          "say": "So the chip keeps yet another cache, just for translations. It's called the translation lookaside buffer, or T L B."
+        },
+        {
+          "id": "v5",
+          "text": "And because those pages are big, each entry in the TLB covers four times as much memory as it did on older Intel Macs.",
+          "say": "And because those pages are big, each entry in the T L B covers four times as much memory as it did on older Intel Macs."
+        }
+      ]
+    },
+    {
+      "id": "pressure",
+      "chapter": "virtual",
+      "mood": "deep",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        {
+          "id": "q1",
+          "text": "And when a program touches a page that isn't in memory at all, the hardware stops and asks the kernel for help. That's a page fault."
+        },
+        {
+          "id": "q2",
+          "text": "The kernel finds the data, maps it in, and the program carries on, never knowing anything happened."
+        },
+        {
+          "id": "q3",
+          "text": "When memory runs short, macOS squeezes pages that haven't been used lately, compressing them right there in memory."
+        },
+        {
+          "id": "q4",
+          "text": "Only when that isn't enough does it move pages out to the SSD. That's swap."
+        }
+      ]
+    },
+    {
+      "id": "finale",
+      "chapter": "epilogue",
+      "mood": "finale",
+      "lead": 1.0,
+      "tail": 6.5,
+      "lines": [
+        {
+          "id": "x1",
+          "text": "So, one more time: a single load.",
+          "gap": 0.5
+        },
+        {
+          "id": "x2",
+          "text": "The core asks the TLB for the real address. It checks L1. Then L2. Then the system cache. The memory controller opens a row. Sense amplifiers wake thousands of capacitors. And a burst of bytes races back up to the core.",
+          "say": "The core asks the T L B for the real address. It checks L one. Then L two. Then the system cache. The memory controller opens a row. Sense amplifiers wake thousands of capacitors. And a burst of bytes races back up to the core."
+        },
+        {
+          "id": "x3",
+          "text": "All in about a hundred nanoseconds. And almost every time, it never has to go that far."
+        },
+        {
+          "id": "x4",
+          "text": "Next time: storage. Where your files go when the power goes out, and how billions of tiny electron traps keep them safe for years."
+        }
+      ]
+    }
+  ]
+}

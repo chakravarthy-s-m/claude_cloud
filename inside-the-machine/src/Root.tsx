@@ -6,6 +6,8 @@ import { Ep02, Ep02Scene, timeline as tl02 } from "./episodes/ep02";
 import { Ep02Thumbnail } from "./episodes/ep02/Thumbnail";
 import { Ep03, Ep03Scene, timeline as tl03 } from "./episodes/ep03";
 import { Ep03Thumbnail } from "./episodes/ep03/Thumbnail";
+import { Ep04, Ep04Scene, timeline as tl04 } from "./episodes/ep04";
+import { Ep04Thumbnail } from "./episodes/ep04/Thumbnail";
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -15,6 +17,8 @@ export const RemotionRoot: React.FC = () => (
     <Still id="Ep02Thumbnail" component={Ep02Thumbnail} width={1920} height={1080} />
     <Composition id="Ep03" component={Ep03} durationInFrames={tl03.durationInFrames} fps={tl03.fps} width={1920} height={1080} />
     <Still id="Ep03Thumbnail" component={Ep03Thumbnail} width={1920} height={1080} />
+    <Composition id="Ep04" component={Ep04} durationInFrames={tl04.durationInFrames} fps={tl04.fps} width={1920} height={1080} />
+    <Still id="Ep04Thumbnail" component={Ep04Thumbnail} width={1920} height={1080} />
     <Folder name="Ep01-Scenes">
       {tl01.scenes.map((s) => (
         <Composition
@@ -52,6 +56,20 @@ export const RemotionRoot: React.FC = () => (
           defaultProps={{ id: s.id }}
           durationInFrames={s.durationInFrames}
           fps={tl03.fps}
+          width={1920}
+          height={1080}
+        />
+      ))}
+    </Folder>
+    <Folder name="Ep04-Scenes">
+      {tl04.scenes.map((s) => (
+        <Composition
+          key={s.id}
+          id={`ep04-${s.id}`}
+          component={Ep04Scene}
+          defaultProps={{ id: s.id }}
+          durationInFrames={s.durationInFrames}
+          fps={tl04.fps}
           width={1920}
           height={1080}
         />

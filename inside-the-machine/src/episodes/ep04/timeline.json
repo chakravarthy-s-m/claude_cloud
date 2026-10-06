@@ -1,0 +1,731 @@
+{
+ "episode": "ep04",
+ "fps": 30,
+ "voice": "af_heart",
+ "scenes": [
+  {
+   "id": "coldOpen",
+   "chapter": "prologue",
+   "from": 0,
+   "durationInFrames": 1144,
+   "cues": [
+    {
+     "id": "o1",
+     "from": 54,
+     "durationInFrames": 121,
+     "seconds": 4.032,
+     "text": "Every program you run is just numbers, flowing in and out of memory.",
+     "say": "Every program you run is just numbers, flowing in and out of memory.",
+     "audio": "audio/narration/ep04/o1.wav"
+    },
+    {
+     "id": "o2",
+     "from": 199,
+     "durationInFrames": 129,
+     "seconds": 4.288,
+     "text": "Your Mac's processor can add two of them in a fraction of a nanosecond.",
+     "say": "Your Mac's processor can add two of them in a fraction of a nanosecond.",
+     "audio": "audio/narration/ep04/o2.wav"
+    },
+    {
+     "id": "o3",
+     "from": 346,
+     "durationInFrames": 111,
+     "seconds": 3.669,
+     "text": "But first, it has to fetch them. And that's where the trouble starts.",
+     "say": "But first, it has to fetch them. And that's where the trouble starts.",
+     "audio": "audio/narration/ep04/o3.wav"
+    },
+    {
+     "id": "o4",
+     "from": 483,
+     "durationInFrames": 142,
+     "seconds": 4.715,
+     "text": "Slow time down, so that one tick of the processor's clock lasts one second.",
+     "say": "Slow time down, so that one tick of the processor's clock lasts one second.",
+     "audio": "audio/narration/ep04/o4.wav"
+    },
+    {
+     "id": "o5",
+     "from": 642,
+     "durationInFrames": 115,
+     "seconds": 3.819,
+     "text": "Grabbing a number from right beside the core takes about three seconds.",
+     "say": "Grabbing a number from right beside the core takes about three seconds.",
+     "audio": "audio/narration/ep04/o5.wav"
+    },
+    {
+     "id": "o6",
+     "from": 772,
+     "durationInFrames": 89,
+     "seconds": 2.965,
+     "text": "Fetching it from main memory? About five minutes.",
+     "say": "Fetching it from main memory? About five minutes.",
+     "audio": "audio/narration/ep04/o6.wav"
+    },
+    {
+     "id": "o7",
+     "from": 879,
+     "durationInFrames": 69,
+     "seconds": 2.283,
+     "text": "And from the SSD \u2014 about two days.",
+     "say": "And from the SSD, about two days.",
+     "audio": "audio/narration/ep04/o7.wav"
+    },
+    {
+     "id": "o8",
+     "from": 977,
+     "durationInFrames": 149,
+     "seconds": 4.949,
+     "text": "So how does a chip that thinks in nanoseconds keep itself fed? Today: memory.",
+     "say": "So how does a chip that thinks in nanoseconds keep itself fed? Today: memory.",
+     "audio": "audio/narration/ep04/o8.wav"
+    }
+   ]
+  },
+  {
+   "id": "title",
+   "chapter": "prologue",
+   "from": 1144,
+   "durationInFrames": 180,
+   "cues": []
+  },
+  {
+   "id": "wall",
+   "chapter": "wall",
+   "from": 1324,
+   "durationInFrames": 759,
+   "cues": [
+    {
+     "id": "w1",
+     "from": 90,
+     "durationInFrames": 125,
+     "seconds": 4.139,
+     "text": "For decades, processors got faster much more quickly than memory did.",
+     "say": "For decades, processors got faster much more quickly than memory did.",
+     "audio": "audio/narration/ep04/w1.wav"
+    },
+    {
+     "id": "w2",
+     "from": 224,
+     "durationInFrames": 169,
+     "seconds": 5.611,
+     "text": "In 1995, two computer scientists gave the growing gap a name: the memory wall.",
+     "say": "In nineteen ninety-five, two computer scientists gave the growing gap a name: the memory wall.",
+     "audio": "audio/narration/ep04/w2.wav"
+    },
+    {
+     "id": "w3",
+     "from": 402,
+     "durationInFrames": 204,
+     "seconds": 6.784,
+     "text": "Today, a single core can get through hundreds of instructions in the time it takes to fetch one number from main memory.",
+     "say": "Today, a single core can get through hundreds of instructions in the time it takes to fetch one number from main memory.",
+     "audio": "audio/narration/ep04/w3.wav"
+    },
+    {
+     "id": "w4",
+     "from": 615,
+     "durationInFrames": 124,
+     "seconds": 4.117,
+     "text": "If it had to wait every time, it would spend almost its whole life waiting.",
+     "say": "If it had to wait every time, it would spend almost its whole life waiting.",
+     "audio": "audio/narration/ep04/w4.wav"
+    }
+   ]
+  },
+  {
+   "id": "hierarchy",
+   "chapter": "wall",
+   "from": 2083,
+   "durationInFrames": 1114,
+   "cues": [
+    {
+     "id": "h1",
+     "from": 18,
+     "durationInFrames": 77,
+     "seconds": 2.56,
+     "text": "So computers build memory like a pyramid.",
+     "say": "So computers build memory like a pyramid.",
+     "audio": "audio/narration/ep04/h1.wav"
+    },
+    {
+     "id": "h2",
+     "from": 104,
+     "durationInFrames": 114,
+     "seconds": 3.776,
+     "text": "At the top, a few dozen registers, inside the core itself.",
+     "say": "At the top, a few dozen registers, inside the core itself.",
+     "audio": "audio/narration/ep04/h2.wav"
+    },
+    {
+     "id": "h3",
+     "from": 227,
+     "durationInFrames": 197,
+     "seconds": 6.549,
+     "text": "Below them, small, fast caches, made of SRAM: six transistors for every single bit.",
+     "say": "Below them, small, fast caches, made of S RAM: six transistors for every single bit.",
+     "audio": "audio/narration/ep04/h3.wav"
+    },
+    {
+     "id": "h4",
+     "from": 433,
+     "durationInFrames": 307,
+     "seconds": 10.219,
+     "text": "On the M1, each performance core has 128 kilobytes of data cache. The cores share 12 megabytes more, and the whole chip shares another 8.",
+     "say": "On the M1, each performance core has a hundred and twenty-eight kilobytes of data cache. The cores share twelve megabytes more, and the whole chip shares another eight.",
+     "audio": "audio/narration/ep04/h4.wav"
+    },
+    {
+     "id": "h5",
+     "from": 750,
+     "durationInFrames": 139,
+     "seconds": 4.629,
+     "text": "Then main memory: gigabytes of DRAM. Dense, cheap, and slow.",
+     "say": "Then main memory: gigabytes of D RAM. Dense, cheap, and slow.",
+     "audio": "audio/narration/ep04/h5.wav"
+    },
+    {
+     "id": "h6",
+     "from": 898,
+     "durationInFrames": 107,
+     "seconds": 3.541,
+     "text": "And then the SSD: enormous, permanent, and slower still.",
+     "say": "And then the SSD: enormous, permanent, and slower still.",
+     "audio": "audio/narration/ep04/h6.wav"
+    },
+    {
+     "id": "h7",
+     "from": 1014,
+     "durationInFrames": 77,
+     "seconds": 2.539,
+     "text": "Every step down is bigger, and further away.",
+     "say": "Every step down is bigger, and further away.",
+     "audio": "audio/narration/ep04/h7.wav"
+    }
+   ]
+  },
+  {
+   "id": "cacheLine",
+   "chapter": "caches",
+   "from": 3197,
+   "durationInFrames": 1130,
+   "cues": [
+    {
+     "id": "c1",
+     "from": 90,
+     "durationInFrames": 95,
+     "seconds": 3.157,
+     "text": "When the core needs a number, it checks its own cache first.",
+     "say": "When the core needs a number, it checks its own cache first.",
+     "audio": "audio/narration/ep04/c1.wav"
+    },
+    {
+     "id": "c2",
+     "from": 194,
+     "durationInFrames": 215,
+     "seconds": 7.147,
+     "text": "If it isn't there, that's a miss. The request travels down, and comes back with the number's whole neighborhood: a cache line.",
+     "say": "If it isn't there, that's a miss. The request travels down, and comes back with the number's whole neighborhood: a cache line.",
+     "audio": "audio/narration/ep04/c2.wav"
+    },
+    {
+     "id": "c2b",
+     "from": 418,
+     "durationInFrames": 230,
+     "seconds": 7.637,
+     "text": "On Apple silicon, macOS reports cache lines of 128 bytes: room for sixteen numbers at once.",
+     "say": "On Apple silicon, macOS reports cache lines of a hundred and twenty-eight bytes: room for sixteen numbers at once.",
+     "audio": "audio/narration/ep04/c2b.wav"
+    },
+    {
+     "id": "c3",
+     "from": 657,
+     "durationInFrames": 243,
+     "seconds": 8.085,
+     "text": "Because programs are predictable. Use a number, and you'll probably use its neighbor next. Use it once, and you'll probably use it again.",
+     "say": "Because programs are predictable. Use a number, and you'll probably use its neighbor next. Use it once, and you'll probably use it again.",
+     "audio": "audio/narration/ep04/c3.wav"
+    },
+    {
+     "id": "c4",
+     "from": 909,
+     "durationInFrames": 200,
+     "seconds": 6.656,
+     "text": "So one slow trip pays for a whole run of fast ones. Caches bet on this, and they win almost every time.",
+     "say": "So one slow trip pays for a whole run of fast ones. Caches bet on this, and they win almost every time.",
+     "audio": "audio/narration/ep04/c4.wav"
+    }
+   ]
+  },
+  {
+   "id": "sets",
+   "chapter": "caches",
+   "from": 4327,
+   "durationInFrames": 658,
+   "cues": [
+    {
+     "id": "s1",
+     "from": 18,
+     "durationInFrames": 87,
+     "seconds": 2.88,
+     "text": "But a cache is small. So where does each line go?",
+     "say": "But a cache is small. So where does each line go?",
+     "audio": "audio/narration/ep04/s1.wav"
+    },
+    {
+     "id": "s2",
+     "from": 114,
+     "durationInFrames": 223,
+     "seconds": 7.403,
+     "text": "Part of the address picks a set: a short row of slots. Another part, the tag, records which line is sitting in each slot.",
+     "say": "Part of the address picks a set: a short row of slots. Another part, the tag, records which line is sitting in each slot.",
+     "audio": "audio/narration/ep04/s2.wav"
+    },
+    {
+     "id": "s3",
+     "from": 346,
+     "durationInFrames": 113,
+     "seconds": 3.755,
+     "text": "The cache checks every slot in the set at once. A match is a hit.",
+     "say": "The cache checks every slot in the set at once. A match is a hit.",
+     "audio": "audio/narration/ep04/s3.wav"
+    },
+    {
+     "id": "s4",
+     "from": 468,
+     "durationInFrames": 169,
+     "seconds": 5.632,
+     "text": "And when a set is full, the line that hasn't been used for the longest is usually the one thrown out.",
+     "say": "And when a set is full, the line that hasn't been used for the longest is usually the one thrown out.",
+     "audio": "audio/narration/ep04/s4.wav"
+    }
+   ]
+  },
+  {
+   "id": "prefetch",
+   "chapter": "caches",
+   "from": 4985,
+   "durationInFrames": 592,
+   "cues": [
+    {
+     "id": "p1",
+     "from": 18,
+     "durationInFrames": 293,
+     "seconds": 9.749,
+     "text": "The best caches don't even wait to be asked. A prefetcher watches the stream of requests, spots the pattern, and fetches lines before the program needs them.",
+     "say": "The best caches don't even wait to be asked. A prefetcher watches the stream of requests, spots the pattern, and fetches lines before the program needs them.",
+     "audio": "audio/narration/ep04/p1.wav"
+    },
+    {
+     "id": "p2",
+     "from": 320,
+     "durationInFrames": 251,
+     "seconds": 8.363,
+     "text": "Writes are lazy, too. A change stays in the cache, marked dirty, and only travels down to memory when that line is finally evicted.",
+     "say": "Writes are lazy, too. A change stays in the cache, marked dirty, and only travels down to memory when that line is finally evicted.",
+     "audio": "audio/narration/ep04/p2.wav"
+    }
+   ]
+  },
+  {
+   "id": "coherence",
+   "chapter": "caches",
+   "from": 5577,
+   "durationInFrames": 519,
+   "cues": [
+    {
+     "id": "k1",
+     "from": 18,
+     "durationInFrames": 118,
+     "seconds": 3.925,
+     "text": "But with many cores, many caches can hold copies of the same line.",
+     "say": "But with many cores, many caches can hold copies of the same line.",
+     "audio": "audio/narration/ep04/k1.wav"
+    },
+    {
+     "id": "k2",
+     "from": 145,
+     "durationInFrames": 188,
+     "seconds": 6.251,
+     "text": "So when one core writes, every other copy is invalidated, and no core ever reads a stale value.",
+     "say": "So when one core writes, every other copy is invalidated, and no core ever reads a stale value.",
+     "audio": "audio/narration/ep04/k2.wav"
+    },
+    {
+     "id": "k3",
+     "from": 342,
+     "durationInFrames": 153,
+     "seconds": 5.077,
+     "text": "The caches keep each other honest, constantly, in hardware. It's called coherence.",
+     "say": "The caches keep each other honest, constantly, in hardware. It's called coherence.",
+     "audio": "audio/narration/ep04/k3.wav"
+    }
+   ]
+  },
+  {
+   "id": "dramZoom",
+   "chapter": "dram",
+   "from": 6096,
+   "durationInFrames": 779,
+   "cues": [
+    {
+     "id": "d1",
+     "from": 90,
+     "durationInFrames": 70,
+     "seconds": 2.325,
+     "text": "Now, down into main memory itself.",
+     "say": "Now, down into main memory itself.",
+     "audio": "audio/narration/ep04/d1.wav"
+    },
+    {
+     "id": "d2",
+     "from": 169,
+     "durationInFrames": 189,
+     "seconds": 6.272,
+     "text": "On an Apple silicon Mac, the memory chips sit right on the processor's package, just millimeters away.",
+     "say": "On an Apple silicon Mac, the memory chips sit right on the processor's package, just millimeters away.",
+     "audio": "audio/narration/ep04/d2.wav"
+    },
+    {
+     "id": "d3",
+     "from": 367,
+     "durationInFrames": 123,
+     "seconds": 4.096,
+     "text": "Inside each one: billions of cells, laid out in grids called banks.",
+     "say": "Inside each one: billions of cells, laid out in grids called banks.",
+     "audio": "audio/narration/ep04/d3.wav"
+    },
+    {
+     "id": "d4",
+     "from": 500,
+     "durationInFrames": 259,
+     "seconds": 8.619,
+     "text": "And each cell is just one transistor and one tiny capacitor: a bucket that's either holding charge, a one, or empty, a zero.",
+     "say": "And each cell is just one transistor and one tiny capacitor: a bucket that's either holding charge, a one, or empty, a zero.",
+     "audio": "audio/narration/ep04/d4.wav"
+    }
+   ]
+  },
+  {
+   "id": "senseAmp",
+   "chapter": "dram",
+   "from": 6875,
+   "durationInFrames": 895,
+   "cues": [
+    {
+     "id": "a1",
+     "from": 18,
+     "durationInFrames": 269,
+     "seconds": 8.939,
+     "text": "To read, the memory opens an entire row at once. Every capacitor in that row spills its charge onto a long wire, called a bitline.",
+     "say": "To read, the memory opens an entire row at once. Every capacitor in that row spills its charge onto a long wire, called a bitline.",
+     "audio": "audio/narration/ep04/a1.wav"
+    },
+    {
+     "id": "a2",
+     "from": 296,
+     "durationInFrames": 246,
+     "seconds": 8.171,
+     "text": "The signal is incredibly faint. A sense amplifier catches the tiny nudge, and pushes it all the way to a clean one or zero.",
+     "say": "The signal is incredibly faint. A sense amplifier catches the tiny nudge, and pushes it all the way to a clean one or zero.",
+     "audio": "audio/narration/ep04/a2.wav"
+    },
+    {
+     "id": "a3",
+     "from": 550,
+     "durationInFrames": 152,
+     "seconds": 5.035,
+     "text": "Reading drains the buckets, so the amplifiers immediately write every value back.",
+     "say": "Reading drains the buckets, so the amplifiers immediately write every value back.",
+     "audio": "audio/narration/ep04/a3.wav"
+    },
+    {
+     "id": "a4",
+     "from": 711,
+     "durationInFrames": 163,
+     "seconds": 5.419,
+     "text": "The open row waits in a row buffer, and the requested bytes stream out in one quick burst.",
+     "say": "The open row waits in a row buffer, and the requested bytes stream out in one quick burst.",
+     "audio": "audio/narration/ep04/a4.wav"
+    }
+   ]
+  },
+  {
+   "id": "refresh",
+   "chapter": "dram",
+   "from": 7770,
+   "durationInFrames": 976,
+   "cues": [
+    {
+     "id": "f1",
+     "from": 18,
+     "durationInFrames": 74,
+     "seconds": 2.453,
+     "text": "And there's a catch. Those capacitors leak.",
+     "say": "And there's a catch. Those capacitors leak.",
+     "audio": "audio/narration/ep04/f1.wav"
+    },
+    {
+     "id": "f2",
+     "from": 101,
+     "durationInFrames": 141,
+     "seconds": 4.693,
+     "text": "Left alone, the charge slowly drains away, and the ones fade into zeros.",
+     "say": "Left alone, the charge slowly drains away, and the ones fade into zeros.",
+     "audio": "audio/narration/ep04/f2.wav"
+    },
+    {
+     "id": "f3",
+     "from": 252,
+     "durationInFrames": 180,
+     "seconds": 5.973,
+     "text": "So the memory constantly reads and rewrites itself: every row, at least thirty times a second.",
+     "say": "So the memory constantly reads and rewrites itself: every row, at least thirty times a second.",
+     "audio": "audio/narration/ep04/f3.wav"
+    },
+    {
+     "id": "f4",
+     "from": 440,
+     "durationInFrames": 138,
+     "seconds": 4.587,
+     "text": "Your Mac's memory is forgetting everything, all the time, and being reminded.",
+     "say": "Your Mac's memory is forgetting everything, all the time, and being reminded.",
+     "audio": "audio/narration/ep04/f4.wav"
+    },
+    {
+     "id": "f5",
+     "from": 588,
+     "durationInFrames": 365,
+     "seconds": 12.16,
+     "text": "Pack the cells this tightly, and something stranger happens. Open one row over and over, and bits in the rows beside it can flip. It's called Rowhammer, and today's memory watches out for it.",
+     "say": "Pack the cells this tightly, and something stranger happens. Open one row over and over, and bits in the rows beside it can flip. It's called Row Hammer, and today's memory watches out for it.",
+     "audio": "audio/narration/ep04/f5.wav"
+    }
+   ]
+  },
+  {
+   "id": "unified",
+   "chapter": "unified",
+   "from": 8746,
+   "durationInFrames": 1057,
+   "cues": [
+    {
+     "id": "u1",
+     "from": 90,
+     "durationInFrames": 241,
+     "seconds": 8.021,
+     "text": "On many PCs, the graphics card has its own separate memory. Data has to be copied across before the GPU can use it.",
+     "say": "On many PCs, the graphics card has its own separate memory. Data has to be copied across before the GPU can use it.",
+     "audio": "audio/narration/ep04/u1.wav"
+    },
+    {
+     "id": "u2",
+     "from": 340,
+     "durationInFrames": 220,
+     "seconds": 7.317,
+     "text": "Apple silicon works differently. The CPU, the GPU, and the Neural Engine all share one pool of memory.",
+     "say": "Apple silicon works differently. The CPU, the GPU, and the Neural Engine all share one pool of memory.",
+     "audio": "audio/narration/ep04/u2.wav"
+    },
+    {
+     "id": "u3",
+     "from": 569,
+     "durationInFrames": 153,
+     "seconds": 5.077,
+     "text": "No copies. The GPU can work on the very same bytes the CPU just wrote.",
+     "say": "No copies. The GPU can work on the very same bytes the CPU just wrote.",
+     "audio": "audio/narration/ep04/u3.wav"
+    },
+    {
+     "id": "u4",
+     "from": 731,
+     "durationInFrames": 303,
+     "seconds": 10.069,
+     "text": "And with the memory this close, the connection can be wide: an M4 moves 120 gigabytes every second. An M4 Max, more than half a terabyte.",
+     "say": "And with the memory this close, the connection can be wide: an M4 moves a hundred and twenty gigabytes every second. An M4 Max, more than half a terabyte.",
+     "audio": "audio/narration/ep04/u4.wav"
+    }
+   ]
+  },
+  {
+   "id": "virtual",
+   "chapter": "virtual",
+   "from": 9803,
+   "durationInFrames": 1297,
+   "cues": [
+    {
+     "id": "v1",
+     "from": 90,
+     "durationInFrames": 120,
+     "seconds": 3.989,
+     "text": "One last trick. No program ever sees a real memory address.",
+     "say": "One last trick. No program ever sees a real memory address.",
+     "audio": "audio/narration/ep04/v1.wav"
+    },
+    {
+     "id": "v2",
+     "from": 219,
+     "durationInFrames": 338,
+     "seconds": 11.243,
+     "text": "Every address it uses is virtual. Memory is split into pages, sixteen kilobytes each on Apple silicon, and a page table maps every virtual page to a real one.",
+     "say": "Every address it uses is virtual. Memory is split into pages, sixteen kilobytes each on Apple silicon, and a page table maps every virtual page to a real one.",
+     "audio": "audio/narration/ep04/v2.wav"
+    },
+    {
+     "id": "v3",
+     "from": 566,
+     "durationInFrames": 210,
+     "seconds": 6.976,
+     "text": "Looking an address up means walking down a tree of tables: several more trips to memory, for every single access.",
+     "say": "Looking an address up means walking down a tree of tables: several more trips to memory, for every single access.",
+     "audio": "audio/narration/ep04/v3.wav"
+    },
+    {
+     "id": "v4",
+     "from": 785,
+     "durationInFrames": 226,
+     "seconds": 7.531,
+     "text": "So the chip keeps yet another cache, just for translations. It's called the translation lookaside buffer, or TLB.",
+     "say": "So the chip keeps yet another cache, just for translations. It's called the translation lookaside buffer, or T L B.",
+     "audio": "audio/narration/ep04/v4.wav"
+    },
+    {
+     "id": "v5",
+     "from": 1021,
+     "durationInFrames": 256,
+     "seconds": 8.512,
+     "text": "And because those pages are big, each entry in the TLB covers four times as much memory as it did on older Intel Macs.",
+     "say": "And because those pages are big, each entry in the T L B covers four times as much memory as it did on older Intel Macs.",
+     "audio": "audio/narration/ep04/v5.wav"
+    }
+   ]
+  },
+  {
+   "id": "pressure",
+   "chapter": "virtual",
+   "from": 11100,
+   "durationInFrames": 840,
+   "cues": [
+    {
+     "id": "q1",
+     "from": 18,
+     "durationInFrames": 236,
+     "seconds": 7.851,
+     "text": "And when a program touches a page that isn't in memory at all, the hardware stops and asks the kernel for help. That's a page fault.",
+     "say": "And when a program touches a page that isn't in memory at all, the hardware stops and asks the kernel for help. That's a page fault.",
+     "audio": "audio/narration/ep04/q1.wav"
+    },
+    {
+     "id": "q2",
+     "from": 263,
+     "durationInFrames": 180,
+     "seconds": 5.995,
+     "text": "The kernel finds the data, maps it in, and the program carries on, never knowing anything happened.",
+     "say": "The kernel finds the data, maps it in, and the program carries on, never knowing anything happened.",
+     "audio": "audio/narration/ep04/q2.wav"
+    },
+    {
+     "id": "q3",
+     "from": 453,
+     "durationInFrames": 212,
+     "seconds": 7.04,
+     "text": "When memory runs short, macOS squeezes pages that haven't been used lately, compressing them right there in memory.",
+     "say": "When memory runs short, macOS squeezes pages that haven't been used lately, compressing them right there in memory.",
+     "audio": "audio/narration/ep04/q3.wav"
+    },
+    {
+     "id": "q4",
+     "from": 673,
+     "durationInFrames": 143,
+     "seconds": 4.757,
+     "text": "Only when that isn't enough does it move pages out to the SSD. That's swap.",
+     "say": "Only when that isn't enough does it move pages out to the SSD. That's swap.",
+     "audio": "audio/narration/ep04/q4.wav"
+    }
+   ]
+  },
+  {
+   "id": "finale",
+   "chapter": "epilogue",
+   "from": 11940,
+   "durationInFrames": 1231,
+   "cues": [
+    {
+     "id": "x1",
+     "from": 30,
+     "durationInFrames": 70,
+     "seconds": 2.325,
+     "text": "So, one more time: a single load.",
+     "say": "So, one more time: a single load.",
+     "audio": "audio/narration/ep04/x1.wav"
+    },
+    {
+     "id": "x2",
+     "from": 115,
+     "durationInFrames": 487,
+     "seconds": 16.213,
+     "text": "The core asks the TLB for the real address. It checks L1. Then L2. Then the system cache. The memory controller opens a row. Sense amplifiers wake thousands of capacitors. And a burst of bytes races back up to the core.",
+     "say": "The core asks the T L B for the real address. It checks L one. Then L two. Then the system cache. The memory controller opens a row. Sense amplifiers wake thousands of capacitors. And a burst of bytes races back up to the core.",
+     "audio": "audio/narration/ep04/x2.wav"
+    },
+    {
+     "id": "x3",
+     "from": 611,
+     "durationInFrames": 170,
+     "seconds": 5.653,
+     "text": "All in about a hundred nanoseconds. And almost every time, it never has to go that far.",
+     "say": "All in about a hundred nanoseconds. And almost every time, it never has to go that far.",
+     "audio": "audio/narration/ep04/x3.wav"
+    },
+    {
+     "id": "x4",
+     "from": 790,
+     "durationInFrames": 247,
+     "seconds": 8.213,
+     "text": "Next time: storage. Where your files go when the power goes out, and how billions of tiny electron traps keep them safe for years.",
+     "say": "Next time: storage. Where your files go when the power goes out, and how billions of tiny electron traps keep them safe for years.",
+     "audio": "audio/narration/ep04/x4.wav"
+    }
+   ]
+  }
+ ],
+ "chapters": [
+  {
+   "id": "prologue",
+   "num": "00",
+   "title": "Prologue"
+  },
+  {
+   "id": "wall",
+   "num": "01",
+   "title": "The Memory Wall"
+  },
+  {
+   "id": "caches",
+   "num": "02",
+   "title": "Caches"
+  },
+  {
+   "id": "dram",
+   "num": "03",
+   "title": "Inside DRAM"
+  },
+  {
+   "id": "unified",
+   "num": "04",
+   "title": "Unified Memory"
+  },
+  {
+   "id": "virtual",
+   "num": "05",
+   "title": "Virtual Memory"
+  },
+  {
+   "id": "epilogue",
+   "num": "06",
+   "title": "The Round Trip"
+  }
+ ],
+ "durationInFrames": 13171
+}
