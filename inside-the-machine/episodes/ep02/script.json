@@ -1,0 +1,316 @@
+{
+  "id": "ep02",
+  "slug": "painting-with-light",
+  "series": "INSIDE THE MACHINE",
+  "title": "Painting with Light",
+  "subtitle": "How your Mac turns numbers into light",
+  "voice": "af_heart",
+  "speed": 0.94,
+  "fps": 30,
+  "defaultGap": 0.32,
+  "score": { "transpose": 3, "bpm": 116 },
+  "chapters": [
+    { "id": "prologue", "num": "00", "title": "Prologue" },
+    { "id": "pixels", "num": "01", "title": "Pixels" },
+    { "id": "painter", "num": "02", "title": "The Painter" },
+    { "id": "pipeline", "num": "03", "title": "The Pipeline" },
+    { "id": "frame", "num": "04", "title": "The Frame" },
+    { "id": "light", "num": "05", "title": "Making Light" },
+    { "id": "eye", "num": "06", "title": "Into Your Eye" }
+  ],
+  "scenes": [
+    {
+      "id": "coldOpen",
+      "chapter": "prologue",
+      "mood": "mystery",
+      "lead": 1.6,
+      "tail": 0.6,
+      "lines": [
+        { "id": "o1", "text": "Look at your screen.", "gap": 1.4 },
+        { "id": "o2", "text": "It seems perfectly still. It isn't.", "gap": 0.8 },
+        {
+          "id": "o3",
+          "text": "Up to 120 times every second, every pixel on it is refreshed.",
+          "say": "Up to a hundred and twenty times every second, every pixel on it is refreshed.",
+          "gap": 0.5
+        },
+        {
+          "id": "o4",
+          "text": "And the moment anything moves, your Mac has to paint a brand-new picture — nearly six million pixels — in about eight milliseconds.",
+          "gap": 0.45
+        },
+        {
+          "id": "o5",
+          "text": "To pull that off, it uses a processor built for one thing: doing the same simple math, on millions of things, at once.",
+          "gap": 0.4
+        },
+        { "id": "o6", "text": "And then it turns electrons… back into light.", "gap": 0.9 },
+        { "id": "o7", "text": "Today, we follow a single frame. From numbers… to light.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "title",
+      "chapter": "prologue",
+      "mood": "hit",
+      "lead": 6.0,
+      "tail": 0,
+      "lines": []
+    },
+    {
+      "id": "pixels",
+      "chapter": "pixels",
+      "mood": "wonder",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        { "id": "p1", "text": "Get close enough to any screen, and the illusion breaks.", "gap": 0.5 },
+        {
+          "id": "p2",
+          "text": "It's a grid of tiny dots, called pixels. A 14-inch MacBook Pro has nearly six million of them.",
+          "say": "It's a grid of tiny dots, called pixels. A fourteen inch MacBook Pro has nearly six million of them.",
+          "gap": 0.5
+        },
+        { "id": "p3", "text": "And each pixel is really three: a red, a green, and a blue light, side by side.", "gap": 0.5 },
+        { "id": "p4", "text": "Turn all three up, and you see white. Turn them all off: black.", "gap": 0.4 },
+        { "id": "p5", "text": "Every color you've ever seen on a screen is just a different mix of these three lights.", "gap": 0.3 }
+      ]
+    },
+    {
+      "id": "framebuffer",
+      "chapter": "pixels",
+      "mood": "build",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        { "id": "f1", "text": "To the computer, a pixel is just three numbers: how bright the red, the green, and the blue should be.", "gap": 0.45 },
+        {
+          "id": "f2",
+          "text": "With eight bits per color, each light gets 256 levels. Multiply them together, and that's over sixteen million colors.",
+          "say": "With eight bits per color, each light gets two hundred and fifty-six levels. Multiply them together, and that's over sixteen million colors.",
+          "gap": 0.4
+        },
+        { "id": "f3", "text": "The best Mac displays go further, with ten bits per color: over a billion.", "gap": 0.5 },
+        {
+          "id": "f4",
+          "text": "A whole screen of these numbers is called a frame buffer. At four bytes per pixel, one frame is about 24 megabytes.",
+          "say": "A whole screen of these numbers is called a frame buffer. At four bytes per pixel, one frame is about twenty-four megabytes.",
+          "gap": 0.4
+        },
+        {
+          "id": "f5",
+          "text": "At 120 frames a second, that's nearly three gigabytes of pixels, every second.",
+          "say": "At a hundred and twenty frames a second, that's nearly three gigabytes of pixels, every second.",
+          "gap": 0.6
+        },
+        { "id": "f6", "text": "So who fills in all those numbers… that fast?", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "gpuIntro",
+      "chapter": "painter",
+      "mood": "drive",
+      "lead": 3.0,
+      "tail": 0.8,
+      "lines": [
+        { "id": "g1", "text": "Meet the GPU: the graphics processing unit.", "gap": 0.5 },
+        { "id": "g2", "text": "A CPU is like a handful of brilliant artists. Each one can paint anything — but they work stroke by stroke.", "gap": 0.4 },
+        { "id": "g3", "text": "A GPU is an army of thousands of simpler painters. They all follow the same instructions, but each one works on a different pixel.", "gap": 0.45 },
+        { "id": "g4", "text": "For pictures, where every pixel needs the same kind of math, the army wins. Every time.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "gpuCore",
+      "chapter": "painter",
+      "mood": "drive",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        { "id": "c1", "text": "On Apple silicon, the GPU sits right on the same chip as the CPU.", "gap": 0.4 },
+        {
+          "id": "c2",
+          "text": "Each GPU core packs 128 tiny arithmetic units. They work in squads of 32 called SIMD groups: one instruction, thirty-two pixels at once.",
+          "say": "Each GPU core packs a hundred and twenty-eight tiny arithmetic units. They work in squads of thirty-two, called [SIMD](/sˈɪmdi/) groups: one instruction, thirty-two pixels at once.",
+          "gap": 0.45
+        },
+        { "id": "c3", "text": "An eight-core Apple GPU can keep nearly twenty-five thousand threads in flight at the same time.", "gap": 0.5 },
+        {
+          "id": "c4",
+          "text": "Apps talk to it through Metal, Apple's graphics framework. They pack commands — like “draw these triangles” — into a command buffer, and hand it over.",
+          "gap": 0.45
+        },
+        { "id": "c5", "text": "So what does the GPU actually do with a triangle?", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "teapot",
+      "chapter": "pipeline",
+      "mood": "wonder",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        {
+          "id": "t1",
+          "text": "Meet the most famous teapot in computing. Graphics researchers have been drawing it since 1975.",
+          "say": "Meet the most famous teapot in computing. Graphics researchers have been drawing it since nineteen seventy-five.",
+          "gap": 0.5
+        },
+        { "id": "t2", "text": "To the GPU, it's nothing but triangles — thousands of them, each defined by three corners, called vertices.", "gap": 0.45 },
+        { "id": "t3", "text": "Step one: a small program called a vertex shader runs once for every corner.", "gap": 0.3 },
+        { "id": "t4", "text": "It moves, rotates and scales each point, then projects it onto your flat screen, so nearer things look bigger.", "gap": 0.3 }
+      ]
+    },
+    {
+      "id": "raster",
+      "chapter": "pipeline",
+      "mood": "flow",
+      "lead": 0.6,
+      "tail": 0.7,
+      "lines": [
+        { "id": "r1", "text": "Step two: rasterization. The GPU works out exactly which pixels each triangle covers.", "gap": 0.45 },
+        { "id": "r2", "text": "Step three: for every one of those pixels, a fragment shader decides its color — from the light, the material, and the texture.", "gap": 0.45 },
+        { "id": "r3", "text": "Millions of pixels per frame, all in parallel. That's what those thousands of painters are for.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "tiles",
+      "chapter": "pipeline",
+      "mood": "deep",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        { "id": "ti1", "text": "Apple's GPUs add a clever trick. They split the screen into small tiles — say, thirty-two by thirty-two pixels — and work on them one at a time.", "gap": 0.45 },
+        { "id": "ti2", "text": "Before shading anything, each tile figures out which surfaces are actually visible, and skips everything hidden behind them.", "gap": 0.4 },
+        { "id": "ti3", "text": "Then it does all the work in fast memory right inside the GPU, and writes each finished tile out just once.", "gap": 0.4 },
+        { "id": "ti4", "text": "It's called tile-based deferred rendering. Less work, less memory traffic, less power.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "compose",
+      "chapter": "frame",
+      "mood": "flow",
+      "lead": 3.0,
+      "tail": 0.8,
+      "lines": [
+        { "id": "w1", "text": "But your screen isn't one picture. Every app paints its own windows, separately.", "gap": 0.45 },
+        {
+          "id": "w2",
+          "text": "A system process called the WindowServer stacks them all together — adding shadows, transparency and blur — into one final frame.",
+          "say": "A system process called the Window Server stacks them all together — adding shadows, transparency and blur — into one final frame.",
+          "gap": 0.4
+        },
+        { "id": "w3", "text": "And because your apps, the WindowServer, and the GPU all share the same unified memory, nobody has to copy those pixels around.", "say": "And because your apps, the Window Server, and the GPU all share the same unified memory, nobody has to copy those pixels around.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "vsync",
+      "chapter": "frame",
+      "mood": "tick",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        { "id": "v1", "text": "Timing is everything. The next frame is painted into a hidden back buffer, while the screen shows the front one.", "gap": 0.4 },
+        { "id": "v2", "text": "When the display is ready for a new frame, the two swap — perfectly in sync with the refresh.", "gap": 0.4 },
+        { "id": "v3", "text": "Swap at the wrong moment, and you'd see a torn image: half old frame, half new.", "gap": 0.5 },
+        {
+          "id": "v4",
+          "text": "On ProMotion displays, the refresh rate even adapts: up to 120 hertz when things move, slowing down when nothing changes, to save power.",
+          "say": "On Pro Motion displays, the refresh rate even adapts: up to a hundred and twenty hertz when things move, slowing down when nothing changes, to save power.",
+          "gap": 0.2
+        }
+      ]
+    },
+    {
+      "id": "scanout",
+      "chapter": "light",
+      "mood": "drive",
+      "lead": 3.0,
+      "tail": 0.7,
+      "lines": [
+        { "id": "s1", "text": "Now the finished frame leaves the chip.", "gap": 0.4 },
+        { "id": "s2", "text": "A display engine reads it from memory and streams it, row by row, over a high-speed link to the screen's timing controller.", "gap": 0.4 },
+        { "id": "s3", "text": "The controller switches on one row of pixels at a time, while thousands of column wires deliver a precise voltage to every pixel in that row.", "gap": 0.45 },
+        { "id": "s4", "text": "Sound familiar? It's the same row-and-column trick your keyboard uses. Top to bottom, row after row, and then it starts all over again.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "panel",
+      "chapter": "light",
+      "mood": "wonder",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        { "id": "pa1", "text": "So what is a pixel, physically? Let's take the display apart.", "gap": 0.45 },
+        { "id": "pa2", "text": "At the back: a backlight. Then a polarizing filter. A sheet of glass, covered in transistors. A thin layer of liquid crystal. Color filters. And a second polarizer.", "gap": 0.45 },
+        { "id": "pa3", "text": "There's one transistor for every subpixel — nearly eighteen million of them. Each one charges a tiny capacitor that holds its brightness until the next refresh.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "crystals",
+      "chapter": "light",
+      "mood": "deep",
+      "lead": 0.6,
+      "tail": 0.8,
+      "lines": [
+        { "id": "l1", "text": "The real magic happens in the liquid crystal. Its molecules are long and thin, like microscopic rods.", "gap": 0.4 },
+        { "id": "l2", "text": "The first polarizer only lets through light that vibrates in one direction. The second is turned ninety degrees — so on its own, it blocks that light completely.", "gap": 0.45 },
+        { "id": "l3", "text": "But apply a voltage, and the crystals rotate, twisting the light as it passes, so some of it slips through.", "gap": 0.4 },
+        { "id": "l4", "text": "More voltage, more light. Every subpixel is a tiny light valve, and its color filter tints it red, green, or blue.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "backlight",
+      "chapter": "light",
+      "mood": "awe",
+      "lead": 0.8,
+      "tail": 0.8,
+      "lines": [
+        { "id": "b1", "text": "And the light itself? On a MacBook Pro, it comes from thousands of tiny LEDs, grouped into zones that dim independently.", "gap": 0.4 },
+        {
+          "id": "b2",
+          "text": "Dark parts of the picture get dark LEDs, while highlights can blaze at up to 1,600 nits.",
+          "say": "Dark parts of the picture get dark LEDs, while highlights can blaze at up to sixteen hundred nits.",
+          "gap": 0.5
+        },
+        { "id": "b3", "text": "Inside each LED, it's electrons, once again. Pushed across a junction in a semiconductor, they fall into holes — and every fall releases a photon.", "gap": 0.45 },
+        { "id": "b4", "text": "The size of that fall, the band gap, sets the light's color. These are blue LEDs, made of gallium nitride — an invention that won the Nobel Prize in Physics.", "gap": 0.4 },
+        { "id": "b5", "text": "A special coating turns part of that blue into red and green. Together, they make white.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "eye",
+      "chapter": "eye",
+      "mood": "wonder",
+      "lead": 3.0,
+      "tail": 0.8,
+      "lines": [
+        { "id": "e1", "text": "That light crosses the space between you and the screen, passes through your lens, and lands on your retina.", "gap": 0.4 },
+        { "id": "e2", "text": "There, three kinds of cone cells respond to it. Roughly speaking, they sense red, green, and blue.", "gap": 0.4 },
+        { "id": "e3", "text": "Your brain compares their signals and creates the sensation of color. That's why three tiny lights can fool you into seeing millions.", "gap": 0.45 },
+        { "id": "e4", "text": "And a few milliseconds later, the next frame arrives. Your brain stitches them together into smooth, continuous motion.", "gap": 0.2 }
+      ]
+    },
+    {
+      "id": "finale",
+      "chapter": "eye",
+      "mood": "finale",
+      "lead": 1.0,
+      "tail": 6.5,
+      "lines": [
+        { "id": "x1", "text": "So, let's rewind.", "gap": 0.5 },
+        {
+          "id": "x2",
+          "text": "An app describes a scene. The GPU turns triangles into pixels, tile by tile. The WindowServer composites the frame. The display engine streams it, row by row. Transistors set eighteen million light valves. And electrons, falling into holes, pour out as light.",
+          "say": "An app describes a scene. The GPU turns triangles into pixels, tile by tile. The Window Server composites the frame. The display engine streams it, row by row. Transistors set eighteen million light valves. And electrons, falling into holes, pour out as light.",
+          "gap": 0.6
+        },
+        {
+          "id": "x3",
+          "text": "Up to 120 times a second. Every scroll, every video, every letter you type — painted in light, just for you.",
+          "say": "Up to a hundred and twenty times a second. Every scroll, every video, every letter you type — painted in light, just for you.",
+          "gap": 0.9
+        },
+        { "id": "x4", "text": "Next time: what really happens in the seconds after you press the power button.", "gap": 0.2 }
+      ]
+    }
+  ]
+}

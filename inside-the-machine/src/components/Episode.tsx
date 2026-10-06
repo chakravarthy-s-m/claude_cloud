@@ -28,22 +28,18 @@ export type SceneModule = {
 
 const DEF: Required<BackdropCfg> = { hueA: C.cyan, hueB: C.violet, hueC: C.pink, intensity: 1, dots: true };
 
-const CHAPTER_COLORS: Record<string, string> = {
-  machine: C.green,
-  keystroke: C.cyan,
-  launch: C.violet,
-  save: C.amber,
-  rabbit: C.pink,
-};
-
 const CARD_DUR = 84;
 
 export const Episode: React.FC<{
   timeline: Timeline;
   scenes: Record<string, SceneModule>;
+  /** chapter id → accent color; only chapters listed here get a chapter card */
+  chapterColors: Record<string, string>;
+  /** short episode tag shown in the HUD, e.g. "EP 01" */
+  label: string;
   only?: string;
   music?: string;
-}> = ({ timeline, scenes, only, music }) => {
+}> = ({ timeline, scenes, chapterColors: CHAPTER_COLORS, label, only, music }) => {
   const f = useCurrentFrame();
   const list: SceneData[] = only
     ? timeline.scenes.filter((s) => s.id === only).map((s) => ({ ...s, from: 0 }))
@@ -137,6 +133,7 @@ export const Episode: React.FC<{
           progress={only ? (f - cur.from) / cur.durationInFrames : f / total}
           marks={only ? [] : chapterStarts}
           opacity={hudOpacity}
+          label={label}
         />
         <Grain />
 

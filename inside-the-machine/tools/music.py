@@ -6,6 +6,10 @@ synthesizes a continuous D-minor score (pads, sub bass, arpeggios, bells,
 light drums) that changes character with the story. Narration is analyzed and
 the score is ducked underneath it (sidechain-style), then mastered.
 
+Per-scene moods come from the "mood" field in episodes/<ep>/script.json
+(falling back to SCENE_MOOD); an optional top-level "score" object can set
+"transpose" (semitones) and "bpm" to give each episode its own color.
+
 usage: tools/.venv/bin/python tools/music.py ep01
 """
 from __future__ import annotations
@@ -23,11 +27,12 @@ ROOT = Path(__file__).resolve().parent.parent
 BPM = 120.0
 BEAT = 60.0 / BPM
 BAR = BEAT * 4
+TRANSPOSE = 0  # semitones, set per episode from script.json
 rng = np.random.default_rng(42)
 
 
 def midi(n: float) -> float:
-    return 440.0 * 2 ** ((n - 69) / 12)
+    return 440.0 * 2 ** ((n + TRANSPOSE - 69) / 12)
 
 
 # chord voicings (MIDI) — D minor family
@@ -287,8 +292,16 @@ def narration_envelope(timeline: dict, total: float) -> np.ndarray:
 
 
 def main() -> None:
+    global BPM, BEAT, BAR, TRANSPOSE
     ep = sys.argv[1] if len(sys.argv) > 1 else "ep01"
     tl = json.loads((ROOT / "src" / "episodes" / ep / "timeline.json").read_text())
+    script = json.loads((ROOT / "episodes" / ep / "script.json").read_text())
+    moods = {sc["id"]: sc.get("mood") for sc in script["scenes"]}
+    score = script.get("score", {})
+    TRANSPOSE = int(score.get("transpose", 0))
+    BPM = float(score.get("bpm", BPM))
+    BEAT = 60.0 / BPM
+    BAR = BEAT * 4
     fps = tl["fps"]
     total = tl["durationInFrames"] / fps + 4.0
     n = int(total * SR)
@@ -299,7 +312,7 @@ def main() -> None:
     for sc in tl["scenes"]:
         s0 = sc["from"] / fps
         s1 = (sc["from"] + sc["durationInFrames"]) / fps
-        mood = SCENE_MOOD.get(sc["id"], "wonder")
+        mood = moods.get(sc["id"]) or SCENE_MOOD.get(sc["id"], "wonder")
         if sc["id"] == "coldOpen":
             split = s0 + sc["cues"][3]["from"] / fps - 0.3  # montage begins at o4
             sections.append(("mystery", s0, split, (0.5, 1.0)))

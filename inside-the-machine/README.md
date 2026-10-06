@@ -2,9 +2,12 @@
 
 **A cinematic explainer series about how computers really work — built entirely in code.**
 
-![Episode 01 — From Keystroke to Electron](docs/ep01-thumbnail.jpg)
+| Episode 01 | Episode 02 |
+|---|---|
+| ![Episode 01 — From Keystroke to Electron](docs/ep01-thumbnail.jpg) | ![Episode 02 — Painting with Light](docs/ep02-thumbnail.jpg) |
+| **From Keystroke → Electron** — how a modern Mac really works (≈ 11 min) | **Painting with Light** — how your Mac turns numbers into light (≈ 9 min) |
 
-Episode 01 — **From Keystroke → Electron: How a modern Mac really works** (≈ 11 min, 1080p30)
+### Episode 01 — From Keystroke → Electron (1080p30)
 
 You press one key. We follow that press through every layer of a modern Apple‑silicon Mac — the key matrix, the
 HID report, the interrupt, the kernel, the WindowServer, the app's run loop, Unicode, font outlines, rasterization,
@@ -12,13 +15,23 @@ the tile‑based GPU and the display's subpixels — then open an app (processes
 scheduler), save a file (system calls, APFS, 3D NAND, charge‑trap cells) and finally dive all the way down: Swift →
 ARM64 machine code → the out‑of‑order core → the adder → logic gates → CMOS → a 3D FinFET → electrons and the clock.
 
+### Episode 02 — Painting with Light (1080p30)
+
+We follow a single frame. Pixels and subpixels under a "microscope", 8‑ and 10‑bit color, the frame buffer; why a
+GPU is an army of simple painters (128 ALUs per core, 32‑wide SIMD groups, ~25,000 threads in flight); Metal command
+buffers; the Utah teapot through the pipeline — vertices, a vertex shader and projection (in three.js), rasterization
+and fragment shading (with a real software rasterizer), Apple's tile‑based deferred rendering; WindowServer
+compositing, double buffering, tearing and ProMotion; scan‑out to the timing controller and the active matrix; an
+exploded LCD; liquid crystals twisting polarized light; mini‑LED local dimming, the p–n junction and the band gap;
+and finally the cone cells in your eye.
+
 | | |
 |---|---|
 | **Narration** | Kokoro‑82M neural TTS (voice `af_heart`), fully offline, phoneme‑level pronunciation fixes |
 | **Music** | Original score, procedurally synthesized and **timeline‑aware** (mood per chapter, ducked under the voice) |
 | **Sound design** | 39 procedurally synthesized SFX (whooshes, clicks, impacts, data chatter, zaps, clock ticks…) |
-| **Visuals** | Remotion + a custom SVG "mini‑3D" engine (flat‑shaded extrusions, keynote‑style) + three.js for the hero FinFET |
-| **Captions** | `episodes/ep01/captions.srt` (generated from the narration timeline) |
+| **Visuals** | Remotion + a custom SVG "mini‑3D" engine (flat‑shaded extrusions, keynote‑style) + three.js (FinFET, Utah teapot) + canvas (subpixel microscope, software rasterizer) |
+| **Captions** | `episodes/epNN/captions.srt` (generated from the narration timeline) |
 
 ---
 
@@ -41,8 +54,9 @@ render each scene as an independent, resumable segment.
 cd inside-the-machine
 npm install
 
-npm run studio            # live preview: "Ep01" + every scene as its own composition (Ep01-Scenes/…)
-node tools/render.mjs     # production render → out/ep01-keystroke-to-electron.mp4
+npm run studio                    # live preview: "Ep01", "Ep02" + every scene as its own composition
+node tools/render.mjs             # production render → out/ep01-keystroke-to-electron.mp4
+node tools/render.mjs --ep=ep02   # → out/ep02-painting-with-light.mp4
 ```
 
 `remotion.config.ts` points Remotion at a local Chromium headless shell if one exists; otherwise Remotion downloads
@@ -63,8 +77,9 @@ Useful flags: `--scale=0.5` (fast 540p draft), `--crf=18`, `--concurrency=4`, `-
 
 Quick previews of single frames: `node tools/stills.mjs ep01-finfet:120,600 Ep01:3920` → `out/stills/`.
 
-Delivery encodes (shareable 1080p + 720p preview + storyboard) from the master: `tools/deliver.sh`;
-two < 30 MiB 720p halves for chat/upload limits: `tools/share.sh`.
+Delivery encodes (shareable 1080p + 720p preview + storyboard) from the master: `tools/deliver.sh ep02`;
+two < 30 MiB 720p halves for chat/upload limits (split at the chapter nearest the middle): `tools/share.sh ep02`.
+Contact sheet of any scene: `tools/preview.sh out/qa ep02-teapot 60,300,600`; cue frames: `python3 tools/cues.py ep02 teapot`.
 Speed experiments: `GL=angle node tools/bench.mjs <fromFrame> <count> '{}' '{"noGrain":true}'` (flags in `src/components/core.tsx`).
 
 ---
@@ -85,10 +100,11 @@ tools/.venv/bin/python tools/music.py ep01           # score (reads the timeline
   frame‑accurate timeline. Scenes animate against cue frames (`cueMap`) and even individual words (`wordAt`), so
   visuals land exactly on the narration. `say` overrides spoken text; inline `[word](/ipa/)` forces pronunciation.
   Change voice/speed with `--voice am_michael --speed 1.0` (54 voices available).
-* **Score** — D‑minor, 120 BPM, synthesized from saw‑stack pads, sub bass, triangle plucks, FM bells and light drums
-  with convolution reverb. Each scene gets a mood (`mystery → build → hit → wonder → drive → flow → deep → descent →
-  awe → tick → finale`), sections crossfade, the final chord resolves to D major, and the whole score is
-  **side‑chain ducked** (~9 dB) wherever the narration is speaking.
+* **Score** — synthesized from saw‑stack pads, sub bass, triangle plucks, FM bells and light drums with convolution
+  reverb. Each scene gets a mood (`mystery → build → hit → wonder → drive → flow → deep → descent → awe → tick →
+  finale`, set per scene in `script.json`), sections crossfade, the final chord resolves to major, and the whole score
+  is **side‑chain ducked** (~9 dB) wherever the narration is speaking. Each episode has its own key/tempo via
+  `"score": {"transpose", "bpm"}` — Ep01 is D minor at 120 BPM, Ep02 F minor at 116 BPM.
 * **SFX** — `tools/sfx.py` builds every effect from oscillators, filtered noise, FM and synthetic reverb; scenes place
   them on exact frames next to the visuals that cause them.
 
@@ -101,10 +117,10 @@ The Kokoro weights are the onnx‑community `model_quantized.onnx` (Apache‑2.0
 
 ```
 inside-the-machine/
-├─ episodes/ep01/script.json      ← the narration script (source of truth for timing)
-├─ episodes/ep01/captions.srt     ← generated subtitles
+├─ episodes/epNN/script.json      ← the narration script (source of truth for timing, moods, slug)
+├─ episodes/epNN/captions.srt     ← generated subtitles
 ├─ src/
-│  ├─ Root.tsx                    ← compositions: Ep01 + one per scene
+│  ├─ Root.tsx                    ← compositions: Ep01, Ep02 (+ thumbnails) + one per scene
 │  ├─ theme.ts                    ← "Obsidian Neon" design tokens
 │  ├─ lib/
 │  │  ├─ anim.ts                  ← easing, springs, keyframes, deterministic random
@@ -113,9 +129,12 @@ inside-the-machine/
 │  ├─ components/                 ← Backdrop, Camera, Glass, NeonPath, ChapterCard, HUD, Keyboard3D, MacBook3D,
 │  │                                 Chip3D (SoC floorplan), Stack3D, logic gates, canvas FX, Episode assembler
 │  ├─ scenes/ep01/                ← 16 scenes (ColdOpen … Finale); each exports Visual + sfx() + backdrop
-│  └─ episodes/ep01/              ← timeline.json + scene registry
+│  ├─ scenes/ep02/                ← 17 scenes + shared.tsx (procedural wallpaper, subpixel microscope) + raster.ts
+│  │                                 (z‑buffered software rasterizer for the teapot)
+│  └─ episodes/epNN/              ← timeline.json + scene registry + chapter colors + thumbnail
 ├─ public/audio/                  ← narration, sfx, music
-└─ tools/                         ← tts.py, sfx.py, music.py, glyph.py, render.mjs, stills.mjs
+└─ tools/                         ← tts.py, sfx.py, music.py, glyph.py, render.mjs, stills.mjs, preview.sh, cues.py,
+                                     deliver.sh, share.sh
 ```
 
 ### Design language — "Obsidian Neon"
@@ -153,12 +172,38 @@ The SoC floorplan and FinFET are **illustrative**, not die shots or exact proces
 
 ---
 
+## Episode 02 — chapters
+
+![Storyboard: 16 moments from Episode 02](docs/ep02-storyboard.jpg)
+
+| # | Chapter | What you see |
+|---|---|---|
+| 00 | Prologue | a floating display refreshing row by row at 120 Hz, a zoom into 5,939,136 pixels and an 8.33 ms frame timer, a many‑core grid firing in unison, electrons into an LED, numbers into light; an RGB‑beam title |
+| 01 | Pixels | the subpixel microscope (picture → pixel blocks → glowing R/G/B subpixels in linear light), the 3024 × 1964 panel, additive mixing; 8 → 10 bits, the RGB cube (16.7 M → 1.07 B colors), the frame buffer filling byte by byte (≈ 24 MB), a tunnel of frames at 120 fps (≈ 2.85 GB/s) |
+| 02 | The Painter | CPU vs GPU painting race, the SoC with its GPU, one GPU core's 128 ALUs as four 32‑lane SIMD groups, ~25,000 threads in flight, a Metal command buffer (`drawPrimitives(type: .triangle, …)`) |
+| 03 | The Pipeline | the Utah teapot in three.js: glossy → 4,032 triangles → vertices → vertex shader → move/rotate/scale → projection onto a glass "screen"; rasterization of one triangle, fragment shading (light × material × texture), the teapot resolving from 32 × 18 to 1024 × 576; tiles, hidden‑surface removal, on‑chip tile memory |
+| 04 | The Frame | exploded 3D desktop layers composited by WindowServer (shadows, transparency, blur), unified memory with no copies, double buffering & swaps on the refresh tick, a torn frame, ProMotion's adaptive refresh |
+| 05 | Making Light | the display engine streaming rows to the timing controller, an active matrix driven row by row (with a nod to Ep01's keyboard matrix), an exploded LCD, a TFT + storage capacitor holding its voltage, polarized light twisted by liquid crystals, three light valves → one color, mini‑LED local dimming and 1,600‑nit highlights, the p–n junction, the band gap, GaN and the 2014 Nobel, blue → white |
+| 06 | Into Your Eye | rays through the lens onto the retina, L/M/S cones and their sensitivity curves, color made in the brain, frames stitched into motion; the recap chain, "Painted in light", next time: *Power On* |
+
+### Fact notes (Ep02)
+
+14‑inch MacBook Pro: 3024 × 1964 = 5,939,136 pixels, × 3 = 17,817,408 subpixels; ProMotion up to 120 Hz (8.33 ms
+per frame); 8 bits per channel = 16,777,216 colors, 10 bits = 1,073,741,824; at 4 bytes per pixel one frame ≈ 23.8 MB
+and 120 frames ≈ 2.85 GB/s. Apple's M1 GPU: 8 cores, 1,024 ALUs (128 per core), up to 24,576 threads in flight; SIMD
+groups are 32 wide. TeapotGeometry at 8 segments = 4,032 triangles (Martin Newell, University of Utah, 1975). Apple
+GPUs are tile‑based deferred renderers (tile sizes such as 32 × 32). Liquid Retina XDR: mini‑LED backlit LCD, up to
+1,600 nits peak HDR. Blue GaN LEDs: Nobel Prize in Physics 2014 (Akasaki, Amano, Nakamura). Cone curves, panel
+layers and the LC "twist" are simplified illustrations; the tile‑saving bars are illustrative.
+
+---
+
 ## Series roadmap
 
 | Ep | Title | Down to… |
 |---|---|---|
 | 01 | From Keystroke → Electron | the whole stack, one keypress at a time ✅ |
-| 02 | Painting with Light | Metal, tile‑based deferred rendering, display engines, mini‑LED backlights, subpixels → photons |
+| 02 | Painting with Light | Metal, tile‑based deferred rendering, display engines, mini‑LED backlights, subpixels → photons ✅ |
 | 03 | Power On | Boot ROM → iBoot → Secure Enclave → XNU → launchd → login window |
 | 04 | Memory | caches, coherency, unified memory, DRAM cells & refresh, page tables in depth |
 | 05 | Storage | APFS internals, NVMe queues, wear leveling, ECC, how flash cells wear out |
@@ -168,8 +213,9 @@ The SoC floorplan and FinFET are **illustrative**, not die shots or exact proces
 | 09 | Secrets | Secure Enclave, Touch ID, AES engines, signed boot |
 | 10 | Sound | Core Audio, DACs, class‑D amps, speaker cones moving air |
 
-Adding an episode: write `episodes/epNN/script.json`, run the three audio tools, add `src/scenes/epNN/*`, register
-`src/episodes/epNN/index.tsx` in `Root.tsx`, render with `node tools/render.mjs --comp=EpNN --ep=epNN`.
+Adding an episode: write `episodes/epNN/script.json` (with a `slug` and a `mood` per scene), run the audio tools, add
+`src/scenes/epNN/*`, register `src/episodes/epNN/index.tsx` (scenes, chapter colors, HUD label) in `Root.tsx`, then
+`node tools/render.mjs --ep=epNN && tools/deliver.sh epNN && tools/share.sh epNN`.
 
 ### Inspiration
 

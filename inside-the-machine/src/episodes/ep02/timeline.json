@@ -1,0 +1,801 @@
+{
+ "episode": "ep02",
+ "fps": 30,
+ "voice": "af_heart",
+ "scenes": [
+  {
+   "id": "coldOpen",
+   "chapter": "prologue",
+   "from": 0,
+   "durationInFrames": 1084,
+   "cues": [
+    {
+     "id": "o1",
+     "from": 48,
+     "durationInFrames": 37,
+     "seconds": 1.216,
+     "text": "Look at your screen.",
+     "say": "Look at your screen.",
+     "audio": "audio/narration/ep02/o1.wav"
+    },
+    {
+     "id": "o2",
+     "from": 126,
+     "durationInFrames": 71,
+     "seconds": 2.347,
+     "text": "It seems perfectly still. It isn't.",
+     "say": "It seems perfectly still. It isn't.",
+     "audio": "audio/narration/ep02/o2.wav"
+    },
+    {
+     "id": "o3",
+     "from": 221,
+     "durationInFrames": 144,
+     "seconds": 4.8,
+     "text": "Up to 120 times every second, every pixel on it is refreshed.",
+     "say": "Up to a hundred and twenty times every second, every pixel on it is refreshed.",
+     "audio": "audio/narration/ep02/o3.wav"
+    },
+    {
+     "id": "o4",
+     "from": 380,
+     "durationInFrames": 237,
+     "seconds": 7.872,
+     "text": "And the moment anything moves, your Mac has to paint a brand-new picture \u2014 nearly six million pixels \u2014 in about eight milliseconds.",
+     "say": "And the moment anything moves, your Mac has to paint a brand-new picture, nearly six million pixels, in about eight milliseconds.",
+     "audio": "audio/narration/ep02/o4.wav"
+    },
+    {
+     "id": "o5",
+     "from": 630,
+     "durationInFrames": 219,
+     "seconds": 7.296,
+     "text": "To pull that off, it uses a processor built for one thing: doing the same simple math, on millions of things, at once.",
+     "say": "To pull that off, it uses a processor built for one thing: doing the same simple math, on millions of things, at once.",
+     "audio": "audio/narration/ep02/o5.wav"
+    },
+    {
+     "id": "o6",
+     "from": 860,
+     "durationInFrames": 78,
+     "seconds": 2.581,
+     "text": "And then it turns electrons\u2026 back into light.",
+     "say": "And then it turns electrons, back into light.",
+     "audio": "audio/narration/ep02/o6.wav"
+    },
+    {
+     "id": "o7",
+     "from": 965,
+     "durationInFrames": 102,
+     "seconds": 3.371,
+     "text": "Today, we follow a single frame. From numbers\u2026 to light.",
+     "say": "Today, we follow a single frame. From numbers, to light.",
+     "audio": "audio/narration/ep02/o7.wav"
+    }
+   ]
+  },
+  {
+   "id": "title",
+   "chapter": "prologue",
+   "from": 1084,
+   "durationInFrames": 180,
+   "cues": []
+  },
+  {
+   "id": "pixels",
+   "chapter": "pixels",
+   "from": 1264,
+   "durationInFrames": 848,
+   "cues": [
+    {
+     "id": "p1",
+     "from": 90,
+     "durationInFrames": 90,
+     "seconds": 2.987,
+     "text": "Get close enough to any screen, and the illusion breaks.",
+     "say": "Get close enough to any screen, and the illusion breaks.",
+     "audio": "audio/narration/ep02/p1.wav"
+    },
+    {
+     "id": "p2",
+     "from": 195,
+     "durationInFrames": 196,
+     "seconds": 6.507,
+     "text": "It's a grid of tiny dots, called pixels. A 14-inch MacBook Pro has nearly six million of them.",
+     "say": "It's a grid of tiny dots, called pixels. A fourteen inch MacBook Pro has nearly six million of them.",
+     "audio": "audio/narration/ep02/p2.wav"
+    },
+    {
+     "id": "p3",
+     "from": 405,
+     "durationInFrames": 150,
+     "seconds": 4.971,
+     "text": "And each pixel is really three: a red, a green, and a blue light, side by side.",
+     "say": "And each pixel is really three: a red, a green, and a blue light, side by side.",
+     "audio": "audio/narration/ep02/p3.wav"
+    },
+    {
+     "id": "p4",
+     "from": 569,
+     "durationInFrames": 103,
+     "seconds": 3.413,
+     "text": "Turn all three up, and you see white. Turn them all off: black.",
+     "say": "Turn all three up, and you see white. Turn them all off: black.",
+     "audio": "audio/narration/ep02/p4.wav"
+    },
+    {
+     "id": "p5",
+     "from": 683,
+     "durationInFrames": 144,
+     "seconds": 4.779,
+     "text": "Every color you've ever seen on a screen is just a different mix of these three lights.",
+     "say": "Every color you've ever seen on a screen is just a different mix of these three lights.",
+     "audio": "audio/narration/ep02/p5.wav"
+    }
+   ]
+  },
+  {
+   "id": "framebuffer",
+   "chapter": "pixels",
+   "from": 2112,
+   "durationInFrames": 1152,
+   "cues": [
+    {
+     "id": "f1",
+     "from": 18,
+     "durationInFrames": 178,
+     "seconds": 5.931,
+     "text": "To the computer, a pixel is just three numbers: how bright the red, the green, and the blue should be.",
+     "say": "To the computer, a pixel is just three numbers: how bright the red, the green, and the blue should be.",
+     "audio": "audio/narration/ep02/f1.wav"
+    },
+    {
+     "id": "f2",
+     "from": 209,
+     "durationInFrames": 254,
+     "seconds": 8.448,
+     "text": "With eight bits per color, each light gets 256 levels. Multiply them together, and that's over sixteen million colors.",
+     "say": "With eight bits per color, each light gets two hundred and fifty-six levels. Multiply them together, and that's over sixteen million colors.",
+     "audio": "audio/narration/ep02/f2.wav"
+    },
+    {
+     "id": "f3",
+     "from": 475,
+     "durationInFrames": 130,
+     "seconds": 4.309,
+     "text": "The best Mac displays go further, with ten bits per color: over a billion.",
+     "say": "The best Mac displays go further, with ten bits per color: over a billion.",
+     "audio": "audio/narration/ep02/f3.wav"
+    },
+    {
+     "id": "f4",
+     "from": 619,
+     "durationInFrames": 235,
+     "seconds": 7.808,
+     "text": "A whole screen of these numbers is called a frame buffer. At four bytes per pixel, one frame is about 24 megabytes.",
+     "say": "A whole screen of these numbers is called a frame buffer. At four bytes per pixel, one frame is about twenty-four megabytes.",
+     "audio": "audio/narration/ep02/f4.wav"
+    },
+    {
+     "id": "f5",
+     "from": 865,
+     "durationInFrames": 170,
+     "seconds": 5.653,
+     "text": "At 120 frames a second, that's nearly three gigabytes of pixels, every second.",
+     "say": "At a hundred and twenty frames a second, that's nearly three gigabytes of pixels, every second.",
+     "audio": "audio/narration/ep02/f5.wav"
+    },
+    {
+     "id": "f6",
+     "from": 1053,
+     "durationInFrames": 76,
+     "seconds": 2.517,
+     "text": "So who fills in all those numbers\u2026 that fast?",
+     "say": "So who fills in all those numbers, that fast?",
+     "audio": "audio/narration/ep02/f6.wav"
+    }
+   ]
+  },
+  {
+   "id": "gpuIntro",
+   "chapter": "painter",
+   "from": 3264,
+   "durationInFrames": 875,
+   "cues": [
+    {
+     "id": "g1",
+     "from": 90,
+     "durationInFrames": 91,
+     "seconds": 3.029,
+     "text": "Meet the GPU: the graphics processing unit.",
+     "say": "Meet the GPU: the graphics processing unit.",
+     "audio": "audio/narration/ep02/g1.wav"
+    },
+    {
+     "id": "g2",
+     "from": 196,
+     "durationInFrames": 207,
+     "seconds": 6.869,
+     "text": "A CPU is like a handful of brilliant artists. Each one can paint anything \u2014 but they work stroke by stroke.",
+     "say": "A CPU is like a handful of brilliant artists. Each one can paint anything, but they work stroke by stroke.",
+     "audio": "audio/narration/ep02/g2.wav"
+    },
+    {
+     "id": "g3",
+     "from": 414,
+     "durationInFrames": 258,
+     "seconds": 8.597,
+     "text": "A GPU is an army of thousands of simpler painters. They all follow the same instructions, but each one works on a different pixel.",
+     "say": "A GPU is an army of thousands of simpler painters. They all follow the same instructions, but each one works on a different pixel.",
+     "audio": "audio/narration/ep02/g3.wav"
+    },
+    {
+     "id": "g4",
+     "from": 685,
+     "durationInFrames": 166,
+     "seconds": 5.525,
+     "text": "For pictures, where every pixel needs the same kind of math, the army wins. Every time.",
+     "say": "For pictures, where every pixel needs the same kind of math, the army wins. Every time.",
+     "audio": "audio/narration/ep02/g4.wav"
+    }
+   ]
+  },
+  {
+   "id": "gpuCore",
+   "chapter": "painter",
+   "from": 4139,
+   "durationInFrames": 1124,
+   "cues": [
+    {
+     "id": "c1",
+     "from": 18,
+     "durationInFrames": 142,
+     "seconds": 4.715,
+     "text": "On Apple silicon, the GPU sits right on the same chip as the CPU.",
+     "say": "On Apple silicon, the GPU sits right on the same chip as the CPU.",
+     "audio": "audio/narration/ep02/c1.wav"
+    },
+    {
+     "id": "c2",
+     "from": 171,
+     "durationInFrames": 344,
+     "seconds": 11.456,
+     "text": "Each GPU core packs 128 tiny arithmetic units. They work in squads of 32 called SIMD groups: one instruction, thirty-two pixels at once.",
+     "say": "Each GPU core packs a hundred and twenty-eight tiny arithmetic units. They work in squads of thirty-two, called SIMD groups: one instruction, thirty-two pixels at once.",
+     "audio": "audio/narration/ep02/c2.wav"
+    },
+    {
+     "id": "c3",
+     "from": 529,
+     "durationInFrames": 181,
+     "seconds": 6.016,
+     "text": "An eight-core Apple GPU can keep nearly twenty-five thousand threads in flight at the same time.",
+     "say": "An eight-core Apple GPU can keep nearly twenty-five thousand threads in flight at the same time.",
+     "audio": "audio/narration/ep02/c3.wav"
+    },
+    {
+     "id": "c4",
+     "from": 724,
+     "durationInFrames": 270,
+     "seconds": 8.981,
+     "text": "Apps talk to it through Metal, Apple's graphics framework. They pack commands \u2014 like \u201cdraw these triangles\u201d \u2014 into a command buffer, and hand it over.",
+     "say": "Apps talk to it through Metal, Apple's graphics framework. They pack commands, like \u201cdraw these triangles\u201d, into a command buffer, and hand it over.",
+     "audio": "audio/narration/ep02/c4.wav"
+    },
+    {
+     "id": "c5",
+     "from": 1007,
+     "durationInFrames": 93,
+     "seconds": 3.093,
+     "text": "So what does the GPU actually do with a triangle?",
+     "say": "So what does the GPU actually do with a triangle?",
+     "audio": "audio/narration/ep02/c5.wav"
+    }
+   ]
+  },
+  {
+   "id": "teapot",
+   "chapter": "pipeline",
+   "from": 5263,
+   "durationInFrames": 902,
+   "cues": [
+    {
+     "id": "t1",
+     "from": 90,
+     "durationInFrames": 200,
+     "seconds": 6.635,
+     "text": "Meet the most famous teapot in computing. Graphics researchers have been drawing it since 1975.",
+     "say": "Meet the most famous teapot in computing. Graphics researchers have been drawing it since nineteen seventy-five.",
+     "audio": "audio/narration/ep02/t1.wav"
+    },
+    {
+     "id": "t2",
+     "from": 304,
+     "durationInFrames": 216,
+     "seconds": 7.168,
+     "text": "To the GPU, it's nothing but triangles \u2014 thousands of them, each defined by three corners, called vertices.",
+     "say": "To the GPU, it's nothing but triangles, thousands of them, each defined by three corners, called vertices.",
+     "audio": "audio/narration/ep02/t2.wav"
+    },
+    {
+     "id": "t3",
+     "from": 533,
+     "durationInFrames": 144,
+     "seconds": 4.8,
+     "text": "Step one: a small program called a vertex shader runs once for every corner.",
+     "say": "Step one: a small program called a vertex shader runs once for every corner.",
+     "audio": "audio/narration/ep02/t3.wav"
+    },
+    {
+     "id": "t4",
+     "from": 686,
+     "durationInFrames": 196,
+     "seconds": 6.507,
+     "text": "It moves, rotates and scales each point, then projects it onto your flat screen, so nearer things look bigger.",
+     "say": "It moves, rotates and scales each point, then projects it onto your flat screen, so nearer things look bigger.",
+     "audio": "audio/narration/ep02/t4.wav"
+    }
+   ]
+  },
+  {
+   "id": "raster",
+   "chapter": "pipeline",
+   "from": 6165,
+   "durationInFrames": 654,
+   "cues": [
+    {
+     "id": "r1",
+     "from": 18,
+     "durationInFrames": 191,
+     "seconds": 6.336,
+     "text": "Step two: rasterization. The GPU works out exactly which pixels each triangle covers.",
+     "say": "Step two: rasterization. The GPU works out exactly which pixels each triangle covers.",
+     "audio": "audio/narration/ep02/r1.wav"
+    },
+    {
+     "id": "r2",
+     "from": 222,
+     "durationInFrames": 228,
+     "seconds": 7.595,
+     "text": "Step three: for every one of those pixels, a fragment shader decides its color \u2014 from the light, the material, and the texture.",
+     "say": "Step three: for every one of those pixels, a fragment shader decides its color, from the light, the material, and the texture.",
+     "audio": "audio/narration/ep02/r2.wav"
+    },
+    {
+     "id": "r3",
+     "from": 463,
+     "durationInFrames": 171,
+     "seconds": 5.675,
+     "text": "Millions of pixels per frame, all in parallel. That's what those thousands of painters are for.",
+     "say": "Millions of pixels per frame, all in parallel. That's what those thousands of painters are for.",
+     "audio": "audio/narration/ep02/r3.wav"
+    }
+   ]
+  },
+  {
+   "id": "tiles",
+   "chapter": "pipeline",
+   "from": 6819,
+   "durationInFrames": 951,
+   "cues": [
+    {
+     "id": "ti1",
+     "from": 18,
+     "durationInFrames": 288,
+     "seconds": 9.6,
+     "text": "Apple's GPUs add a clever trick. They split the screen into small tiles \u2014 say, thirty-two by thirty-two pixels \u2014 and work on them one at a time.",
+     "say": "Apple's GPUs add a clever trick. They split the screen into small tiles, say, thirty-two by thirty-two pixels, and work on them one at a time.",
+     "audio": "audio/narration/ep02/ti1.wav"
+    },
+    {
+     "id": "ti2",
+     "from": 319,
+     "durationInFrames": 218,
+     "seconds": 7.253,
+     "text": "Before shading anything, each tile figures out which surfaces are actually visible, and skips everything hidden behind them.",
+     "say": "Before shading anything, each tile figures out which surfaces are actually visible, and skips everything hidden behind them.",
+     "audio": "audio/narration/ep02/ti2.wav"
+    },
+    {
+     "id": "ti3",
+     "from": 549,
+     "durationInFrames": 204,
+     "seconds": 6.784,
+     "text": "Then it does all the work in fast memory right inside the GPU, and writes each finished tile out just once.",
+     "say": "Then it does all the work in fast memory right inside the GPU, and writes each finished tile out just once.",
+     "audio": "audio/narration/ep02/ti3.wav"
+    },
+    {
+     "id": "ti4",
+     "from": 765,
+     "durationInFrames": 162,
+     "seconds": 5.397,
+     "text": "It's called tile-based deferred rendering. Less work, less memory traffic, less power.",
+     "say": "It's called tile-based deferred rendering. Less work, less memory traffic, less power.",
+     "audio": "audio/narration/ep02/ti4.wav"
+    }
+   ]
+  },
+  {
+   "id": "compose",
+   "chapter": "frame",
+   "from": 7770,
+   "durationInFrames": 773,
+   "cues": [
+    {
+     "id": "w1",
+     "from": 90,
+     "durationInFrames": 141,
+     "seconds": 4.693,
+     "text": "But your screen isn't one picture. Every app paints its own windows, separately.",
+     "say": "But your screen isn't one picture. Every app paints its own windows, separately.",
+     "audio": "audio/narration/ep02/w1.wav"
+    },
+    {
+     "id": "w2",
+     "from": 244,
+     "durationInFrames": 244,
+     "seconds": 8.107,
+     "text": "A system process called the WindowServer stacks them all together \u2014 adding shadows, transparency and blur \u2014 into one final frame.",
+     "say": "A system process called the Window Server stacks them all together, adding shadows, transparency and blur, into one final frame.",
+     "audio": "audio/narration/ep02/w2.wav"
+    },
+    {
+     "id": "w3",
+     "from": 500,
+     "durationInFrames": 250,
+     "seconds": 8.32,
+     "text": "And because your apps, the WindowServer, and the GPU all share the same unified memory, nobody has to copy those pixels around.",
+     "say": "And because your apps, the Window Server, and the GPU all share the same unified memory, nobody has to copy those pixels around.",
+     "audio": "audio/narration/ep02/w3.wav"
+    }
+   ]
+  },
+  {
+   "id": "vsync",
+   "chapter": "frame",
+   "from": 8543,
+   "durationInFrames": 869,
+   "cues": [
+    {
+     "id": "v1",
+     "from": 18,
+     "durationInFrames": 194,
+     "seconds": 6.443,
+     "text": "Timing is everything. The next frame is painted into a hidden back buffer, while the screen shows the front one.",
+     "say": "Timing is everything. The next frame is painted into a hidden back buffer, while the screen shows the front one.",
+     "audio": "audio/narration/ep02/v1.wav"
+    },
+    {
+     "id": "v2",
+     "from": 223,
+     "durationInFrames": 162,
+     "seconds": 5.376,
+     "text": "When the display is ready for a new frame, the two swap \u2014 perfectly in sync with the refresh.",
+     "say": "When the display is ready for a new frame, the two swap, perfectly in sync with the refresh.",
+     "audio": "audio/narration/ep02/v2.wav"
+    },
+    {
+     "id": "v3",
+     "from": 397,
+     "durationInFrames": 139,
+     "seconds": 4.629,
+     "text": "Swap at the wrong moment, and you'd see a torn image: half old frame, half new.",
+     "say": "Swap at the wrong moment, and you'd see a torn image: half old frame, half new.",
+     "audio": "audio/narration/ep02/v3.wav"
+    },
+    {
+     "id": "v4",
+     "from": 550,
+     "durationInFrames": 296,
+     "seconds": 9.835,
+     "text": "On ProMotion displays, the refresh rate even adapts: up to 120 hertz when things move, slowing down when nothing changes, to save power.",
+     "say": "On Pro Motion displays, the refresh rate even adapts: up to a hundred and twenty hertz when things move, slowing down when nothing changes, to save power.",
+     "audio": "audio/narration/ep02/v4.wav"
+    }
+   ]
+  },
+  {
+   "id": "scanout",
+   "chapter": "light",
+   "from": 9412,
+   "durationInFrames": 964,
+   "cues": [
+    {
+     "id": "s1",
+     "from": 90,
+     "durationInFrames": 60,
+     "seconds": 1.984,
+     "text": "Now the finished frame leaves the chip.",
+     "say": "Now the finished frame leaves the chip.",
+     "audio": "audio/narration/ep02/s1.wav"
+    },
+    {
+     "id": "s2",
+     "from": 162,
+     "durationInFrames": 231,
+     "seconds": 7.68,
+     "text": "A display engine reads it from memory and streams it, row by row, over a high-speed link to the screen's timing controller.",
+     "say": "A display engine reads it from memory and streams it, row by row, over a high-speed link to the screen's timing controller.",
+     "audio": "audio/narration/ep02/s2.wav"
+    },
+    {
+     "id": "s3",
+     "from": 404,
+     "durationInFrames": 270,
+     "seconds": 8.981,
+     "text": "The controller switches on one row of pixels at a time, while thousands of column wires deliver a precise voltage to every pixel in that row.",
+     "say": "The controller switches on one row of pixels at a time, while thousands of column wires deliver a precise voltage to every pixel in that row.",
+     "audio": "audio/narration/ep02/s3.wav"
+    },
+    {
+     "id": "s4",
+     "from": 687,
+     "durationInFrames": 257,
+     "seconds": 8.555,
+     "text": "Sound familiar? It's the same row-and-column trick your keyboard uses. Top to bottom, row after row, and then it starts all over again.",
+     "say": "Sound familiar? It's the same row-and-column trick your keyboard uses. Top to bottom, row after row, and then it starts all over again.",
+     "audio": "audio/narration/ep02/s4.wav"
+    }
+   ]
+  },
+  {
+   "id": "panel",
+   "chapter": "light",
+   "from": 10376,
+   "durationInFrames": 827,
+   "cues": [
+    {
+     "id": "pa1",
+     "from": 18,
+     "durationInFrames": 107,
+     "seconds": 3.541,
+     "text": "So what is a pixel, physically? Let's take the display apart.",
+     "say": "So what is a pixel, physically? Let's take the display apart.",
+     "audio": "audio/narration/ep02/pa1.wav"
+    },
+    {
+     "id": "pa2",
+     "from": 138,
+     "durationInFrames": 339,
+     "seconds": 11.285,
+     "text": "At the back: a backlight. Then a polarizing filter. A sheet of glass, covered in transistors. A thin layer of liquid crystal. Color filters. And a second polarizer.",
+     "say": "At the back: a backlight. Then a polarizing filter. A sheet of glass, covered in transistors. A thin layer of liquid crystal. Color filters. And a second polarizer.",
+     "audio": "audio/narration/ep02/pa2.wav"
+    },
+    {
+     "id": "pa3",
+     "from": 490,
+     "durationInFrames": 314,
+     "seconds": 10.453,
+     "text": "There's one transistor for every subpixel \u2014 nearly eighteen million of them. Each one charges a tiny capacitor that holds its brightness until the next refresh.",
+     "say": "There's one transistor for every subpixel, nearly eighteen million of them. Each one charges a tiny capacitor that holds its brightness until the next refresh.",
+     "audio": "audio/narration/ep02/pa3.wav"
+    }
+   ]
+  },
+  {
+   "id": "crystals",
+   "chapter": "light",
+   "from": 11203,
+   "durationInFrames": 1007,
+   "cues": [
+    {
+     "id": "l1",
+     "from": 18,
+     "durationInFrames": 208,
+     "seconds": 6.912,
+     "text": "The real magic happens in the liquid crystal. Its molecules are long and thin, like microscopic rods.",
+     "say": "The real magic happens in the liquid crystal. Its molecules are long and thin, like microscopic rods.",
+     "audio": "audio/narration/ep02/l1.wav"
+    },
+    {
+     "id": "l2",
+     "from": 237,
+     "durationInFrames": 302,
+     "seconds": 10.048,
+     "text": "The first polarizer only lets through light that vibrates in one direction. The second is turned ninety degrees \u2014 so on its own, it blocks that light completely.",
+     "say": "The first polarizer only lets through light that vibrates in one direction. The second is turned ninety degrees, so on its own, it blocks that light completely.",
+     "audio": "audio/narration/ep02/l2.wav"
+    },
+    {
+     "id": "l3",
+     "from": 552,
+     "durationInFrames": 187,
+     "seconds": 6.208,
+     "text": "But apply a voltage, and the crystals rotate, twisting the light as it passes, so some of it slips through.",
+     "say": "But apply a voltage, and the crystals rotate, twisting the light as it passes, so some of it slips through.",
+     "audio": "audio/narration/ep02/l3.wav"
+    },
+    {
+     "id": "l4",
+     "from": 751,
+     "durationInFrames": 233,
+     "seconds": 7.744,
+     "text": "More voltage, more light. Every subpixel is a tiny light valve, and its color filter tints it red, green, or blue.",
+     "say": "More voltage, more light. Every subpixel is a tiny light valve, and its color filter tints it red, green, or blue.",
+     "audio": "audio/narration/ep02/l4.wav"
+    }
+   ]
+  },
+  {
+   "id": "backlight",
+   "chapter": "light",
+   "from": 12210,
+   "durationInFrames": 1300,
+   "cues": [
+    {
+     "id": "b1",
+     "from": 24,
+     "durationInFrames": 244,
+     "seconds": 8.107,
+     "text": "And the light itself? On a MacBook Pro, it comes from thousands of tiny LEDs, grouped into zones that dim independently.",
+     "say": "And the light itself? On a MacBook Pro, it comes from thousands of tiny LEDs, grouped into zones that dim independently.",
+     "audio": "audio/narration/ep02/b1.wav"
+    },
+    {
+     "id": "b2",
+     "from": 279,
+     "durationInFrames": 182,
+     "seconds": 6.059,
+     "text": "Dark parts of the picture get dark LEDs, while highlights can blaze at up to 1,600 nits.",
+     "say": "Dark parts of the picture get dark LEDs, while highlights can blaze at up to sixteen hundred nits.",
+     "audio": "audio/narration/ep02/b2.wav"
+    },
+    {
+     "id": "b3",
+     "from": 476,
+     "durationInFrames": 304,
+     "seconds": 10.133,
+     "text": "Inside each LED, it's electrons, once again. Pushed across a junction in a semiconductor, they fall into holes \u2014 and every fall releases a photon.",
+     "say": "Inside each LED, it's electrons, once again. Pushed across a junction in a semiconductor, they fall into holes, and every fall releases a photon.",
+     "audio": "audio/narration/ep02/b3.wav"
+    },
+    {
+     "id": "b4",
+     "from": 793,
+     "durationInFrames": 312,
+     "seconds": 10.368,
+     "text": "The size of that fall, the band gap, sets the light's color. These are blue LEDs, made of gallium nitride \u2014 an invention that won the Nobel Prize in Physics.",
+     "say": "The size of that fall, the band gap, sets the light's color. These are blue LEDs, made of gallium nitride, an invention that won the Nobel Prize in Physics.",
+     "audio": "audio/narration/ep02/b4.wav"
+    },
+    {
+     "id": "b5",
+     "from": 1116,
+     "durationInFrames": 160,
+     "seconds": 5.333,
+     "text": "A special coating turns part of that blue into red and green. Together, they make white.",
+     "say": "A special coating turns part of that blue into red and green. Together, they make white.",
+     "audio": "audio/narration/ep02/b5.wav"
+    }
+   ]
+  },
+  {
+   "id": "eye",
+   "chapter": "eye",
+   "from": 13510,
+   "durationInFrames": 958,
+   "cues": [
+    {
+     "id": "e1",
+     "from": 90,
+     "durationInFrames": 182,
+     "seconds": 6.037,
+     "text": "That light crosses the space between you and the screen, passes through your lens, and lands on your retina.",
+     "say": "That light crosses the space between you and the screen, passes through your lens, and lands on your retina.",
+     "audio": "audio/narration/ep02/e1.wav"
+    },
+    {
+     "id": "e2",
+     "from": 283,
+     "durationInFrames": 177,
+     "seconds": 5.888,
+     "text": "There, three kinds of cone cells respond to it. Roughly speaking, they sense red, green, and blue.",
+     "say": "There, three kinds of cone cells respond to it. Roughly speaking, they sense red, green, and blue.",
+     "audio": "audio/narration/ep02/e2.wav"
+    },
+    {
+     "id": "e3",
+     "from": 472,
+     "durationInFrames": 239,
+     "seconds": 7.936,
+     "text": "Your brain compares their signals and creates the sensation of color. That's why three tiny lights can fool you into seeing millions.",
+     "say": "Your brain compares their signals and creates the sensation of color. That's why three tiny lights can fool you into seeing millions.",
+     "audio": "audio/narration/ep02/e3.wav"
+    },
+    {
+     "id": "e4",
+     "from": 723,
+     "durationInFrames": 211,
+     "seconds": 7.019,
+     "text": "And a few milliseconds later, the next frame arrives. Your brain stitches them together into smooth, continuous motion.",
+     "say": "And a few milliseconds later, the next frame arrives. Your brain stitches them together into smooth, continuous motion.",
+     "audio": "audio/narration/ep02/e4.wav"
+    }
+   ]
+  },
+  {
+   "id": "finale",
+   "chapter": "eye",
+   "from": 14468,
+   "durationInFrames": 1242,
+   "cues": [
+    {
+     "id": "x1",
+     "from": 30,
+     "durationInFrames": 40,
+     "seconds": 1.301,
+     "text": "So, let's rewind.",
+     "say": "So, let's rewind.",
+     "audio": "audio/narration/ep02/x1.wav"
+    },
+    {
+     "id": "x2",
+     "from": 84,
+     "durationInFrames": 554,
+     "seconds": 18.453,
+     "text": "An app describes a scene. The GPU turns triangles into pixels, tile by tile. The WindowServer composites the frame. The display engine streams it, row by row. Transistors set eighteen million light valves. And electrons, falling into holes, pour out as light.",
+     "say": "An app describes a scene. The GPU turns triangles into pixels, tile by tile. The Window Server composites the frame. The display engine streams it, row by row. Transistors set eighteen million light valves. And electrons, falling into holes, pour out as light.",
+     "audio": "audio/narration/ep02/x2.wav"
+    },
+    {
+     "id": "x3",
+     "from": 656,
+     "durationInFrames": 236,
+     "seconds": 7.851,
+     "text": "Up to 120 times a second. Every scroll, every video, every letter you type \u2014 painted in light, just for you.",
+     "say": "Up to a hundred and twenty times a second. Every scroll, every video, every letter you type, painted in light, just for you.",
+     "audio": "audio/narration/ep02/x3.wav"
+    },
+    {
+     "id": "x4",
+     "from": 918,
+     "durationInFrames": 129,
+     "seconds": 4.288,
+     "text": "Next time: what really happens in the seconds after you press the power button.",
+     "say": "Next time: what really happens in the seconds after you press the power button.",
+     "audio": "audio/narration/ep02/x4.wav"
+    }
+   ]
+  }
+ ],
+ "chapters": [
+  {
+   "id": "prologue",
+   "num": "00",
+   "title": "Prologue"
+  },
+  {
+   "id": "pixels",
+   "num": "01",
+   "title": "Pixels"
+  },
+  {
+   "id": "painter",
+   "num": "02",
+   "title": "The Painter"
+  },
+  {
+   "id": "pipeline",
+   "num": "03",
+   "title": "The Pipeline"
+  },
+  {
+   "id": "frame",
+   "num": "04",
+   "title": "The Frame"
+  },
+  {
+   "id": "light",
+   "num": "05",
+   "title": "Making Light"
+  },
+  {
+   "id": "eye",
+   "num": "06",
+   "title": "Into Your Eye"
+  }
+ ],
+ "durationInFrames": 15710
+}

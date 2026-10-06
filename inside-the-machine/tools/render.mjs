@@ -2,7 +2,7 @@
 // re-render one scene after a fix), the soundtrack is rendered once, then
 // everything is concatenated, loudness-normalized and muxed with ffmpeg.
 //
-// usage: node tools/render.mjs [--only=sceneA,sceneB] [--scale=1] [--crf=18] [--force]
+// usage: node tools/render.mjs [--ep=ep01] [--only=sceneA,sceneB] [--scale=1] [--crf=18] [--force]
 import { bundle } from "@remotion/bundler";
 import { renderMedia, selectComposition, ensureBrowser } from "@remotion/renderer";
 import { execFileSync } from "node:child_process";
@@ -19,8 +19,9 @@ const ONLY = arg("only", "") ? arg("only", "").split(",") : null;
 const SCALE = Number(arg("scale", "1"));
 const CRF = Number(arg("crf", "18"));
 const FORCE = process.argv.includes("--force");
-const ID = arg("comp", "Ep01");
 const EP = arg("ep", "ep01");
+const ID = arg("comp", EP.replace(/^ep/, "Ep"));
+const SLUG = JSON.parse(fs.readFileSync(`episodes/${EP}/script.json`, "utf8")).slug ?? "episode";
 const OUT = path.resolve("out");
 const PARTS = path.join(OUT, `${EP}-parts${SCALE !== 1 ? `-${SCALE}` : ""}`);
 fs.mkdirSync(PARTS, { recursive: true });
@@ -91,7 +92,7 @@ if (parts.every((p) => fs.existsSync(p)) && fs.existsSync(audio)) {
   fs.writeFileSync(list, parts.map((p) => `file '${p}'`).join("\n"));
   const video = path.join(OUT, `${EP}-video.mp4`);
   execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", list, "-c", "copy", video], { stdio: "inherit" });
-  const final = path.join(OUT, `${EP}-keystroke-to-electron${SCALE !== 1 ? `-${SCALE}` : ""}.mp4`);
+  const final = path.join(OUT, `${EP}-${SLUG}${SCALE !== 1 ? `-${SCALE}` : ""}.mp4`);
   execFileSync(
     "ffmpeg",
     ["-y", "-loglevel", "error", "-i", video, "-i", audio, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "256k", "-ar", "48000", "-movflags", "+faststart", "-shortest", final],

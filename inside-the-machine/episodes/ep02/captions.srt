@@ -1,0 +1,666 @@
+1
+00:00:01,600 --> 00:00:02,816
+Look at your screen.
+
+2
+00:00:04,200 --> 00:00:05,925
+It seems perfectly still.
+
+3
+00:00:05,925 --> 00:00:06,547
+It isn't.
+
+4
+00:00:07,367 --> 00:00:12,167
+Up to 120 times every second,
+every pixel on it is refreshed.
+
+5
+00:00:12,667 --> 00:00:17,148
+And the moment anything moves, your
+Mac has to paint a brand-new picture —
+
+6
+00:00:17,148 --> 00:00:20,539
+nearly six million pixels —
+in about eight milliseconds.
+
+7
+00:00:21,000 --> 00:00:24,617
+To pull that off, it uses a
+processor built for one thing:
+
+8
+00:00:24,617 --> 00:00:28,296
+doing the same simple math, on
+millions of things, at once.
+
+9
+00:00:28,667 --> 00:00:30,309
+And then it turns electrons…
+
+10
+00:00:30,309 --> 00:00:31,248
+back into light.
+
+11
+00:00:32,167 --> 00:00:34,164
+Today, we follow a single frame.
+
+12
+00:00:34,164 --> 00:00:34,976
+From numbers…
+
+13
+00:00:34,976 --> 00:00:35,537
+to light.
+
+14
+00:00:45,133 --> 00:00:48,120
+Get close enough to any screen,
+and the illusion breaks.
+
+15
+00:00:48,633 --> 00:00:51,432
+It's a grid of tiny dots, called pixels.
+
+16
+00:00:51,432 --> 00:00:55,140
+A 14-inch MacBook Pro has
+nearly six million of them.
+
+17
+00:00:55,633 --> 00:01:00,604
+And each pixel is really three: a red,
+a green, and a blue light, side by side.
+
+18
+00:01:01,100 --> 00:01:03,137
+Turn all three up, and you see white.
+
+19
+00:01:03,137 --> 00:01:04,513
+Turn them all off: black.
+
+20
+00:01:04,900 --> 00:01:09,290
+Every color you've ever seen on a screen
+is just a different mix of these three
+
+21
+00:01:09,290 --> 00:01:09,679
+lights.
+
+22
+00:01:11,000 --> 00:01:15,580
+To the computer, a pixel is just three
+numbers: how bright the red, the green,
+
+23
+00:01:15,580 --> 00:01:16,931
+and the blue should be.
+
+24
+00:01:17,367 --> 00:01:21,266
+With eight bits per color,
+each light gets 256 levels.
+
+25
+00:01:21,266 --> 00:01:25,815
+Multiply them together, and that's
+over sixteen million colors.
+
+26
+00:01:26,233 --> 00:01:30,543
+The best Mac displays go further, with
+ten bits per color: over a billion.
+
+27
+00:01:31,033 --> 00:01:34,937
+A whole screen of these numbers
+is called a frame buffer.
+
+28
+00:01:34,937 --> 00:01:38,841
+At four bytes per pixel, one
+frame is about 24 megabytes.
+
+29
+00:01:39,233 --> 00:01:44,887
+At 120 frames a second, that's nearly
+three gigabytes of pixels, every second.
+
+30
+00:01:45,500 --> 00:01:47,445
+So who fills in all those numbers…
+
+31
+00:01:47,445 --> 00:01:48,017
+that fast?
+
+32
+00:01:51,800 --> 00:01:54,829
+Meet the GPU: the
+graphics processing unit.
+
+33
+00:01:55,333 --> 00:01:58,250
+A CPU is like a handful
+of brilliant artists.
+
+34
+00:01:58,250 --> 00:02:02,203
+Each one can paint anything —
+but they work stroke by stroke.
+
+35
+00:02:02,600 --> 00:02:05,932
+A GPU is an army of thousands
+of simpler painters.
+
+36
+00:02:05,932 --> 00:02:11,197
+They all follow the same instructions,
+but each one works on a different pixel.
+
+37
+00:02:11,633 --> 00:02:16,452
+For pictures, where every pixel needs
+the same kind of math, the army wins.
+
+38
+00:02:16,452 --> 00:02:17,159
+Every time.
+
+39
+00:02:18,567 --> 00:02:23,281
+On Apple silicon, the GPU sits
+right on the same chip as the CPU.
+
+40
+00:02:23,667 --> 00:02:27,599
+Each GPU core packs 128
+tiny arithmetic units.
+
+41
+00:02:27,599 --> 00:02:32,900
+They work in squads of 32 called
+SIMD groups: one instruction,
+
+42
+00:02:32,900 --> 00:02:35,123
+thirty-two pixels at once.
+
+43
+00:02:35,600 --> 00:02:40,729
+An eight-core Apple GPU can keep nearly
+twenty-five thousand threads in flight at
+
+44
+00:02:40,729 --> 00:02:41,616
+the same time.
+
+45
+00:02:42,100 --> 00:02:45,620
+Apps talk to it through Metal,
+Apple's graphics framework.
+
+46
+00:02:45,620 --> 00:02:50,050
+They pack commands — like “draw these
+triangles” — into a command buffer,
+
+47
+00:02:50,050 --> 00:02:51,081
+and hand it over.
+
+48
+00:02:51,533 --> 00:02:54,627
+So what does the GPU
+actually do with a triangle?
+
+49
+00:02:58,433 --> 00:03:01,327
+Meet the most famous teapot in computing.
+
+50
+00:03:01,327 --> 00:03:05,068
+Graphics researchers have
+been drawing it since 1975.
+
+51
+00:03:05,567 --> 00:03:09,556
+To the GPU, it's nothing but
+triangles — thousands of them,
+
+52
+00:03:09,556 --> 00:03:12,735
+each defined by three
+corners, called vertices.
+
+53
+00:03:13,200 --> 00:03:18,000
+Step one: a small program called a
+vertex shader runs once for every corner.
+
+54
+00:03:18,300 --> 00:03:23,076
+It moves, rotates and scales each point,
+then projects it onto your flat screen,
+
+55
+00:03:23,076 --> 00:03:24,807
+so nearer things look bigger.
+
+56
+00:03:26,100 --> 00:03:27,910
+Step two: rasterization.
+
+57
+00:03:27,910 --> 00:03:32,436
+The GPU works out exactly which
+pixels each triangle covers.
+
+58
+00:03:32,900 --> 00:03:37,722
+Step three: for every one of those pixels,
+a fragment shader decides its color —
+
+59
+00:03:37,722 --> 00:03:40,495
+from the light, the
+material, and the texture.
+
+60
+00:03:40,933 --> 00:03:43,710
+Millions of pixels per
+frame, all in parallel.
+
+61
+00:03:43,710 --> 00:03:46,608
+That's what those thousands
+of painters are for.
+
+62
+00:03:47,900 --> 00:03:50,063
+Apple's GPUs add a clever trick.
+
+63
+00:03:50,063 --> 00:03:55,404
+They split the screen into small tiles
+— say, thirty-two by thirty-two pixels —
+
+64
+00:03:55,404 --> 00:03:57,500
+and work on them one at a time.
+
+65
+00:03:57,933 --> 00:04:02,828
+Before shading anything, each tile figures
+out which surfaces are actually visible,
+
+66
+00:04:02,828 --> 00:04:05,187
+and skips everything hidden behind them.
+
+67
+00:04:05,600 --> 00:04:09,568
+Then it does all the work in
+fast memory right inside the GPU,
+
+68
+00:04:09,568 --> 00:04:12,384
+and writes each finished
+tile out just once.
+
+69
+00:04:12,800 --> 00:04:15,467
+It's called tile-based deferred rendering.
+
+70
+00:04:15,467 --> 00:04:18,197
+Less work, less memory
+traffic, less power.
+
+71
+00:04:22,000 --> 00:04:24,020
+But your screen isn't one picture.
+
+72
+00:04:24,020 --> 00:04:26,693
+Every app paints its
+own windows, separately.
+
+73
+00:04:27,133 --> 00:04:32,390
+A system process called the WindowServer
+stacks them all together — adding shadows,
+
+74
+00:04:32,390 --> 00:04:35,240
+transparency and blur
+— into one final frame.
+
+75
+00:04:35,667 --> 00:04:38,329
+And because your apps, the WindowServer,
+
+76
+00:04:38,329 --> 00:04:41,391
+and the GPU all share
+the same unified memory,
+
+77
+00:04:41,391 --> 00:04:43,987
+nobody has to copy those pixels around.
+
+78
+00:04:45,367 --> 00:04:46,597
+Timing is everything.
+
+79
+00:04:46,597 --> 00:04:49,642
+The next frame is painted
+into a hidden back buffer,
+
+80
+00:04:49,642 --> 00:04:51,809
+while the screen shows the front one.
+
+81
+00:04:52,200 --> 00:04:55,531
+When the display is ready for
+a new frame, the two swap —
+
+82
+00:04:55,531 --> 00:04:57,576
+perfectly in sync with the refresh.
+
+83
+00:04:58,000 --> 00:05:02,629
+Swap at the wrong moment, and you'd see
+a torn image: half old frame, half new.
+
+84
+00:05:03,100 --> 00:05:06,888
+On ProMotion displays, the
+refresh rate even adapts:
+
+85
+00:05:06,888 --> 00:05:12,935
+up to 120 hertz when things move, slowing
+down when nothing changes, to save power.
+
+86
+00:05:16,733 --> 00:05:18,717
+Now the finished frame leaves the chip.
+
+87
+00:05:19,133 --> 00:05:23,225
+A display engine reads it from
+memory and streams it, row by row,
+
+88
+00:05:23,225 --> 00:05:26,813
+over a high-speed link to the
+screen's timing controller.
+
+89
+00:05:27,200 --> 00:05:30,754
+The controller switches on
+one row of pixels at a time,
+
+90
+00:05:30,754 --> 00:05:35,923
+while thousands of column wires deliver
+a precise voltage to every pixel in that
+
+91
+00:05:35,923 --> 00:05:36,181
+row.
+
+92
+00:05:36,633 --> 00:05:37,598
+Sound familiar?
+
+93
+00:05:37,598 --> 00:05:41,071
+It's the same row-and-column
+trick your keyboard uses.
+
+94
+00:05:41,071 --> 00:05:45,188
+Top to bottom, row after row, and
+then it starts all over again.
+
+95
+00:05:46,467 --> 00:05:48,296
+So what is a pixel, physically?
+
+96
+00:05:48,296 --> 00:05:50,008
+Let's take the display apart.
+
+97
+00:05:50,467 --> 00:05:52,241
+At the back: a backlight.
+
+98
+00:05:52,241 --> 00:05:54,016
+Then a polarizing filter.
+
+99
+00:05:54,016 --> 00:05:56,926
+A sheet of glass, covered in transistors.
+
+100
+00:05:56,926 --> 00:05:59,126
+A thin layer of liquid crystal.
+
+101
+00:05:59,126 --> 00:06:00,120
+Color filters.
+
+102
+00:06:00,120 --> 00:06:01,752
+And a second polarizer.
+
+103
+00:06:02,200 --> 00:06:07,197
+There's one transistor for every subpixel
+— nearly eighteen million of them.
+
+104
+00:06:07,197 --> 00:06:12,653
+Each one charges a tiny capacitor that
+holds its brightness until the next refresh.
+
+105
+00:06:14,033 --> 00:06:17,144
+The real magic happens
+in the liquid crystal.
+
+106
+00:06:17,144 --> 00:06:20,945
+Its molecules are long and
+thin, like microscopic rods.
+
+107
+00:06:21,333 --> 00:06:26,073
+The first polarizer only lets through
+light that vibrates in one direction.
+
+108
+00:06:26,073 --> 00:06:29,359
+The second is turned ninety
+degrees — so on its own,
+
+109
+00:06:29,359 --> 00:06:31,381
+it blocks that light completely.
+
+110
+00:06:31,833 --> 00:06:36,401
+But apply a voltage, and the crystals
+rotate, twisting the light as it passes,
+
+111
+00:06:36,401 --> 00:06:38,041
+so some of it slips through.
+
+112
+00:06:38,467 --> 00:06:40,195
+More voltage, more light.
+
+113
+00:06:40,195 --> 00:06:45,658
+Every subpixel is a tiny light valve,
+and its color filter tints it red, green,
+
+114
+00:06:45,658 --> 00:06:46,211
+or blue.
+
+115
+00:06:47,800 --> 00:06:49,243
+And the light itself?
+
+116
+00:06:49,243 --> 00:06:53,021
+On a MacBook Pro, it comes
+from thousands of tiny LEDs,
+
+117
+00:06:53,021 --> 00:06:55,907
+grouped into zones that dim independently.
+
+118
+00:06:56,300 --> 00:06:59,086
+Dark parts of the picture get dark LEDs,
+
+119
+00:06:59,086 --> 00:07:02,359
+while highlights can
+blaze at up to 1,600 nits.
+
+120
+00:07:02,867 --> 00:07:05,963
+Inside each LED, it's
+electrons, once again.
+
+121
+00:07:05,963 --> 00:07:10,678
+Pushed across a junction in a
+semiconductor, they fall into holes —
+
+122
+00:07:10,678 --> 00:07:13,000
+and every fall releases a photon.
+
+123
+00:07:13,433 --> 00:07:17,447
+The size of that fall, the band
+gap, sets the light's color.
+
+124
+00:07:17,447 --> 00:07:20,524
+These are blue LEDs,
+made of gallium nitride —
+
+125
+00:07:20,524 --> 00:07:23,801
+an invention that won the
+Nobel Prize in Physics.
+
+126
+00:07:24,200 --> 00:07:27,939
+A special coating turns part of
+that blue into red and green.
+
+127
+00:07:27,939 --> 00:07:29,533
+Together, they make white.
+
+128
+00:07:33,333 --> 00:07:37,960
+That light crosses the space between you
+and the screen, passes through your lens,
+
+129
+00:07:37,960 --> 00:07:39,371
+and lands on your retina.
+
+130
+00:07:39,767 --> 00:07:42,620
+There, three kinds of
+cone cells respond to it.
+
+131
+00:07:42,620 --> 00:07:45,655
+Roughly speaking, they
+sense red, green, and blue.
+
+132
+00:07:46,067 --> 00:07:50,215
+Your brain compares their signals
+and creates the sensation of color.
+
+133
+00:07:50,215 --> 00:07:54,003
+That's why three tiny lights can
+fool you into seeing millions.
+
+134
+00:07:54,433 --> 00:07:57,586
+And a few milliseconds later,
+the next frame arrives.
+
+135
+00:07:57,586 --> 00:08:01,452
+Your brain stitches them together
+into smooth, continuous motion.
+
+136
+00:08:03,267 --> 00:08:04,568
+So, let's rewind.
+
+137
+00:08:05,067 --> 00:08:06,883
+An app describes a scene.
+
+138
+00:08:06,883 --> 00:08:10,515
+The GPU turns triangles
+into pixels, tile by tile.
+
+139
+00:08:10,515 --> 00:08:13,276
+The WindowServer composites the frame.
+
+140
+00:08:13,276 --> 00:08:16,328
+The display engine streams it, row by row.
+
+141
+00:08:16,328 --> 00:08:19,670
+Transistors set eighteen
+million light valves.
+
+142
+00:08:19,670 --> 00:08:23,520
+And electrons, falling into
+holes, pour out as light.
+
+143
+00:08:24,133 --> 00:08:25,968
+Up to 120 times a second.
+
+144
+00:08:25,968 --> 00:08:31,984
+Every scroll, every video, every letter
+you type — painted in light, just for you.
+
+145
+00:08:32,867 --> 00:08:37,155
+Next time: what really happens in the
+seconds after you press the power button.

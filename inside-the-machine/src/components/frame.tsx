@@ -105,7 +105,8 @@ export const Hud: React.FC<{
   progress: number;
   marks: { at: number; id: string }[];
   opacity: number;
-}> = ({ chapters, chapterId, progress, marks, opacity }) => {
+  label: string;
+}> = ({ chapters, chapterId, progress, marks, opacity, label }) => {
   const ch = chapters.find((c) => c.id === chapterId);
   if (!ch || opacity <= 0.001) return null;
   return (
@@ -116,7 +117,7 @@ export const Hud: React.FC<{
         <span style={{ fontSize: 18, fontWeight: 600, letterSpacing: "0.28em", textTransform: "uppercase", color: hexA(C.ink, 0.7) }}>{ch.title}</span>
       </div>
       <div style={{ position: "absolute", right: 64, top: 48, fontFamily: FONT.ui, fontSize: 18, fontWeight: 600, letterSpacing: "0.28em", color: hexA(C.ink, 0.45) }}>
-        INSIDE THE MACHINE <span style={{ color: hexA(C.cyan, 0.8), marginLeft: 10 }}>EP 01</span>
+        INSIDE THE MACHINE <span style={{ color: hexA(C.cyan, 0.8), marginLeft: 10 }}>{label}</span>
       </div>
       <div style={{ position: "absolute", left: 64, right: 64, bottom: 40, height: 2, background: hexA(C.ink, 0.08) }}>
         <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${progress * 100}%`, background: `linear-gradient(90deg, ${C.cyan}, ${C.violet})`, boxShadow: `0 0 12px ${hexA(C.cyan, 0.7)}` }} />

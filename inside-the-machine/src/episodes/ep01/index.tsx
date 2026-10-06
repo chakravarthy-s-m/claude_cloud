@@ -1,6 +1,7 @@
 import React from "react";
 import timelineJson from "./timeline.json";
 import type { Timeline } from "../../lib/timeline";
+import { C } from "../../theme";
 import { Episode, type SceneModule } from "../../components/Episode";
 import { Placeholder } from "../../scenes/Placeholder";
 import { ColdOpen } from "../../scenes/ep01/ColdOpen";
@@ -44,5 +45,14 @@ for (const s of timeline.scenes) if (!SCENES[s.id]) SCENES[s.id] = Placeholder;
 
 export const MUSIC = "audio/music/ep01-score.mp3";
 
-export const Ep01: React.FC = () => <Episode timeline={timeline} scenes={SCENES} music={MUSIC} />;
-export const Ep01Scene: React.FC<{ id: string }> = ({ id }) => <Episode timeline={timeline} scenes={SCENES} only={id} />;
+export const CHAPTER_COLORS: Record<string, string> = {
+  machine: C.green,
+  keystroke: C.cyan,
+  launch: C.violet,
+  save: C.amber,
+  rabbit: C.pink,
+};
+
+const common = { timeline, scenes: SCENES, chapterColors: CHAPTER_COLORS, label: "EP 01" };
+export const Ep01: React.FC = () => <Episode {...common} music={MUSIC} />;
+export const Ep01Scene: React.FC<{ id: string }> = ({ id }) => <Episode {...common} only={id} />;
