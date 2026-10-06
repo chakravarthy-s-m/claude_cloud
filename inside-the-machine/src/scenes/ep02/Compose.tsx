@@ -204,7 +204,9 @@ const Stack: React.FC<{ b: B; a: number }> = ({ b, a }) => {
           </svg>
         </div>
       </AbsoluteFill>
-      <AbsoluteFill style={{ background: "#ffffff", opacity: 0.12 * flash, mixBlendMode: "screen" }} />
+      {flash > 0.01 && (
+        <div style={{ position: "absolute", left: 960 - (DW * 0.92) / 2, top: 560 - (DH * 0.92) / 2, width: DW * 0.92, height: DH * 0.92, borderRadius: 6, boxShadow: `0 0 ${60 + 80 * flash}px ${hexA("#ffffff", 0.45 * flash)}, inset 0 0 0 2px ${hexA("#ffffff", 0.8 * flash)}`, pointerEvents: "none" }} />
+      )}
       {/* titles */}
       <div style={{ position: "absolute", left: 110, top: 880, opacity: inOut(f, b.notOne - 4, 16, b.ws - 4, 12) }}>
         <Kicker color={C.blue} at={b.notOne - 4}>
@@ -246,7 +248,7 @@ const Stack: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Shared: React.FC<{ b: B; a: number }> = ({ b, a }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const inP = spr(f, fps, b.mem - 6, { damping: 22, stiffness: 90 });
+  const inP = spr(f, fps, b.mem - 12, { damping: 22, stiffness: 90 });
   const memA = spr(f, fps, b.unified - 6, { damping: 20, stiffness: 110 });
   const noCopy = spr(f, fps, b.copy - 4, { damping: 16, stiffness: 150 });
   const nodes = [
@@ -277,7 +279,7 @@ const Shared: React.FC<{ b: B; a: number }> = ({ b, a }) => {
         })}
       </svg>
       {nodes.map((n, i) => {
-        const p = spr(f, fps, b.mem + i * 6, { damping: 18, stiffness: 120 });
+        const p = spr(f, fps, b.mem - 6 + i * 5, { damping: 18, stiffness: 120 });
         return (
           <div key={n.t} style={{ position: "absolute", left: n.x, top: n.y, transform: `translate(-50%, -50%) scale(${mix(0.8, 1, p)})`, opacity: clamp(p * 1.4), padding: "16px 30px", borderRadius: 18, background: "rgba(8,10,22,0.9)", border: `2px solid ${n.col}`, boxShadow: `0 0 34px ${hexA(n.col, 0.35)}`, textAlign: "center", whiteSpace: "nowrap" }}>
             <div style={{ fontFamily: FONT.display, fontWeight: 700, fontSize: 36, color: C.ink }}>{n.t}</div>
@@ -312,8 +314,8 @@ const Shared: React.FC<{ b: B; a: number }> = ({ b, a }) => {
 const Visual: React.FC<{ s: SceneData }> = ({ s }) => {
   const f = useCurrentFrame();
   const b = beats(s);
-  const stackA = 1 - prog(f, b.mem - 12, 14);
-  const memA = prog(f, b.mem - 10, 14);
+  const stackA = 1 - prog(f, b.mem - 8, 12, EASE.inOut);
+  const memA = prog(f, b.mem - 8, 12, EASE.inOut);
   return (
     <SceneShell dur={s.durationInFrames} enter={0} exit={14}>
       {stackA > 0.01 && <Stack b={b} a={stackA} />}
